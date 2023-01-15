@@ -1,6 +1,7 @@
 import React from "react";
 import InputValidation from "./InputValidation";
 import { checkValidation } from "../validation";
+import RemoveInputField from "./RemoveInputField";
 
 class TextInput extends React.Component {
   constructor(props) {
@@ -26,7 +27,9 @@ class TextInput extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.visible === false ? (
+      <div></div>
+    ) : (
       <div>
         <label htmlFor={this.label}>{this.label}</label>
         <div>
@@ -42,6 +45,11 @@ class TextInput extends React.Component {
             autoComplete="on"
           ></input>
           <InputValidation valid={this.state.valid} />
+          <RemoveInputField
+            changeField={this.props.changeField}
+            removable={this.props.removable}
+            field={this.field}
+          />
         </div>
       </div>
     );
