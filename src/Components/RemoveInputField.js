@@ -3,11 +3,11 @@ import React from "react";
 class RemoveInputField extends React.Component {
   constructor(props) {
     super(props);
-    this.removale = this.props.removale;
+    this.removable = this.props.removable;
   }
 
   render() {
-    return this.removale ? (
+    return this.removable ? (
       <div className="remove-container">
         <button
           className="remove-btn"

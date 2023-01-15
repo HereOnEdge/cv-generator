@@ -21,7 +21,7 @@ class ContactMainPage extends React.Component {
       extraFields: {
         website: false,
         linkedin: false,
-        nationality: false,
+        nationality: true,
       },
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
