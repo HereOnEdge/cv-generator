@@ -18,6 +18,7 @@ class TextInput extends React.Component {
 
   saveData(event) {
     if (this.checkValidation(event) === "valid") {
+      console.log("valid");
       this.setState({
         input: event.target.value,
         valid: true,
@@ -37,7 +38,7 @@ class TextInput extends React.Component {
             name={this.label}
             id={this.label}
             type="text"
-            value={this.state.input}
+            // value={this.state.input}
             placeholder={this.placeholder}
             onChange={(event) => {
               this.saveData(event);

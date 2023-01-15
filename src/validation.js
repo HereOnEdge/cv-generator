@@ -24,16 +24,17 @@ const checkValidation = function (event) {
     "=",
   ];
   let value = event.target.value;
+  let is_valid = "valid";
   notAllowed.map((symbol) => {
     if (value.includes(`${symbol}`)) {
+      is_valid = "not-valid";
+      console.log(symbol);
       this.setState({
         valid: false,
       });
-      return "not-valid";
-    } else {
-      return "valid";
     }
   });
+  return is_valid;
 };
 
 export { checkValidation };
