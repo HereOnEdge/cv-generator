@@ -15,6 +15,16 @@ class TextInput extends React.Component {
     this.checkValidation = checkValidation.bind(this);
   }
 
+  saveData(event) {
+    if (this.checkValidation(event) === "valid") {
+      this.setState({
+        input: event.target.value,
+        valid: true,
+      });
+      this.props.changeData(this.field, this.state.input);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -27,7 +37,7 @@ class TextInput extends React.Component {
             value={this.state.input}
             placeholder={this.placeholder}
             onChange={(event) => {
-              this.checkValidation(event);
+              this.saveData(event);
             }}
             autoComplete="on"
           ></input>

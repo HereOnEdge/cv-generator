@@ -29,12 +29,9 @@ const checkValidation = function (event) {
       this.setState({
         valid: false,
       });
+      return "not-valid";
     } else {
-      this.setState({
-        input: value,
-        valid: true,
-      });
-      this.props.changeData(this.field, this.state.input);
+      return "valid";
     }
   });
 };
