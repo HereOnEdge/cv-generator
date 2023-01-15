@@ -19,9 +19,9 @@ class ContactMainPage extends React.Component {
         nationality: "",
       },
       extraFields: {
-        website: false,
+        website: true,
         linkedin: false,
-        nationality: true,
+        nationality: false,
       },
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
@@ -40,7 +40,7 @@ class ContactMainPage extends React.Component {
     this.setState((prevState) => {
       prevState.extraFields[fieldName] = value;
       return {
-        extraFields: prevState,
+        extraFields: prevState.extraFields,
       };
     });
   }
