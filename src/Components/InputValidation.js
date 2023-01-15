@@ -1,12 +1,19 @@
 import React from "react";
 
 class InputValidation extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    return <div></div>;
+    this.valid = this.props.valid;
+    return (
+      <div>
+        {this.valid ? (
+          <div className="valid-input"></div>
+        ) : this.valid === false ? (
+          <div className="inValid-input"></div>
+        ) : (
+          <div></div>
+        )}
+      </div>
+    );
   }
 }
 
