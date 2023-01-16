@@ -8,7 +8,7 @@ class TextInput extends React.Component {
     super(props);
     this.label = this.props.label;
     this.field = this.props.field;
-    this.placeholder = this.props.placeholder;
+    this.placeHolder = this.props.placeHolder;
     this.state = {
       input: "",
       valid: "",
@@ -51,7 +51,7 @@ class TextInput extends React.Component {
             id={this.label}
             type="text"
             // value={this.state.input}
-            placeholder={this.placeholder}
+            placeHolder={this.placeHolder}
             onChange={(event) => {
               this.saveData(event);
             }}
