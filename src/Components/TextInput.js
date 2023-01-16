@@ -19,10 +19,12 @@ class TextInput extends React.Component {
 
   saveData(event) {
     let value = event.target.value;
+    this.setState({
+      input: value,
+    });
     if (this.checkValidation(value, this.validationType) === "valid") {
       console.log("valid");
       this.setState({
-        input: value,
         valid: true,
       });
       this.props.changeData(this.field, this.state.input);
@@ -50,8 +52,8 @@ class TextInput extends React.Component {
             name={this.label}
             id={this.label}
             type="text"
-            // value={this.state.input}
-            placeHolder={this.placeHolder}
+            value={this.state.input}
+            placeholder={this.placeHolder}
             onChange={(event) => {
               this.saveData(event);
             }}
