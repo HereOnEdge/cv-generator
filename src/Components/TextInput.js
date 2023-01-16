@@ -23,7 +23,6 @@ class TextInput extends React.Component {
       input: value,
     });
     if (this.checkValidation(value, this.validationType) === "valid") {
-      console.log("valid");
       this.setState({
         valid: true,
       });
