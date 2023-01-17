@@ -1,6 +1,7 @@
 import React from "react";
 import TextInput from "../TextInput";
 import AddFieldButton from "../AddFieldButton";
+import ProfilePhoto from "../ProfilePhoto";
 
 class ContactMainPage extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class ContactMainPage extends React.Component {
     this.changeState = this.props.changeState;
     this.state = {
       contact: {
+        photoSrc: "",
         firstName: "",
         lastName: "",
         country: "",
@@ -23,6 +25,7 @@ class ContactMainPage extends React.Component {
         website: false,
         linkedin: false,
         nationality: false,
+        address: true,
       },
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
@@ -54,6 +57,12 @@ class ContactMainPage extends React.Component {
           <p>We suggest including an email and phone number</p>
         </div>
         <div className="contact-body body">
+          <div className="contact-photo">
+            <ProfilePhoto
+              changeData={this.changeData}
+              photoSrc={this.state.contact.photoSrc}
+            />
+          </div>
           <div className="contact-form form">
             <TextInput
               className="contact-input half"
@@ -69,14 +78,6 @@ class ContactMainPage extends React.Component {
               changeData={this.changeData}
               field="lastName"
               placeHolder="e.g. Trump"
-              validationType="text"
-            />
-            <TextInput
-              className="contact-input"
-              label="ADDRESS"
-              changeData={this.changeData}
-              field="address"
-              placeHolder="e.g. number 12, example st"
               validationType="text"
             />
             <TextInput
@@ -110,6 +111,17 @@ class ContactMainPage extends React.Component {
               field="email"
               placeHolder="e.g. myemail@example.com"
               validationType="email"
+            />
+            <TextInput
+              className="contact-input"
+              label="ADDRESS"
+              changeData={this.changeData}
+              field="address"
+              placeHolder="e.g. number 12, example st"
+              changeField={this.changeExtraFields}
+              visible={this.state.extraFields.address}
+              removable={true}
+              validationType="text"
             />
             <TextInput
               className="contact-input half"
@@ -164,6 +176,11 @@ class ContactMainPage extends React.Component {
                   name="nationality"
                   changeField={this.changeExtraFields}
                   hidden={this.state.extraFields.nationality}
+                />
+                <AddFieldButton
+                  name="address"
+                  changeField={this.changeExtraFields}
+                  hidden={this.state.extraFields.address}
                 />
               </div>
             </div>
