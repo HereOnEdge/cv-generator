@@ -9,7 +9,7 @@ class MainPage extends React.Component {
   render() {
     const { changeState, data, page, topic } = this.props;
     return topic === "contact" ? (
-      <ContactMainPage changeState={changeState} data={data} />
+      <ContactMainPage changeState={changeState} data={data} topic={topic} />
     ) : null;
   }
 }

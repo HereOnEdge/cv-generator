@@ -2,6 +2,8 @@ import React from "react";
 import TextInput from "../TextInput";
 import AddFieldButton from "../AddFieldButton";
 import ProfilePhoto from "../ProfilePhoto";
+import PreviewContainer from "../PreviewContainer";
+import PreviewButton from "../PreviewButton";
 
 class ContactMainPage extends React.Component {
   constructor(props) {
@@ -161,7 +163,7 @@ class ContactMainPage extends React.Component {
                 Add additional information to your CV
                 <span className="small">(optional)</span>
               </span>
-              <div className="buttons">
+              <div className="contact-buttons">
                 <AddFieldButton
                   name="website"
                   changeField={this.changeExtraFields}
@@ -182,6 +184,14 @@ class ContactMainPage extends React.Component {
                   changeField={this.changeExtraFields}
                   hidden={this.state.extraFields.address}
                 />
+                <div className="contact-preview">
+                  <PreviewContainer
+                    className="previewContainer"
+                    data={this.props.data}
+                    highlightArea={this.props.topic}
+                  />
+                  <PreviewButton />
+                </div>
               </div>
             </div>
           </div>
