@@ -10,16 +10,18 @@ class App extends React.Component {
       topic: "contact",
       page: "main",
       data: {},
+      completedTopics: [],
     };
 
     this.stateHandler = this.stateHandler.bind(this);
   }
 
-  stateHandler({ data, topic, page }) {
+  stateHandler({ data, topic, page, completedTopics }) {
     this.setState({
       data: data,
       topic: topic,
       page: page,
+      completedTopics: completedTopics,
     });
   }
 
@@ -27,7 +29,10 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <ProgressBar topic={this.state.topic} />
+          <ProgressBar
+            topic={this.state.topic}
+            completedTopics={this.state.completedTopics}
+          />
         </header>
         <main>
           <MainPage
@@ -35,6 +40,7 @@ class App extends React.Component {
             data={this.state.data}
             page={this.state.page}
             topic={this.state.topic}
+            completedTopics={this.state.completedTopics}
           />
         </main>
       </div>
