@@ -4,11 +4,11 @@ import AddFieldButton from "../AddFieldButton";
 import ProfilePhoto from "../ProfilePhoto";
 import PreviewContainer from "../PreviewContainer";
 import PreviewButton from "../PreviewButton";
+import NavigationButtons from "../NavigationButtons";
 
 class ContactMainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.changeState = this.props.changeState;
     this.state = {
       contact: {
         photoSrc: "",
@@ -195,6 +195,17 @@ class ContactMainPage extends React.Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="contact-foot">
+          <NavigationButtons
+            topic={"contact"}
+            data={this.state.contact}
+            editData={this.props.changeState}
+            navLink={this.props.navLink}
+            page={this.props.page}
+            currentPageNode={this.props.currentPageNode}
+            completedTopics={this.props.completedTopics}
+          />
         </div>
       </div>
     );

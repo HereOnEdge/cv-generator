@@ -6,7 +6,7 @@ class Line extends React.Component {
     this.lineElement = <div className="progressBar-line"></div>;
   }
   active() {
-    this.lineElement.props.className = `${this.lineElement.props.className} active`;
+    this.lineElement = <div className="progressBar-line active"></div>;
     return this.lineElement;
   }
   render() {
