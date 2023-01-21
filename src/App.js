@@ -58,6 +58,7 @@ class App extends React.Component {
           <ProgressBar
             topic={this.state.topic}
             completedTopics={this.state.completedTopics}
+            currentPageNode={this.state.currentPageNode}
           />
         </header>
         <main>

@@ -9,86 +9,69 @@ class ProgressBar extends React.Component {
         <Circle
           number="1"
           name="CV heading"
-          active={this.props.topic === "contact" ? true : false}
-          complete={
-            this.props.completedTopics.includes("contact") ? true : false
-          }
+          topic="contact"
+          completedTopics={this.props.completedTopics}
+          currentNode={this.props.currentPageNode}
         />
         <Line
-          active={
-            this.props.topic === "work" ||
-            this.props.completedTopics.includes("work")
-              ? true
-              : false
-          }
+          currentNode={this.props.currentPageNode}
+          topic="work"
+          completedTopics={this.props.completedTopics}
         />
         <Circle
           number="2"
           name="Work History"
-          active={this.props.topic === "work" ? true : false}
-          complete={this.props.completedTopics.includes("work") ? true : false}
+          topic="work"
+          completedTopics={this.props.completedTopics}
+          currentNode={this.props.currentPageNode}
         />
         <Line
-          active={
-            this.props.topic === "educate" ||
-            this.props.completedTopics.includes("educate")
-              ? true
-              : false
-          }
+          currentNode={this.props.currentPageNode}
+          topic="educate"
+          completedTopics={this.props.completedTopics}
         />
         <Circle
           number="3"
           name="Education"
-          active={this.props.topic === "educate" ? true : false}
-          complete={
-            this.props.completedTopics.includes("educate") ? true : false
-          }
+          topic="educate"
+          completedTopics={this.props.completedTopics}
+          currentNode={this.props.currentPageNode}
         />
         <Line
-          active={
-            this.props.topic === "skills" ||
-            this.props.completedTopics.includes("skills")
-              ? true
-              : false
-          }
+          currentNode={this.props.currentPageNode}
+          topic="skills"
+          completedTopics={this.props.completedTopics}
         />
         <Circle
           number="4"
           name="Skills"
-          active={this.props.topic === "skills" ? true : false}
-          complete={
-            this.props.completedTopics.includes("skills") ? true : false
-          }
+          topic="skills"
+          completedTopics={this.props.completedTopics}
+          currentNode={this.props.currentPageNode}
         />
         <Line
-          active={
-            this.props.topic === "summary" ||
-            this.props.completedTopics.includes("summary")
-              ? true
-              : false
-          }
+          currentNode={this.props.currentPageNode}
+          topic="summary"
+          completedTopics={this.props.completedTopics}
         />
         <Circle
           number="5"
           name="Professional summary"
-          active={this.props.topic === "summary" ? true : false}
-          complete={
-            this.props.completedTopics.includes("summary") ? true : false
-          }
+          topic="summary"
+          completedTopics={this.props.completedTopics}
+          currentNode={this.props.currentPageNode}
         />
         <Line
-          active={
-            this.props.topic === "final" ||
-            this.props.completedTopics.includes("final")
-              ? true
-              : false
-          }
+          currentNode={this.props.currentPageNode}
+          topic="final"
+          completedTopics={this.props.completedTopics}
         />
         <Circle
           number="6"
           name="Finalise"
-          active={this.props.topic === "final" ? true : false}
-          complete={this.props.completedTopics.includes("final") ? true : false}
+          topic="final"
+          completedTopics={this.props.completedTopics}
+          currentNode={this.props.currentPageNode}
         />
       </div>
     );
