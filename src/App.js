@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./styles/App.css";
 import MainPage from "./Components/MainPage";
 import ProgressBar from "./Components/ProgressBar";
 import { node, linkedList } from "@reza2022/linked-list";

@@ -1,0 +1,28 @@
+:root {
+  --my-green : #02818c;
+  --my-blue: #0058ac;
+  --my-cream: #f6f5f0;
+  --my-grey: #aaaaaa;
+  --my-dark-blue: #002d6b;
+  --my-light-blue: #0c6cbe;
+  --my-white : #ffffff;
+}
+html {
+  width: 100%;
+}
+body{
+  margin: 0;
+  background-color: var(--my-cream);
+}
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  background-color:var(--my-white);
+  border-radius: 0 55px 0 0;
+  width: 100%;
+  min-height: 85vh;
+}
