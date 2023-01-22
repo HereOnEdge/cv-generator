@@ -1,3 +1,11 @@
+:root {
+  --my-green : #2a7202;
+  --my-blue: #000090;
+  --my-cream: #eeeeee;
+  --my-grey: #aaaaaa;
+  --my-dark-blue: #000070;
+  --my-light-blue: #0000e0;
+}
 html {
   width: 100%;
 }

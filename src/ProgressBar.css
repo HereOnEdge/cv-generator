@@ -12,7 +12,7 @@
     width: 20px;
 }
 .progressBar-circle {
-    border: 1px solid #aaaaaa;
+    border: 1px solid var(--my-grey);
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -26,20 +26,20 @@
 .progressBar-circle-name{
     font-size: 12px;
     font-weight: 200;
-    width: min(12vw, 150px);
+    width: min(10vw, 150px);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 .progressBar-circle.active {
-    border: 2px solid #2a7202;
+    border: 2px solid var(--my-green);
     font-weight: 600;
 }
 .progressBar-circle.complete {
-    background-color: #2a7202;
-    color: #eeeeee;
-    border-color: #2a7202;
+    background-color: var(--my-green);
+    color: var(--my-cream);
+    border-color: var(--my-green);
 }
 .progressBar-circle.active + span{
     font-weight: 600;
@@ -47,10 +47,10 @@
 .progressBar-line { 
     position: relative;
     top: 9px;
-    width: min(12vw, 150px);
+    width: min(10vw, 150px);
     height: 0;
-    border: 0.5px solid #aaaaaa;
+    border: 0.5px solid var(--my-grey);
 }
 .progressBar-line.active {
-    border: 1px solid #2a7202;
+    border: 1px solid var(--my-green);
 }
