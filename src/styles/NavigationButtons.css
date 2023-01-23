@@ -1,0 +1,42 @@
+.navigation-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.navigation-buttons button {
+    border-radius: 55px;
+    padding: 10px 20px;
+    height: 35px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.next-button {
+    background-color: var(--my-green);
+    color: var(--my-white);
+    border:1px solid transparent;
+}
+.back-button {
+    background-color: var(--my-white);
+    color: var(--my-blue);
+    border: 1px solid var(--my-blue);
+    padding-right: 27px !important ;
+}
+.back-button svg path{
+    margin-left: 0;
+}
+.next-button:hover {
+    background-color: var(--my-white);
+    color: var(--my-green);
+    border-color: var(--my-green);
+}
+.back-button:hover {
+    background-color: var(--my-blue);
+    color: var(--my-white);
+}

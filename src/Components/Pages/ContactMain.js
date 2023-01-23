@@ -5,6 +5,7 @@ import ProfilePhoto from "../ProfilePhoto";
 import PreviewContainer from "../PreviewContainer";
 import PreviewButton from "../PreviewButton";
 import NavigationButtons from "../NavigationButtons";
+// import "../../styles/ContactMain.css";
 
 class ContactMainPage extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class ContactMainPage extends React.Component {
           </div>
           <div className="contact-form form">
             <TextInput
-              className="contact-input half"
+              className="half"
               label="FIRST NAME"
               changeData={this.changeData}
               field="firstName"
@@ -75,7 +76,7 @@ class ContactMainPage extends React.Component {
               validationType="text"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="LAST NAME"
               changeData={this.changeData}
               field="lastName"
@@ -83,7 +84,7 @@ class ContactMainPage extends React.Component {
               validationType="text"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="COUNTRY"
               changeData={this.changeData}
               field="country"
@@ -91,7 +92,7 @@ class ContactMainPage extends React.Component {
               validationType="text"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="CITY/TOWN"
               changeData={this.changeData}
               field="city"
@@ -99,7 +100,7 @@ class ContactMainPage extends React.Component {
               validationType="text"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="PHONE NUMBER"
               changeData={this.changeData}
               field="phone"
@@ -107,7 +108,7 @@ class ContactMainPage extends React.Component {
               validationType="phone"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="EMAIL"
               changeData={this.changeData}
               field="email"
@@ -115,7 +116,7 @@ class ContactMainPage extends React.Component {
               validationType="email"
             />
             <TextInput
-              className="contact-input"
+              className=""
               label="ADDRESS"
               changeData={this.changeData}
               field="address"
@@ -126,7 +127,7 @@ class ContactMainPage extends React.Component {
               validationType="text"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="WEBSITE"
               changeData={this.changeData}
               field="website"
@@ -137,8 +138,8 @@ class ContactMainPage extends React.Component {
               validationType="link"
             />
             <TextInput
-              className="contact-input half"
-              label="linkedin"
+              className="half"
+              label="Linkedin"
               changeData={this.changeData}
               field="linkedin"
               placeHolder="e.g. example.linkedin.com"
@@ -148,7 +149,7 @@ class ContactMainPage extends React.Component {
               validationType="link"
             />
             <TextInput
-              className="contact-input half"
+              className="half"
               label="NATIONALITY"
               changeData={this.changeData}
               field="nationality"
@@ -184,19 +185,18 @@ class ContactMainPage extends React.Component {
                   changeField={this.changeExtraFields}
                   hidden={this.state.extraFields.address}
                 />
-                <div className="contact-preview">
-                  <PreviewContainer
-                    className="previewContainer"
-                    data={this.props.data}
-                    highlightArea={this.props.topic}
-                  />
-                  <PreviewButton />
-                </div>
               </div>
             </div>
           </div>
+          <div className="contact-preview whole-preview">
+            <PreviewContainer
+              data={this.props.data}
+              highlightArea={this.props.topic}
+            />
+            <PreviewButton />
+          </div>
         </div>
-        <div className="contact-foot">
+        <div className="contact-foot foot">
           <NavigationButtons
             topic={"contact"}
             data={this.state.contact}

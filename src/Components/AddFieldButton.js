@@ -18,16 +18,16 @@ class AddFieldButton extends React.Component {
   }
 
   render() {
-    return this.props.hidden ? (
-      <div></div>
-    ) : (
-      <input
+    return this.props.hidden ? null : (
+      <div
         className="moreInfo-button"
         name={`add ${this.name}`}
         type="button"
-        value={this.capitalizeFirstLetter(this.name)}
         onClick={() => this.addField()}
-      ></input>
+      >
+        <span className="plus-sign">+</span>
+        {this.capitalizeFirstLetter(this.name)}
+      </div>
     );
   }
 }

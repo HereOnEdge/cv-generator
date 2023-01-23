@@ -1,11 +1,8 @@
 import React from "react";
 import ContactMainPage from "./Pages/ContactMain";
+import "../styles/MainPage.css";
 
 class MainPage extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   // console.log(this.props.navLink);
-  // }
   render() {
     const {
       changeState,

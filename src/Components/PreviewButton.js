@@ -3,8 +3,8 @@ import React from "react";
 class PreviewButton extends React.Component {
   render() {
     return (
-      <button>
-        preview
+      <button className="preview-button">
+        Preview
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"

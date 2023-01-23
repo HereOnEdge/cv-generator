@@ -17,7 +17,11 @@ class NextButton extends React.Component {
     );
   }
   render() {
-    return <button onClick={this.saveData}>{this.buttonName}</button>;
+    return (
+      <button className="next-button" onClick={this.saveData}>
+        {`Next: ${this.buttonName}`}
+      </button>
+    );
   }
 }
 

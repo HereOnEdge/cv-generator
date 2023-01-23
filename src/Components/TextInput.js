@@ -2,6 +2,7 @@ import React from "react";
 import InputValidation from "./InputValidation";
 import { checkValidation } from "../validation";
 import RemoveInputField from "./RemoveInputField";
+import "../styles/TextInput.css";
 
 class TextInput extends React.Component {
   constructor(props) {
@@ -12,11 +13,23 @@ class TextInput extends React.Component {
     this.state = {
       input: "",
       valid: "",
+      active: false,
     };
     this.checkValidation = checkValidation.bind(this);
     this.validationType = this.props.validationType;
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
-
+  onFocus() {
+    this.setState({
+      active: true,
+    });
+  }
+  onBlur() {
+    this.setState({
+      active: false,
+    });
+  }
   saveData(event) {
     let value = event.target.value;
     this.setState({
@@ -41,12 +54,14 @@ class TextInput extends React.Component {
   }
 
   render() {
-    return this.props.visible === false ? (
-      <div></div>
-    ) : (
-      <div>
+    return this.props.visible === false ? null : (
+      <div
+        className={`whole-input-container ${
+          this.props.className === "half" ? "half" : ""
+        }`}
+      >
         <label htmlFor={this.label}>{this.label}</label>
-        <div>
+        <div className={`input-container ${this.state.active ? "active" : ""}`}>
           <input
             name={this.label}
             id={this.label}
@@ -57,13 +72,16 @@ class TextInput extends React.Component {
               this.saveData(event);
             }}
             autoComplete="on"
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
           ></input>
-          <InputValidation valid={this.state.valid} />
           <RemoveInputField
             changeField={this.props.changeField}
             removable={this.props.removable}
             field={this.field}
+            changeData={this.props.changeData}
           />
+          <InputValidation valid={this.state.valid} />
         </div>
       </div>
     );

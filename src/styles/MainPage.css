@@ -1,0 +1,129 @@
+.main {
+    width: min(100%, 740px);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 80px auto 60px;
+    padding: 0 5px;
+}
+.header > p , .header > h1 {
+    margin: 0;
+}
+.header {
+    min-height: 80px;
+    color: var(--my-dark-blue);
+    font-size: 0.8rem;
+}
+.body {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 100%;
+    color: var(--my-blue);
+}
+.contact-photo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px 0;
+}
+.form {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 5px 20px ;
+}
+.moreInfoSection {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 5px;
+}
+.bold {
+    display: block;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.small {
+    font-size: 0.7rem;
+    font-weight: 200;
+}
+.contact-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: min(2vh, 5px) max(2vw, 20px);
+}
+.moreInfo-button {
+    padding: 3px 6px;
+    color: var(--my-blue);
+    background-color: var(--my-white);
+    border: 0.8px solid var(--my-blue);
+    border-radius: 55px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    gap: 4px;
+    font-weight: 900;
+    cursor: default;
+    z-index: 1;
+    font-size: 0.8rem;
+}
+.moreInfo-button:hover {
+    background-color: var(--my-blue);
+    color: var(--my-white);
+}
+.moreInfo-button:hover .plus-sign {
+    border-color: var(--my-white);
+}
+.plus-sign {
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--my-blue);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.whole-preview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+}
+.preview-container {
+    outline: 1px solid blue;
+    width: 80%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.preview-button {
+    background-color: var(--my-white);
+    color: var(--my-light-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+.foot {
+    width: 100%;
+    height: 100%;
+    /* margin-top: 10px; */
+}

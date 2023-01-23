@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/ProfilePhoto.css";
 
 class ProfilePhoto extends React.Component {
   constructor(props) {

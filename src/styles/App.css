@@ -1,9 +1,9 @@
 :root {
   --my-green : #02818c;
-  --my-blue: #0058ac;
+  --my-blue: #002d6b;
   --my-cream: #f6f5f0;
   --my-grey: #aaaaaa;
-  --my-dark-blue: #002d6b;
+  --my-dark-blue: #001d4b;
   --my-light-blue: #0c6cbe;
   --my-white : #ffffff;
 }
@@ -24,5 +24,10 @@ main {
   background-color:var(--my-white);
   border-radius: 0 55px 0 0;
   width: 100%;
-  min-height: 85vh;
+  min-height: calc(100vh - 100px);
+  padding-top: 30px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start ;
 }
