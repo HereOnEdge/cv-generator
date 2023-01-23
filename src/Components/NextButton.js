@@ -8,12 +8,16 @@ class NextButton extends React.Component {
     this.saveData = this.saveData.bind(this);
   }
   saveData() {
+    const completeTopic =
+      this.props.currentPageNode.next.value().topic !== this.props.topic
+        ? this.props.topic
+        : null;
     this.props.editData(
       this.props.data,
       this.nextPageTopic,
       this.nextPagePage,
       this.props.currentPageNode.next,
-      [...this.props.completedTopics, this.props.topic]
+      [...this.props.completedTopics, completeTopic]
     );
   }
   render() {

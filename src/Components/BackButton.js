@@ -9,7 +9,10 @@ class BackButton extends React.Component {
     this.saveData = this.saveData.bind(this);
   }
   saveData() {
-    let completedTopics = this.props.completedTopics;
+    const completedTopics = this.props.completedTopics;
+    if (this.props.currentPageNode.back.value().topic !== this.props.topic) {
+      completedTopics.pop();
+    }
     completedTopics.pop();
     this.props.editData(
       this.props.data,
