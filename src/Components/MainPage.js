@@ -24,8 +24,18 @@ class MainPage extends React.Component {
         navLink={navLink}
         currentPageNode={currentPageNode}
       />
+    ) : page === "intro" ? (
+      <IntroPage
+        changeState={changeState}
+        data={data}
+        topic={topic}
+        page={page}
+        completedTopics={completedTopics}
+        navLink={navLink}
+        currentPageNode={currentPageNode}
+      />
     ) : (
-      <IntroPage data={data} />
+      <h1>where am I</h1>
     );
   }
 }
