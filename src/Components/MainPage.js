@@ -1,6 +1,7 @@
 import React from "react";
 import ContactMainPage from "./Pages/ContactMain";
 import "../styles/MainPage.css";
+import IntroPage from "./Pages/IntroPages";
 
 class MainPage extends React.Component {
   render() {
@@ -24,12 +25,7 @@ class MainPage extends React.Component {
         currentPageNode={currentPageNode}
       />
     ) : (
-      <div>
-        <h1>{`topic :${topic}`}</h1>
-        <h1>{`page: ${page}`}</h1>
-        <h1>{`completed: ${completedTopics[0]}`}</h1>
-        <h1>{`node: ${currentPageNode.value()}`}</h1>
-      </div>
+      <IntroPage data={data} />
     );
   }
 }

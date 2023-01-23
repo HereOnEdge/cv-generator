@@ -11,18 +11,20 @@ class ContactMainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contact: {
-        photoSrc: "",
-        firstName: "",
-        lastName: "",
-        country: "",
-        city: "",
-        address: "",
-        phone: "",
-        email: "",
-        website: "",
-        linkedin: "",
-        nationality: "",
+      data: {
+        contact: {
+          photoSrc: "",
+          firstName: "",
+          lastName: "",
+          country: "",
+          city: "",
+          address: "",
+          phone: "",
+          email: "",
+          website: "",
+          linkedin: "",
+          nationality: "",
+        },
       },
       extraFields: {
         website: false,
@@ -36,9 +38,9 @@ class ContactMainPage extends React.Component {
 
   changeData = (field, value) => {
     this.setState((prevState) => {
-      prevState.contact[field] = value;
+      prevState.data.contact[field] = value;
       return {
-        contact: prevState.contact,
+        data: prevState.data,
       };
     });
   };
@@ -63,7 +65,7 @@ class ContactMainPage extends React.Component {
           <div className="contact-photo">
             <ProfilePhoto
               changeData={this.changeData}
-              photoSrc={this.state.contact.photoSrc}
+              photoSrc={this.state.data.contact.photoSrc}
             />
           </div>
           <div className="contact-form form">
@@ -199,7 +201,7 @@ class ContactMainPage extends React.Component {
         <div className="contact-foot foot">
           <NavigationButtons
             topic={"contact"}
-            data={this.state.contact}
+            data={this.state.data}
             editData={this.props.changeState}
             navLink={this.props.navLink}
             page={this.props.page}

@@ -30,8 +30,7 @@ class TextInput extends React.Component {
       active: false,
     });
   }
-  saveData(event) {
-    let value = event.target.value;
+  saveData(value) {
     this.setState({
       input: value,
     });
@@ -39,7 +38,7 @@ class TextInput extends React.Component {
       this.setState({
         valid: true,
       });
-      this.props.changeData(this.field, this.state.input);
+      this.props.changeData(this.field, value);
     } else if (
       this.checkValidation(value, this.validationType) === "not-valid"
     ) {
@@ -69,7 +68,7 @@ class TextInput extends React.Component {
             value={this.state.input}
             placeholder={this.placeHolder}
             onChange={(event) => {
-              this.saveData(event);
+              this.saveData(event.target.value);
             }}
             autoComplete="on"
             onFocus={this.onFocus}
