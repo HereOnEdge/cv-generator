@@ -20,6 +20,7 @@ class TextInput extends React.Component {
     this.validationType = this.props.validationType;
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.saveData = this.saveData.bind(this);
   }
   updateState() {
     if (this.props.data[this.topic] !== undefined) {
@@ -125,7 +126,7 @@ class TextInput extends React.Component {
             changeField={this.props.changeField}
             removable={this.props.removable}
             field={this.field}
-            changeData={this.props.changeData}
+            saveData={this.saveData}
           />
           <InputValidation valid={this.state.valid} />
         </div>

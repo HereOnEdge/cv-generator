@@ -11,7 +11,10 @@ class RemoveInputField extends React.Component {
       <div className="remove-container">
         <button
           className="remove-btn"
-          onClick={() => this.props.changeField(this.props.field, false)}
+          onClick={() => {
+            this.props.changeField(this.props.field, false);
+            this.props.saveData("");
+          }}
           name={`remove ${this.props.field}'s input field`}
         >
           <svg
