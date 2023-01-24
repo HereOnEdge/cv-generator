@@ -62,8 +62,21 @@ class ContactMainPage extends React.Component {
     }
   }
 
+  findVisibleFields() {
+    if (this.props.data[this.props.topic] !== undefined) {
+      for (let extraField in this.state.extraFields) {
+        if (this.props.data[this.props.topic][extraField] !== "") {
+          this.setState((prevState) => {
+            prevState.extraFields[extraField] = true;
+          });
+        }
+      }
+    }
+  }
+
   componentDidMount() {
     this.findPhotoSrc();
+    this.findVisibleFields();
   }
 
   render() {
