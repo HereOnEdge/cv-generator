@@ -24,8 +24,6 @@ class NavigationButtons extends React.Component {
     this.nextPage = this.currentPage[next];
     if (this.nextPage !== null) {
       const nextPageData = this.nextPage.value();
-      console.log(nextPageData.topic);
-      console.log(nextPageData.page);
       this.nextPageTopic = nextPageData.topic;
       this.nextPagePage = nextPageData.page;
     }

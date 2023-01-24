@@ -20,8 +20,6 @@ class App extends React.Component {
   }
 
   stateHandler(data, topic, page, currentPageNode, completedTopics) {
-    console.log(data);
-    console.log(this.state.completedTopics);
     this.setState((prevState) => {
       if (currentPageNode.back !== null) {
         prevState.data[currentPageNode.back.value().topic] = data;
@@ -34,8 +32,6 @@ class App extends React.Component {
         currentPageNode: currentPageNode,
       };
     });
-    console.log(this.state.completedTopics);
-    console.log(this.state);
   }
 
   makeLinkedList = () => {

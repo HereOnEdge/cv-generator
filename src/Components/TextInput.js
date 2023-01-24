@@ -72,7 +72,6 @@ class TextInput extends React.Component {
     });
   }
   saveData(value) {
-    console.log(value);
     this.setState({
       input: value,
     });

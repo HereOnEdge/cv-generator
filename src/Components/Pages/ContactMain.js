@@ -32,7 +32,6 @@ class ContactMainPage extends React.Component {
       },
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
-    console.log(this.props.data);
   }
 
   changeData = (field, value) => {

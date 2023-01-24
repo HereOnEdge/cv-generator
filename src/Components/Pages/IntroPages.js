@@ -7,7 +7,6 @@ class IntroPage extends React.Component {
   constructor(props) {
     super(props);
     this.findTitles();
-    console.log(this.props.data);
   }
 
   findTitles() {
