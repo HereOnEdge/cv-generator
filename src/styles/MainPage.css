@@ -122,6 +122,8 @@
     text-align: center;
     border: none;
     cursor: pointer;
+    font-weight: 700;
+    font-size: 0.7em;
 }
 .foot {
     width: 100%;
