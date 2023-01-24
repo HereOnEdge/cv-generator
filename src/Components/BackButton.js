@@ -23,7 +23,7 @@ class BackButton extends React.Component {
     );
   }
   render() {
-    return (
+    return this.props.enable === true ? (
       <button className="back-button" onClick={this.saveData}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +36,8 @@ class BackButton extends React.Component {
         </svg>
         {this.buttonName}
       </button>
+    ) : (
+      <div></div>
     );
   }
 }

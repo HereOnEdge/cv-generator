@@ -7,6 +7,7 @@ class IntroPage extends React.Component {
   constructor(props) {
     super(props);
     this.findTitles();
+    console.log(this.props.currentPageNode);
   }
 
   findTitles() {
@@ -54,6 +55,8 @@ class IntroPage extends React.Component {
             page={this.props.page}
             currentPageNode={this.props.currentPageNode}
             completedTopics={this.props.completedTopics}
+            hasNext={this.props.currentPageNode.next === null ? false : true}
+            hasBack={this.props.currentPageNode.back === null ? false : true}
           />
         </div>
       </div>

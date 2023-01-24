@@ -21,10 +21,12 @@ class NextButton extends React.Component {
     );
   }
   render() {
-    return (
+    return this.props.enable ? (
       <button className="next-button" onClick={this.saveData}>
         {`Next: ${this.buttonName}`}
       </button>
+    ) : (
+      <div></div>
     );
   }
 }

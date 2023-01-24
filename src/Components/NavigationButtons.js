@@ -57,6 +57,7 @@ class NavigationButtons extends React.Component {
           findNextPageName={this.findNextPageName}
           currentPageNode={this.props.currentPageNode}
           completedTopics={this.props.completedTopics}
+          enable={this.props.hasNext}
         />
         <BackButton
           topic={this.topic}
@@ -68,6 +69,7 @@ class NavigationButtons extends React.Component {
           findNextPageName={this.findNextPageName}
           currentPageNode={this.props.currentPageNode}
           completedTopics={this.props.completedTopics}
+          enable={this.props.hasBack}
         />
       </div>
     );

@@ -251,6 +251,8 @@ class ContactMainPage extends React.Component {
             page={this.props.page}
             currentPageNode={this.props.currentPageNode}
             completedTopics={this.props.completedTopics}
+            hasNext={this.props.currentPageNode.next === null ? false : true}
+            hasBack={this.props.currentPageNode.back === null ? false : true}
           />
         </div>
       </div>
