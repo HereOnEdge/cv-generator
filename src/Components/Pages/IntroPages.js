@@ -15,7 +15,7 @@ class IntroPage extends React.Component {
       this.mainTitle = "work history";
       this.sideTitle = "Now, let's fill out your";
       this.paragraph = (
-        <p>
+        <p className="intro-p">
           Here's what you need to know:
           <br />
           Employers scan your CV for six seconds to decide if you're a match
@@ -27,17 +27,19 @@ class IntroPage extends React.Component {
   }
   render() {
     return (
-      <div className={`${this.props.topic}-intro main`}>
-        <div className={`${this.props.topic}-header header`}></div>
-        <div className={`${this.props.topic}-body body`}>
-          <h1>
-            <span className="small small-title">
-              {this.sideTitle}
-              <br></br>
-            </span>{" "}
-            {this.mainTitle}
-          </h1>
-          {this.paragraph}
+      <div className={`${this.props.topic}-intro-main main`}>
+        <div className={`${this.props.topic}-intro-header header`}></div>
+        <div className={`${this.props.topic}-intro-body body`}>
+          <div className="intro-main">
+            <h1>
+              <span className="small small-title">
+                {this.sideTitle}
+                <br></br>
+              </span>{" "}
+              {this.mainTitle}
+            </h1>
+            {this.paragraph}
+          </div>
           <div className={`${this.props.topic}-preview whole-preview`}>
             <PreviewContainer
               data={this.props.data}
