@@ -9,8 +9,8 @@ class App extends React.Component {
     super();
     this.makeLinkedList();
     this.state = {
-      topic: "contact",
-      page: "main",
+      topic: this.navLink.head.value().topic,
+      page: this.navLink.head.value().page,
       data: {},
       completedTopics: [],
       currentPageNode: this.navLink.head,
@@ -22,12 +22,17 @@ class App extends React.Component {
   stateHandler(data, topic, page, currentPageNode, completedTopics) {
     console.log(data);
     console.log(this.state.completedTopics);
-    this.setState({
-      topic: topic,
-      page: page,
-      data: { ...this.state.data, data },
-      completedTopics: completedTopics,
-      currentPageNode: currentPageNode,
+    this.setState((prevState) => {
+      if (currentPageNode.back !== null) {
+        prevState.data[currentPageNode.back.value().topic] = data;
+      }
+      return {
+        topic: topic,
+        page: page,
+        data: prevState.data,
+        completedTopics: completedTopics,
+        currentPageNode: currentPageNode,
+      };
     });
     console.log(this.state.completedTopics);
     console.log(this.state);

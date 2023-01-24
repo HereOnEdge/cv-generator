@@ -10,6 +10,7 @@ class TextInput extends React.Component {
     this.label = this.props.label;
     this.field = this.props.field;
     this.placeHolder = this.props.placeHolder;
+    this.topic = this.props.topic;
     this.state = {
       input: "",
       valid: "",
@@ -19,6 +20,45 @@ class TextInput extends React.Component {
     this.validationType = this.props.validationType;
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
+  }
+  updateState() {
+    if (this.props.data[this.topic] !== undefined) {
+      this.setState({
+        input: this.props.data[this.topic][this.field],
+      });
+      this.props.changeData(
+        this.field,
+        this.props.data[this.topic][this.field]
+      );
+      if (
+        this.checkValidation(
+          this.props.data[this.topic][this.field],
+          this.validationType
+        ) === "valid"
+      ) {
+        this.setState({
+          valid: true,
+        });
+      } else if (
+        this.checkValidation(
+          this.props.data[this.topic][this.field],
+          this.validationType
+        ) === "not-valid"
+      ) {
+        this.setState({
+          valid: false,
+        });
+      } else if (
+        this.checkValidation(
+          this.props.data[this.topic][this.field],
+          this.validationType
+        ) === ""
+      ) {
+        this.setState({
+          valid: "",
+        });
+      }
+    }
   }
   onFocus() {
     this.setState({
@@ -31,6 +71,7 @@ class TextInput extends React.Component {
     });
   }
   saveData(value) {
+    console.log(value);
     this.setState({
       input: value,
     });
@@ -50,6 +91,10 @@ class TextInput extends React.Component {
         valid: "",
       });
     }
+  }
+
+  componentDidMount() {
+    this.updateState();
   }
 
   render() {

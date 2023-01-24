@@ -11,20 +11,18 @@ class ContactMainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        contact: {
-          photoSrc: "",
-          firstName: "",
-          lastName: "",
-          country: "",
-          city: "",
-          address: "",
-          phone: "",
-          email: "",
-          website: "",
-          linkedin: "",
-          nationality: "",
-        },
+      contact: {
+        photoSrc: "",
+        firstName: "",
+        lastName: "",
+        country: "",
+        city: "",
+        address: "",
+        phone: "",
+        email: "",
+        website: "",
+        linkedin: "",
+        nationality: "",
       },
       extraFields: {
         website: false,
@@ -34,13 +32,14 @@ class ContactMainPage extends React.Component {
       },
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
+    console.log(this.props.data);
   }
 
   changeData = (field, value) => {
     this.setState((prevState) => {
-      prevState.data.contact[field] = value;
+      prevState.contact[field] = value;
       return {
-        data: prevState.data,
+        contact: prevState.contact,
       };
     });
   };
@@ -54,6 +53,19 @@ class ContactMainPage extends React.Component {
     });
   }
 
+  findPhotoSrc() {
+    if (this.props.data[this.props.topic] !== undefined) {
+      this.setState((prevState) => {
+        prevState.contact.photoSrc = this.props.data.contact.photoSrc;
+        return { contact: prevState.contact };
+      });
+    }
+  }
+
+  componentDidMount() {
+    this.findPhotoSrc();
+  }
+
   render() {
     return (
       <div className="contact-main main">
@@ -65,7 +77,7 @@ class ContactMainPage extends React.Component {
           <div className="contact-photo">
             <ProfilePhoto
               changeData={this.changeData}
-              photoSrc={this.state.data.contact.photoSrc}
+              photoSrc={this.state.contact.photoSrc}
             />
           </div>
           <div className="contact-form form">
@@ -76,6 +88,8 @@ class ContactMainPage extends React.Component {
               field="firstName"
               placeHolder="e.g. Donald"
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -84,6 +98,8 @@ class ContactMainPage extends React.Component {
               field="lastName"
               placeHolder="e.g. Trump"
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -92,6 +108,8 @@ class ContactMainPage extends React.Component {
               field="country"
               placeHolder="e.g. UNITED STATES OF AMERICA"
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -100,6 +118,8 @@ class ContactMainPage extends React.Component {
               field="city"
               placeHolder="e.g. New York"
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -108,6 +128,8 @@ class ContactMainPage extends React.Component {
               field="phone"
               placeHolder="e.g. 09120121212"
               validationType="phone"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -116,6 +138,8 @@ class ContactMainPage extends React.Component {
               field="email"
               placeHolder="e.g. myemail@example.com"
               validationType="email"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className=""
@@ -127,6 +151,8 @@ class ContactMainPage extends React.Component {
               visible={this.state.extraFields.address}
               removable={true}
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -138,6 +164,8 @@ class ContactMainPage extends React.Component {
               visible={this.state.extraFields.website}
               removable={true}
               validationType="link"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -149,6 +177,8 @@ class ContactMainPage extends React.Component {
               visible={this.state.extraFields.linkedin}
               removable={true}
               validationType="link"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <TextInput
               className="half"
@@ -160,6 +190,8 @@ class ContactMainPage extends React.Component {
               visible={this.state.extraFields.nationality}
               removable={true}
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
             />
             <div className="moreInfoSection">
               <span className="bold">
@@ -200,8 +232,8 @@ class ContactMainPage extends React.Component {
         </div>
         <div className="contact-foot foot">
           <NavigationButtons
-            topic={"contact"}
-            data={this.state.data}
+            topic={this.props.topic}
+            data={this.state.contact}
             editData={this.props.changeState}
             navLink={this.props.navLink}
             page={this.props.page}
