@@ -86,10 +86,12 @@ class TextInput extends React.Component {
       this.setState({
         valid: false,
       });
+      this.props.changeData(this.field, "");
     } else if (this.checkValidation(value, this.validationType) === "") {
       this.setState({
         valid: "",
       });
+      this.props.changeData(this.field, value);
     }
   }
 
