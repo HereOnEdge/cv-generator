@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Ubuntu&display=swap');
+
 :root {
   --my-green : #02818c;
   --my-blue: #002d6b;
@@ -9,6 +11,7 @@
 }
 html {
   width: 100%;
+  font-family: 'Arvo';
 }
 body{
   margin: 0;
