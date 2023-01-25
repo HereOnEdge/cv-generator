@@ -28,6 +28,7 @@
     padding: 5px 0;
 }
 .form {
+    grid-area: 1 / 2 / 2 / 3;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -156,4 +157,11 @@
 .intro-main .small {
     font-size: 0.5em;
     font-weight: 900;
+}
+
+/* other main pages */
+.others-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
