@@ -1,13 +1,14 @@
-input[type='text'] {
+.input-container >  input {
+    grid-area: 1 / 1 / 2 / 2;
     width: 100%;
     border: none;
     color: var(--my-blue);
     caret-color: var(--my-green);
 }
-input[type='text']:focus {
+.input-container >  input:focus {
     outline: none;
 }
-input[type='text']::placeholder {
+.input-container >  input::placeholder {
     color: var(--my-grey);
     font-size: 0.7rem;
 }
@@ -22,12 +23,16 @@ label {
     width: calc(50% - 20px);
 }
 .input-container {
-    display: flex;
-    align-items: center;
     width: 100%;
     height: 25px;
     padding: 4px;
     outline: 1px solid var(--my-grey);
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    grid-template-rows: 100%;
+    grid-auto-flow: column;
+    grid-auto-columns: 20px;
+    align-items: center;
 }
 .input-container.active {
     outline-color: var(--my-green);

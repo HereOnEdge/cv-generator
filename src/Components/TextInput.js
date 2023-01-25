@@ -112,7 +112,7 @@ class TextInput extends React.Component {
         <div className={`input-container ${this.state.active ? "active" : ""}`}>
           <input
             name={this.label}
-            id={this.label}
+            id={this.field}
             type={this.inputType}
             value={this.state.input}
             placeholder={this.placeHolder}
