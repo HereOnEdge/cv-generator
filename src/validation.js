@@ -57,6 +57,10 @@ const validationList = {
     notAllowed: [" "],
     mustHave: ["."],
   },
+  month: {
+    notAllowed: [],
+    mustHave: null,
+  },
 };
 
 export { checkValidation };

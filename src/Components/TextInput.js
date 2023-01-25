@@ -21,6 +21,10 @@ class TextInput extends React.Component {
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.saveData = this.saveData.bind(this);
+    this.inputType =
+      this.validationType === "phone" || this.validationType === "email"
+        ? "text"
+        : this.validationType;
   }
   updateState() {
     if (this.props.data[this.topic] !== undefined) {
@@ -109,7 +113,7 @@ class TextInput extends React.Component {
           <input
             name={this.label}
             id={this.label}
-            type="text"
+            type={this.inputType}
             value={this.state.input}
             placeholder={this.placeHolder}
             onChange={(event) => {

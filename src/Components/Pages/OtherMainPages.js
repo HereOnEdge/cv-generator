@@ -3,6 +3,7 @@ import React from "react";
 import TextInput from "../TextInput";
 import NavigationButtons from "../NavigationButtons";
 import PreviewButton from "../PreviewButton";
+import DateInput from "../DateInput";
 
 class OthersMainPage extends React.Component {
   constructor(props) {
@@ -55,6 +56,61 @@ class OthersMainPage extends React.Component {
               field="title"
               placeHolder="e.g. Product Manager "
               validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
+              id={this.id}
+            />
+            <TextInput
+              className="half"
+              label="EMPLOYER"
+              changeData={this.changeData}
+              field="employer"
+              placeHolder="e.g. Somersby & Smithers "
+              validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
+              id={this.id}
+            />
+            <TextInput
+              className="half"
+              label="CITY/TOWN"
+              changeData={this.changeData}
+              field="city"
+              placeHolder="e.g. Oxford "
+              validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
+              id={this.id}
+            />
+            <TextInput
+              className="half"
+              label="COUNTRY"
+              changeData={this.changeData}
+              field="country"
+              placeHolder="e.g. Mexico "
+              validationType="text"
+              data={this.props.data}
+              topic={this.props.topic}
+              id={this.id}
+            />
+            <DateInput
+              className="half"
+              label="START DATE"
+              changeData={this.changeData}
+              field="startDate"
+              placeHolder="Select"
+              validationType="month"
+              data={this.props.data}
+              topic={this.props.topic}
+              id={this.id}
+            />
+            <DateInput
+              className="half"
+              label="END DATE"
+              changeData={this.changeData}
+              field="endDate"
+              placeHolder="Select"
+              validationType="month"
               data={this.props.data}
               topic={this.props.topic}
               id={this.id}
