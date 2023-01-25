@@ -8,7 +8,6 @@ class NavigationButtons extends React.Component {
     this.topic = this.props.topic;
     this.data = this.props.data;
     this.editData = this.props.editData;
-    this.navLink = this.props.navLink;
   }
   findNextPage(next) {
     if (next === "n") {
@@ -18,9 +17,7 @@ class NavigationButtons extends React.Component {
       this.buttonType = "back";
       next = "back";
     }
-    this.currentPage = this.props.navLink.find(
-      this.props.currentPageNode.value()
-    );
+    this.currentPage = this.props.currentPageNode;
     this.nextPage = this.currentPage[next];
     if (this.nextPage !== null) {
       const nextPageData = this.nextPage.value();
@@ -51,7 +48,6 @@ class NavigationButtons extends React.Component {
           topic={this.topic}
           data={this.data}
           editData={this.editData}
-          navLink={this.navLink}
           page={this.props.page}
           findNextPage={this.findNextPage}
           findNextPageName={this.findNextPageName}
@@ -63,7 +59,6 @@ class NavigationButtons extends React.Component {
           topic={this.topic}
           data={this.data}
           editData={this.editData}
-          navLink={this.navLink}
           page={this.props.page}
           findNextPage={this.findNextPage}
           findNextPageName={this.findNextPageName}

@@ -24,37 +24,29 @@ class TextInput extends React.Component {
   }
   updateState() {
     if (this.props.data[this.topic] !== undefined) {
+      const data =
+        this.props.id == undefined
+          ? this.props.data[this.topic][this.field]
+          : this.props.data[this.topic][this.props.id][this.field];
+      console.log(this.props.data);
       this.setState({
-        input: this.props.data[this.topic][this.field],
+        input: data,
       });
-      this.props.changeData(
-        this.field,
-        this.props.data[this.topic][this.field]
-      );
-      if (
-        this.checkValidation(
-          this.props.data[this.topic][this.field],
-          this.validationType
-        ) === "valid"
-      ) {
+      this.props.id !== undefined
+        ? this.props.changeData(this.field, data, this.props.id)
+        : this.props.changeData(this.field, data);
+
+      if (this.checkValidation(data, this.validationType) === "valid") {
         this.setState({
           valid: true,
         });
       } else if (
-        this.checkValidation(
-          this.props.data[this.topic][this.field],
-          this.validationType
-        ) === "not-valid"
+        this.checkValidation(data, this.validationType) === "not-valid"
       ) {
         this.setState({
           valid: false,
         });
-      } else if (
-        this.checkValidation(
-          this.props.data[this.topic][this.field],
-          this.validationType
-        ) === ""
-      ) {
+      } else if (this.checkValidation(data, this.validationType) === "") {
         this.setState({
           valid: "",
         });
@@ -79,19 +71,25 @@ class TextInput extends React.Component {
       this.setState({
         valid: true,
       });
-      this.props.changeData(this.field, value);
+      this.props.id !== undefined
+        ? this.props.changeData(this.field, value, this.props.id)
+        : this.props.changeData(this.field, value);
     } else if (
       this.checkValidation(value, this.validationType) === "not-valid"
     ) {
       this.setState({
         valid: false,
       });
-      this.props.changeData(this.field, "");
+      this.props.id !== undefined
+        ? this.props.changeData(this.field, "", this.props.id)
+        : this.props.changeData(this.field, "");
     } else if (this.checkValidation(value, this.validationType) === "") {
       this.setState({
         valid: "",
       });
-      this.props.changeData(this.field, value);
+      this.props.id !== undefined
+        ? this.props.changeData(this.field, value, this.props.id)
+        : this.props.changeData(this.field, value);
     }
   }
 

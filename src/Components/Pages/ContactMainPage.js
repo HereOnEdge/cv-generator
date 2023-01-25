@@ -10,6 +10,7 @@ import NavigationButtons from "../NavigationButtons";
 class ContactMainPage extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.data);
     this.state = {
       contact: {
         photoSrc: "",
@@ -247,7 +248,6 @@ class ContactMainPage extends React.Component {
             topic={this.props.topic}
             data={this.state.contact}
             editData={this.props.changeState}
-            navLink={this.props.navLink}
             page={this.props.page}
             currentPageNode={this.props.currentPageNode}
             completedTopics={this.props.completedTopics}

@@ -18,8 +18,9 @@ class BackButton extends React.Component {
       this.props.data,
       this.nextPageTopic,
       this.nextPagePage,
-      this.props.currentPageNode.back,
-      completedTopics
+      this.props.currentPageNode,
+      completedTopics,
+      this.props.currentPageNode.back
     );
   }
   render() {

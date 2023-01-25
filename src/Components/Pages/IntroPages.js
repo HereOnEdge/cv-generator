@@ -6,8 +6,8 @@ import NavigationButtons from "../NavigationButtons";
 class IntroPage extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.data);
     this.findTitles();
-    console.log(this.props.currentPageNode);
   }
 
   findTitles() {
@@ -53,7 +53,6 @@ class IntroPage extends React.Component {
             topic={this.props.topic}
             data={this.props.data}
             editData={this.props.changeState}
-            navLink={this.props.navLink}
             page={this.props.page}
             currentPageNode={this.props.currentPageNode}
             completedTopics={this.props.completedTopics}

@@ -16,8 +16,9 @@ class NextButton extends React.Component {
       this.props.data,
       this.nextPageTopic,
       this.nextPagePage,
-      this.props.currentPageNode.next,
-      [...this.props.completedTopics, completeTopic]
+      this.props.currentPageNode,
+      [...this.props.completedTopics, completeTopic],
+      this.props.currentPageNode.next
     );
   }
   render() {

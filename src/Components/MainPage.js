@@ -1,19 +1,13 @@
 import React from "react";
-import ContactMainPage from "./Pages/ContactMain";
+import ContactMainPage from "./Pages/ContactMainPage";
 import "../styles/MainPage.css";
 import IntroPage from "./Pages/IntroPages";
+import OthersMainPage from "./Pages/OtherMainPages";
 
 class MainPage extends React.Component {
   render() {
-    const {
-      changeState,
-      data,
-      page,
-      topic,
-      completedTopics,
-      currentPageNode,
-      navLink,
-    } = this.props;
+    const { changeState, data, page, topic, completedTopics, currentPageNode } =
+      this.props;
     return topic === "contact" ? (
       <ContactMainPage
         changeState={changeState}
@@ -21,7 +15,6 @@ class MainPage extends React.Component {
         topic={topic}
         page={page}
         completedTopics={completedTopics}
-        navLink={navLink}
         currentPageNode={currentPageNode}
       />
     ) : page === "intro" ? (
@@ -31,11 +24,19 @@ class MainPage extends React.Component {
         topic={topic}
         page={page}
         completedTopics={completedTopics}
-        navLink={navLink}
+        currentPageNode={currentPageNode}
+      />
+    ) : page === "main" ? (
+      <OthersMainPage
+        changeState={changeState}
+        data={data}
+        topic={topic}
+        page={page}
+        completedTopics={completedTopics}
         currentPageNode={currentPageNode}
       />
     ) : (
-      <h1>where am I</h1>
+      "where am I"
     );
   }
 }

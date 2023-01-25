@@ -19,17 +19,25 @@ class App extends React.Component {
     this.stateHandler = this.stateHandler.bind(this);
   }
 
-  stateHandler(data, topic, page, currentPageNode, completedTopics) {
+  stateHandler(
+    data,
+    topic,
+    page,
+    currentPageNode,
+    completedTopics,
+    newPageNode
+  ) {
     this.setState((prevState) => {
-      if (currentPageNode.back !== null) {
-        prevState.data[currentPageNode.back.value().topic] = data;
+      if (data !== prevState.data) {
+        // update data only if it has changed
+        prevState.data[currentPageNode.value().topic] = data;
       }
       return {
         topic: topic,
         page: page,
         data: prevState.data,
         completedTopics: completedTopics,
-        currentPageNode: currentPageNode,
+        currentPageNode: newPageNode,
       };
     });
   }
@@ -70,7 +78,6 @@ class App extends React.Component {
             topic={this.state.topic}
             completedTopics={this.state.completedTopics}
             currentPageNode={this.state.currentPageNode}
-            navLink={this.navLink}
           />
         </main>
       </div>
