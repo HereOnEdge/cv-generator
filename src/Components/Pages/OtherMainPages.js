@@ -59,6 +59,7 @@ class OthersMainPage extends React.Component {
               data={this.props.data}
               topic={this.props.topic}
               id={this.id}
+              autofocus={true}
             />
             <TextInput
               className="half"
@@ -98,7 +99,7 @@ class OthersMainPage extends React.Component {
               label="START DATE"
               changeData={this.changeData}
               field="startDate"
-              placeHolder="Select"
+              placeHolder={`Select`}
               validationType="month"
               data={this.props.data}
               topic={this.props.topic}
@@ -109,7 +110,7 @@ class OthersMainPage extends React.Component {
               label="END DATE"
               changeData={this.changeData}
               field="endDate"
-              placeHolder="Select"
+              placeHolder={`Select`}
               validationType="month"
               data={this.props.data}
               topic={this.props.topic}
