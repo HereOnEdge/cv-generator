@@ -32,10 +32,18 @@ class DescPage extends React.Component {
   }
   findTitles() {
     if (this.props.topic === "work") {
-      this.jobTitle = this.props.data[this.props.topic][this.id].title;
+      this.jobTitle = (
+        <span className="bold">
+          {this.props.data[this.props.topic][this.id].title}
+        </span>
+      );
       this.jobEmployer = this.props.data[this.props.topic][this.id].employer;
       this.pageTitle = "Describe your experience";
-      this.pageParagraph = `${this.jobTitle} | ${this.jobEmployer}`;
+      this.pageParagraph = (
+        <span>
+          {this.jobTitle} | {this.jobEmployer}
+        </span>
+      );
     } else if (this.props.topic === "skills") {
       this.pageTitle = "Highlight relevant skills for the job you want";
       this.pageParagraph =

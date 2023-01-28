@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/TextEditor.css";
 
 class TextEditorCont extends React.Component {
   render() {
