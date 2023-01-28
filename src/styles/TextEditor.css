@@ -8,3 +8,29 @@
     align-items: stretch;
     justify-content: stretch;
 }
+.suggestBox {
+    background-color: var(--my-cream);
+    flex: 1 1 50%;
+}
+.textEditor {
+    flex: 1 1 50%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 1fr;
+}
+.editor-buttons {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5%;
+}
+.editor-buttons button {
+
+}
+.editor-textArea {
+    width: 100%;
+    height: 100%;
+}
