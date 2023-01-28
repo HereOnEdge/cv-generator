@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import "./styles/App.css";
 import MainPage from "./Components/MainPage";
@@ -30,7 +31,23 @@ class App extends React.Component {
     this.setState((prevState) => {
       if (data !== prevState.data) {
         // update data only if it has changed
-        prevState.data[currentPageNode.value().topic] = data;
+        if (
+          currentPageNode.value().topic === "work" ||
+          currentPageNode.value().topic === "educate"
+        ) {
+          // if data is coming from work or educate and there is already a data available from them, give them index
+          if (prevState.data[currentPageNode.value().topic !== undefined]) {
+            let id =
+              currentPageNode.value().id == undefined
+                ? 0
+                : currentPageNode.value().id;
+            prevState.data[currentPageNode.value().topic][id] = data[id];
+          } else {
+            prevState.data[currentPageNode.value().topic] = data;
+          }
+        } else {
+          prevState.data[currentPageNode.value().topic] = data;
+        }
       }
       return {
         topic: topic,
