@@ -3,6 +3,7 @@ import ContactMainPage from "./Pages/ContactMainPage";
 import "../styles/MainPage.css";
 import IntroPage from "./Pages/IntroPages";
 import OthersMainPage from "./Pages/OtherMainPages";
+import DescPage from "./Pages/DescriptionPage";
 
 class MainPage extends React.Component {
   render() {
@@ -28,6 +29,15 @@ class MainPage extends React.Component {
       />
     ) : page === "main" ? (
       <OthersMainPage
+        changeState={changeState}
+        data={data}
+        topic={topic}
+        page={page}
+        completedTopics={completedTopics}
+        currentPageNode={currentPageNode}
+      />
+    ) : page === "description" ? (
+      <DescPage
         changeState={changeState}
         data={data}
         topic={topic}
