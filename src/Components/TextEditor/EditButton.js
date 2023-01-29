@@ -12,8 +12,12 @@ class EditButton extends React.Component {
     return (
       <button
         type="button"
-        onClick={() => this.changeTextVisuals(this.props.action)}
+        onClick={() => {
+          this.changeTextVisuals(this.props.action);
+          this.props.toggleButton(this.props.action);
+        }}
         name={this.props.name}
+        className={this.props.active ? "active" : null}
       >
         {this.props.value}
       </button>

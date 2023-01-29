@@ -2,12 +2,55 @@ import React from "react";
 import EditButton from "./EditButton";
 
 class TextEditorButtons extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bold: false,
+      italic: false,
+      underline: false,
+      insertUnorderedList: false,
+      justify: {
+        justifyLeft: false,
+        justifyRight: false,
+        justifyCenter: false,
+      },
+    };
+  }
+
+  toggleButton = (buttonAction) => {
+    if (buttonAction !== "undo" && buttonAction !== "redo") {
+      if (
+        buttonAction === "justifyLeft" ||
+        buttonAction === "justifyRight" ||
+        buttonAction === "justifyCenter"
+      ) {
+        this.setState((prevState) => {
+          for (const item in prevState.justify) {
+            console.log(item);
+            if (item) {
+              prevState.justify[item] = false;
+              prevState.justify[buttonAction] = true;
+            }
+          }
+          return { justify: prevState.justify };
+        });
+      } else {
+        this.setState((prevState) => {
+          return prevState[buttonAction]
+            ? { [buttonAction]: false }
+            : { [buttonAction]: true };
+        });
+      }
+    }
+  };
   render() {
     return (
       <div className="editor-buttons">
         <EditButton
           name="bold"
           action="bold"
+          toggleButton={this.toggleButton}
+          active={this.state.bold}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +66,8 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="italic"
           action="italic"
+          toggleButton={this.toggleButton}
+          active={this.state.italic}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +83,8 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="underline"
           action="underline"
+          toggleButton={this.toggleButton}
+          active={this.state.underline}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,6 +100,8 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="insert unordered list"
           action="insertUnorderedList"
+          toggleButton={this.toggleButton}
+          active={this.state.insertUnorderedList}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +117,8 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="justify to left"
           action="justifyLeft"
+          toggleButton={this.toggleButton}
+          active={this.state.justify.justifyLeft}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,6 +134,8 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="justify to center"
           action="justifyCenter"
+          toggleButton={this.toggleButton}
+          active={this.state.justify.justifyCenter}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,6 +151,8 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="justify to right"
           action="justifyRight"
+          toggleButton={this.toggleButton}
+          active={this.state.justify.justifyRight}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,6 +169,7 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="undo changes"
           action="undo"
+          toggleButton={this.toggleButton}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -130,6 +186,7 @@ class TextEditorButtons extends React.Component {
         <EditButton
           name="redo changes"
           action="redo"
+          toggleButton={this.toggleButton}
           value={
             <svg
               xmlns="http://www.w3.org/2000/svg"

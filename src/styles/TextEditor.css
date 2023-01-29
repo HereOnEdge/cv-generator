@@ -43,6 +43,9 @@
 .editor-buttons button:hover {
     background-color: var(--my-cream);
 }
+.editor-buttons button.active {
+    background-color: var(--my-cream);
+}
 .between-line{
     height: 50%;
     border: 0.5px solid var(--my-grey);
