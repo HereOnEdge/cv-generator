@@ -122,7 +122,6 @@ class TextInput extends React.Component {
             autoComplete="on"
             onFocus={this.onFocus}
             onBlur={this.onBlur}
-            autoFocus={this.props.autofocus ? true : false}
           ></input>
           <RemoveInputField
             changeField={this.props.changeField}

@@ -59,7 +59,6 @@ class OthersMainPage extends React.Component {
               data={this.props.data}
               topic={this.props.topic}
               id={this.id}
-              autofocus={true}
             />
             <TextInput
               className="half"

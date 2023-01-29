@@ -103,7 +103,6 @@ class ContactMainPage extends React.Component {
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
-              autofocus={true}
             />
             <TextInput
               className="half"
