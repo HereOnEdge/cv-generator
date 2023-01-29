@@ -10,15 +10,13 @@ class EditButton extends React.Component {
 
   render() {
     return (
-      <div>
-        <button
-          type="button"
-          onClick={() => this.changeTextVisuals(this.props.name)}
-          name={this.props.name}
-        >
-          {this.props.value}
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => this.changeTextVisuals(this.props.action)}
+        name={this.props.name}
+      >
+        {this.props.value}
+      </button>
     );
   }
 }
