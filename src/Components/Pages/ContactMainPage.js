@@ -1,10 +1,10 @@
 import React from "react";
-import TextInput from "../TextInput";
-import AddFieldButton from "../AddFieldButton";
+import TextInput from "../Input/TextInput";
+import AddFieldButton from "../Input/AddFieldButton";
 import ProfilePhoto from "../ProfilePhoto";
-import PreviewContainer from "../PreviewContainer";
-import PreviewButton from "../PreviewButton";
-import NavigationButtons from "../NavigationButtons";
+import PreviewContainer from "../Preview/PreviewContainer";
+import PreviewButton from "../Preview/PreviewButton";
+import NavigationButtons from "../NavigationButtons/NavigationButtons";
 // import "../../styles/ContactMain.css";
 
 class ContactMainPage extends React.Component {

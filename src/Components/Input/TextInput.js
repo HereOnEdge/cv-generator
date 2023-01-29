@@ -1,8 +1,8 @@
 import React from "react";
 import InputValidation from "./InputValidation";
-import { checkValidation } from "../validation";
+import { checkValidation } from "../../validation/validation";
 import RemoveInputField from "./RemoveInputField";
-import "../styles/TextInput.css";
+import "../../styles/TextInput.css";
 
 class TextInput extends React.Component {
   constructor(props) {

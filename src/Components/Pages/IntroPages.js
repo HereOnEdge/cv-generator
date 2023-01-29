@@ -1,7 +1,7 @@
 import React from "react";
-import PreviewContainer from "../PreviewContainer";
-import PreviewButton from "../PreviewButton";
-import NavigationButtons from "../NavigationButtons";
+import PreviewContainer from "../Preview/PreviewContainer";
+import PreviewButton from "../Preview/PreviewButton";
+import NavigationButtons from "../NavigationButtons/NavigationButtons";
 
 class IntroPage extends React.Component {
   constructor(props) {

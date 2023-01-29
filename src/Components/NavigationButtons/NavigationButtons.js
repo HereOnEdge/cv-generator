@@ -1,6 +1,7 @@
 import React from "react";
 import BackButton from "./BackButton";
 import NextButton from "./NextButton";
+import "../../styles/NavigationButtons.css";
 
 class NavigationButtons extends React.Component {
   constructor(props) {

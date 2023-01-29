@@ -1,9 +1,9 @@
 /* eslint-disable eqeqeq */
 import React from "react";
-import TextInput from "../TextInput";
-import NavigationButtons from "../NavigationButtons";
-import PreviewButton from "../PreviewButton";
-import DateInput from "../DateInput";
+import TextInput from "../Input/TextInput";
+import NavigationButtons from "../NavigationButtons/NavigationButtons";
+import PreviewButton from "../Preview/PreviewButton";
+import DateInput from "../Input/DateInput";
 
 class OthersMainPage extends React.Component {
   constructor(props) {

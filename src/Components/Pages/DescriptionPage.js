@@ -1,8 +1,8 @@
 /* eslint-disable eqeqeq */
 import React from "react";
-import PreviewButton from "../PreviewButton";
-import NavigationButtons from "../NavigationButtons";
-import TextEditorCont from "../TextEditorContainer";
+import PreviewButton from "../Preview/PreviewButton";
+import NavigationButtons from "../NavigationButtons/NavigationButtons";
+import TextEditorCont from "../TextEditor/TextEditorContainer";
 
 class DescPage extends React.Component {
   constructor(props) {

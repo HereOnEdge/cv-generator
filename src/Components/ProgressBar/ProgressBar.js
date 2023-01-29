@@ -1,7 +1,7 @@
 import React from "react";
 import Circle from "./ProgressBarCircle";
 import Line from "./ProgressBarLine";
-import "../styles/ProgressBar.css";
+import "../../styles/ProgressBar.css";
 
 class ProgressBar extends React.Component {
   render() {

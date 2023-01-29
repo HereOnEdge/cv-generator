@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/TextEditor.css";
+import "../../styles/TextEditor.css";
 import SuggestBox from "./SuggestBox";
 import TextEditor from "./TextEditor";
 

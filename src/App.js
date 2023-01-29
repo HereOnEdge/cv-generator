@@ -2,7 +2,7 @@
 import React from "react";
 import "./styles/App.css";
 import MainPage from "./Components/MainPage";
-import ProgressBar from "./Components/ProgressBar";
+import ProgressBar from "./Components/ProgressBar/ProgressBar";
 import { node, linkedList } from "@reza2022/linked-list";
 
 class App extends React.Component {

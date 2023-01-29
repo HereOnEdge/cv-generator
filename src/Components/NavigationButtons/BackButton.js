@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/NavigationButtons.css";
 
 class BackButton extends React.Component {
   constructor(props) {
