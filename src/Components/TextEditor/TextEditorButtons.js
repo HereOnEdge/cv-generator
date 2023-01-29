@@ -17,6 +17,7 @@ class TextEditorButtons extends React.Component {
         <EditButton type="button" name="bold" value="B" />
         <EditButton type="button" name="italic" value="I" />
         <EditButton type="button" name="underline" value="_" />
+        <EditButton type="color" name="backColor" />
       </div>
     );
   }

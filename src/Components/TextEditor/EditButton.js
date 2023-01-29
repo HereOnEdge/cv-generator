@@ -1,8 +1,10 @@
 import React from "react";
 
 class EditButton extends React.Component {
-  changeTextVisuals = (action) => {
-    document.execCommand(action, false, null);
+  changeTextVisuals = (action, ...props) => {
+    props !== undefined
+      ? document.execCommand(action, false, ...props)
+      : document.execCommand(action, false, null);
     document.querySelector(".editor-textArea").focus();
   };
 
@@ -10,9 +12,19 @@ class EditButton extends React.Component {
     return (
       <input
         type={this.props.type}
-        onClick={() => this.changeTextVisuals(this.props.name)}
+        onClick={
+          this.props.type === "button"
+            ? () => this.changeTextVisuals(this.props.name)
+            : null
+        }
+        onChange={
+          this.props.type === "color"
+            ? (event) =>
+                this.changeTextVisuals(this.props.name, event.target.value)
+            : null
+        }
         name={this.props.name}
-        value={this.props.value}
+        value={this.props.value !== undefined ? this.props.value : null}
       ></input>
     );
   }
