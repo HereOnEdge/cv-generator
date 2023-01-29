@@ -21,6 +21,7 @@ class TextEditor extends React.Component {
           saveData={this.props.saveData}
           id={this.props.id}
           data={this.props.data}
+          placeHolder={this.props.placeHolder}
         />
       </div>
     );

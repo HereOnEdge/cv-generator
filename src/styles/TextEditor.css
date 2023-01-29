@@ -58,3 +58,8 @@
 .editor-textArea:focus {
     outline: none;
 }
+.editor-textArea::before {
+    content: attr(placeholder);
+    color: var(--my-grey);
+    font-size: 0.7em;
+}
