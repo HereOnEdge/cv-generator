@@ -1,4 +1,5 @@
 import React from "react";
+import EditButton from "./EditButton";
 
 class TextEditorButtons extends React.Component {
   makeBold = () => {
@@ -13,9 +14,9 @@ class TextEditorButtons extends React.Component {
   render() {
     return (
       <div className="editor-buttons">
-        <button onClick={this.makeBold}>B</button>
-        <button onClick={this.makeItalic}>I</button>
-        <button onClick={this.makeUnderline}>_</button>
+        <EditButton type="button" name="bold" value="B" />
+        <EditButton type="button" name="italic" value="I" />
+        <EditButton type="button" name="underline" value="_" />
       </div>
     );
   }

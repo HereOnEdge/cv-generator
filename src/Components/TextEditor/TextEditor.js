@@ -16,7 +16,7 @@ class TextEditor extends React.Component {
   render() {
     return (
       <div className="textEditor">
-        <TextEditorButtons changeTextVisuals={this.props.changeTextVisuals} />
+        <TextEditorButtons />
         <TextArea
           saveData={this.props.saveData}
           id={this.props.id}

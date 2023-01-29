@@ -11,9 +11,6 @@ class TextEditorCont extends React.Component {
     };
     this.saveData = this.saveData.bind(this);
   }
-  changeTextVisuals = (action) => {
-    document.execCommand(action, false, null);
-  };
 
   saveData(value) {
     this.setState((prevState) => {
@@ -33,7 +30,6 @@ class TextEditorCont extends React.Component {
           data={data}
           topic={topic}
           id={id}
-          changeTextVisuals={this.changeTextVisuals}
         />
         <SuggestBox data={this.state.input} topic={topic} id={id} />
       </div>
