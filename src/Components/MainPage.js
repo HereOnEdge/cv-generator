@@ -4,6 +4,7 @@ import "../styles/MainPage.css";
 import IntroPage from "./Pages/IntroPages";
 import OthersMainPage from "./Pages/OtherMainPages";
 import DescPage from "./Pages/DescriptionPage";
+import SummaryPage from "./Pages/SummaryPages";
 
 class MainPage extends React.Component {
   render() {
@@ -40,6 +41,14 @@ class MainPage extends React.Component {
       <DescPage
         changeState={changeState}
         data={data}
+        topic={topic}
+        page={page}
+        completedTopics={completedTopics}
+        currentPageNode={currentPageNode}
+      />
+    ) : page === "summary" ? (
+      <SummaryPage
+        changeState={changeState}
         topic={topic}
         page={page}
         completedTopics={completedTopics}
