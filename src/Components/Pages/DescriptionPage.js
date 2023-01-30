@@ -73,7 +73,7 @@ class DescPage extends React.Component {
   };
   render() {
     return (
-      <div className="desc main">
+      <div className="desc-main main">
         <div className="desc-header header">
           <div className="desc-title">
             <h1>{this.pageTitle}</h1>
