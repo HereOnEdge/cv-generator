@@ -11,7 +11,7 @@
 .header {
     min-height: 80px;
     color: var(--my-dark-blue);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 .body {
     display: grid;
@@ -59,7 +59,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    gap: min(2vh, 5px) max(2vw, 20px);
+    gap: min(3vh, 10px);
 }
 .moreInfo-button {
     padding: 3px 6px;
@@ -75,7 +75,7 @@
     font-weight: 900;
     cursor: default;
     z-index: 1;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 .moreInfo-button:hover {
     background-color: var(--my-blue);
