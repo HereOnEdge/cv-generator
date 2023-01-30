@@ -18,6 +18,7 @@ class EditButton extends React.Component {
         }}
         name={this.props.name}
         className={this.props.active ? "active" : null}
+        title={this.props.name}
       >
         {this.props.value}
       </button>

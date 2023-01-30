@@ -167,7 +167,7 @@ class TextEditorButtons extends React.Component {
         />
         <div className="between-line"></div>
         <EditButton
-          name="undo changes"
+          name="undo"
           action="undo"
           toggleButton={this.toggleButton}
           value={
@@ -184,7 +184,7 @@ class TextEditorButtons extends React.Component {
           }
         />
         <EditButton
-          name="redo changes"
+          name="redo"
           action="redo"
           toggleButton={this.toggleButton}
           value={
