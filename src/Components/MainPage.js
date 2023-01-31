@@ -8,8 +8,15 @@ import SummaryPage from "./Pages/SummaryPages";
 
 class MainPage extends React.Component {
   render() {
-    const { changeState, data, page, topic, completedTopics, currentPageNode } =
-      this.props;
+    const {
+      changeState,
+      data,
+      page,
+      topic,
+      completedTopics,
+      currentPageNode,
+      navLink,
+    } = this.props;
     return topic === "contact" ? (
       <ContactMainPage
         changeState={changeState}
@@ -49,10 +56,12 @@ class MainPage extends React.Component {
     ) : page === "summary" ? (
       <SummaryPage
         changeState={changeState}
+        data={data}
         topic={topic}
         page={page}
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
+        navLink={navLink}
       />
     ) : (
       "where am I"

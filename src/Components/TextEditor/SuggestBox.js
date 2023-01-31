@@ -7,12 +7,7 @@ class SuggestBox extends React.Component {
   }
 
   render() {
-    return (
-      <div
-        className="suggestBox"
-        // dangerouslySetInnerHTML={{ __html: this.props.data }}
-      ></div>
-    );
+    return <div className="suggestBox"></div>;
   }
 }
 export default SuggestBox;

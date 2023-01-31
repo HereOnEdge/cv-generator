@@ -26,37 +26,42 @@ class App extends React.Component {
     page,
     currentPageNode,
     completedTopics,
-    newPageNode
+    newPageNode,
+    callBackFunc
   ) {
-    this.setState((prevState) => {
-      if (data !== prevState.data) {
-        // update data only if it has changed
-        if (
-          currentPageNode.value().topic === "work" ||
-          currentPageNode.value().topic === "educate"
-        ) {
-          // if data is coming from work or educate and there is already a data available from them, give them index
-          if (prevState.data[currentPageNode.value().topic !== undefined]) {
-            let id =
-              currentPageNode.value().id == undefined
-                ? 0
-                : currentPageNode.value().id;
-            prevState.data[currentPageNode.value().topic][id] = data[id];
+    this.setState(
+      (prevState) => {
+        if (data !== prevState.data) {
+          // update data only if it has changed
+          if (
+            currentPageNode.value().topic === "work" ||
+            currentPageNode.value().topic === "educate"
+          ) {
+            // if data is coming from work or educate and there is already a data available from them, give them index
+            if (prevState.data[currentPageNode.value().topic !== undefined]) {
+              let id =
+                currentPageNode.value().id == undefined
+                  ? 0
+                  : currentPageNode.value().id;
+              prevState.data[currentPageNode.value().topic][id] = data[id];
+            } else {
+              prevState.data[currentPageNode.value().topic] = data;
+            }
           } else {
             prevState.data[currentPageNode.value().topic] = data;
           }
-        } else {
-          prevState.data[currentPageNode.value().topic] = data;
         }
-      }
-      return {
-        topic: topic,
-        page: page,
-        data: prevState.data,
-        completedTopics: completedTopics,
-        currentPageNode: newPageNode,
-      };
-    });
+        console.log(prevState.data);
+        return {
+          topic: topic,
+          page: page,
+          data: prevState.data,
+          completedTopics: completedTopics,
+          currentPageNode: newPageNode,
+        };
+      },
+      callBackFunc !== undefined ? callBackFunc : null
+    );
   }
 
   makeLinkedList = () => {
@@ -95,6 +100,7 @@ class App extends React.Component {
             topic={this.state.topic}
             completedTopics={this.state.completedTopics}
             currentPageNode={this.state.currentPageNode}
+            navLink={this.navLink}
           />
         </main>
       </div>
