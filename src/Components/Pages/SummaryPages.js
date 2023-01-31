@@ -1,6 +1,7 @@
 import React from "react";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import PreviewButton from "../Preview/PreviewButton";
+import PreviewContainer from "../Preview/PreviewContainer";
 
 class SummaryPage extends React.Component {
   constructor(props) {
@@ -26,7 +27,15 @@ class SummaryPage extends React.Component {
           <h1>{this.title}</h1>
           <PreviewButton />
         </div>
-        <div className="summary-body body"></div>
+        <div className="summary-body body">
+          <div className="summary-data data"></div>
+          <div className="summary-preview whole preview">
+            <PreviewContainer
+              data={this.props.data}
+              highlightArea={this.props.topic}
+            />
+          </div>
+        </div>
         <div className="summary-foot foot">
           <NavigationButtons
             topic={this.props.topic}

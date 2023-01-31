@@ -27,10 +27,10 @@ class IntroPage extends React.Component {
   }
   render() {
     return (
-      <div className={`${this.props.topic}-intro-main main`}>
-        <div className={`${this.props.topic}-intro-header header`}></div>
-        <div className={`${this.props.topic}-intro-body body`}>
-          <div className="intro-main">
+      <div className="intro-main main">
+        <div className="intro-header header"></div>
+        <div className="intro-body body">
+          <div className="intro-data data">
             <h1>
               <span className="small small-title">
                 {this.sideTitle}
@@ -40,7 +40,7 @@ class IntroPage extends React.Component {
             </h1>
             {this.paragraph}
           </div>
-          <div className={`${this.props.topic}-preview whole-preview`}>
+          <div className={`intro-preview whole-preview`}>
             <PreviewContainer
               data={this.props.data}
               highlightArea={this.props.topic}
@@ -48,7 +48,7 @@ class IntroPage extends React.Component {
             <PreviewButton />
           </div>
         </div>
-        <div className={`${this.props.topic}-foot foot`}>
+        <div className={`intro-foot foot`}>
           <NavigationButtons
             topic={this.props.topic}
             data={this.props.data}
