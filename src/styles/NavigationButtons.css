@@ -16,6 +16,7 @@
     align-items: center;
     text-align: center;
     font-size: 0.9rem;
+    transition: all 0.6s;
 }
 .next-button {
     background-color: var(--my-green);

@@ -27,17 +27,19 @@ class DataSummary extends React.Component {
           <div className="summary-title">
             <span className="bold">{this.mainTitle}</span>, {this.secondTitle}
           </div>
-          <EditDataButton />
-          <RemoveDataButton
-            changeState={this.props.changeState}
-            data={this.props.data}
-            topic={this.props.topic}
-            page={this.props.page}
-            currentPageNode={this.props.currentPageNode}
-            completedTopics={this.props.completedTopics}
-            id={this.props.id}
-            updateData={this.props.updateData}
-          />
+          <div className="summary-buttons">
+            <EditDataButton />
+            <RemoveDataButton
+              changeState={this.props.changeState}
+              data={this.props.data}
+              topic={this.props.topic}
+              page={this.props.page}
+              currentPageNode={this.props.currentPageNode}
+              completedTopics={this.props.completedTopics}
+              id={this.props.id}
+              updateData={this.props.updateData}
+            />
+          </div>
           <div className="summary-description">
             {this.props.data.description !== "" ? (
               <ul>
