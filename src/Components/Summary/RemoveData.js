@@ -1,30 +1,26 @@
 import React from "react";
 
 class RemoveDataButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   removeData = () => {
     this.props.changeState(
       {
         [this.props.id]: null,
       },
-      this.props.toic,
+      this.props.topic,
       this.props.page,
       this.props.currentPageNode,
       this.props.completedTopics,
       this.props.currentPageNode,
       this.props.updateData
     );
-    console.log("works");
+    this.props.updateData();
   };
   render() {
     return (
       <button
         className="remove-button summary-button"
         type="button"
-        onClick={() => this.removeData()}
+        onClick={this.removeData}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

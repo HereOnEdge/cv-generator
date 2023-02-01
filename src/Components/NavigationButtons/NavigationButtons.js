@@ -7,7 +7,6 @@ class NavigationButtons extends React.Component {
   constructor(props) {
     super(props);
     this.topic = this.props.topic;
-    this.data = this.props.data;
     this.editData = this.props.editData;
   }
   findNextPage(next) {
@@ -47,7 +46,7 @@ class NavigationButtons extends React.Component {
       <div className="navigation-buttons">
         <NextButton
           topic={this.topic}
-          data={this.data}
+          data={this.props.data}
           editData={this.editData}
           page={this.props.page}
           findNextPage={this.findNextPage}
@@ -58,7 +57,7 @@ class NavigationButtons extends React.Component {
         />
         <BackButton
           topic={this.topic}
-          data={this.data}
+          data={this.props.data}
           editData={this.editData}
           page={this.props.page}
           findNextPage={this.findNextPage}

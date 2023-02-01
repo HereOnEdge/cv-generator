@@ -41,6 +41,7 @@ class SummaryPage extends React.Component {
     this.findData();
     this.setState({
       data: this.items,
+      [this.props.topic]: { ...this.props.data[this.props.topic] },
     });
   };
   updateLinkedList = () => {
@@ -63,11 +64,17 @@ class SummaryPage extends React.Component {
           page: "description",
         })
       : null;
-    // remove it if it,s not null
+    // remove it if it's not null
     if (descPageIndex !== null) {
       this.props.navLink.removeAt(descPageIndex);
     }
   };
+  componentDidMount() {
+    console.log(this.props.data);
+  }
+  componentDidUpdate() {
+    console.log(this.props.data);
+  }
   render() {
     return (
       <div className="summary-main main">
@@ -77,19 +84,21 @@ class SummaryPage extends React.Component {
         </div>
         <div className="summary-body body">
           <div className="summary-data data">
-            {this.state.data.map((item) => (
-              <DataSummary
-                id={item.id}
-                data={item}
-                topic={this.props.topic}
-                page={this.props.page}
-                changeState={this.props.changeState}
-                currentPageNode={this.props.currentPageNode}
-                completedTopics={this.props.completedTopics}
-                key={item.id.toString()}
-                updateData={this.updateData}
-              />
-            ))}
+            {this.state.data.map((item) =>
+              item !== null ? (
+                <DataSummary
+                  id={item.id}
+                  data={item}
+                  topic={this.props.topic}
+                  page={this.props.page}
+                  changeState={this.props.changeState}
+                  currentPageNode={this.props.currentPageNode}
+                  completedTopics={this.props.completedTopics}
+                  key={item.id.toString()}
+                  updateData={this.updateData}
+                />
+              ) : null
+            )}
           </div>
           <div className="summary-preview whole preview">
             <PreviewContainer
