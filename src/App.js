@@ -76,7 +76,6 @@ class App extends React.Component {
     this.navLink.append({ topic: "educate", page: "summary" });
     this.navLink.append({ topic: "skills", page: "intro" });
     this.navLink.append({ topic: "skills", page: "description" });
-    this.navLink.append({ topic: "skills", page: "summary" });
     this.navLink.append({ topic: "summary", page: "intro" });
     this.navLink.append({ topic: "summary", page: "description" });
     this.navLink.append({ topic: "final", page: "main" });
