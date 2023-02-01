@@ -1,4 +1,5 @@
 import React from "react";
+import ContentEditable from "react-contenteditable";
 
 class TextArea extends React.Component {
   constructor(props) {
@@ -14,20 +15,22 @@ class TextArea extends React.Component {
       this.setState({ placeHolder: this.props.placeHolder });
     }
   };
-
+  componentDidMount() {
+    this.removePlaceholder(this.props.data);
+  }
   render() {
     return (
       <div className="editor-textArea-container">
-        <div
+        <ContentEditable
           className="editor-textArea"
-          contentEditable="true"
-          role="textbox"
-          onInput={(event) => {
-            this.props.saveData(event.target.innerHTML);
-            this.removePlaceholder(event.target.innerHTML);
+          disabled={false}
+          onChange={(event) => {
+            this.props.saveData(event.target.value);
+            this.removePlaceholder(event.target.value);
           }}
           placeholder={this.state.placeHolder}
-        ></div>
+          html={this.props.data}
+        />
       </div>
     );
   }

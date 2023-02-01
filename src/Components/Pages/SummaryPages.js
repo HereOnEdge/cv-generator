@@ -15,6 +15,9 @@ class SummaryPage extends React.Component {
     this.findTitle();
     this.state = {
       data: this.items,
+      [this.props.topic]: {
+        ...this.props.data[this.props.topic],
+      },
     };
   }
   findTitle = () => {
@@ -40,7 +43,6 @@ class SummaryPage extends React.Component {
     });
   };
   updateLinkedList = () => {
-    this.props.navLink.toString();
     // find index of main page inside linked-list
     const mainPageIndex = this.props.navLink.findIndex({
       topic: this.props.topic,
@@ -62,13 +64,8 @@ class SummaryPage extends React.Component {
       : null;
     // remove it if it,s not null
     if (descPageIndex !== null) {
-      console.log("not null");
       this.props.navLink.removeAt(descPageIndex);
     }
-    console.log(mainPageIndex);
-    console.log(descPageIndex);
-
-    this.props.navLink.toString();
   };
   componentDidMount() {
     this.updateLinkedList();
@@ -106,7 +103,7 @@ class SummaryPage extends React.Component {
         <div className="summary-foot foot">
           <NavigationButtons
             topic={this.props.topic}
-            // data={this.state[this.props.topic]}
+            data={this.state[this.props.topic]}
             editData={this.props.changeState}
             page={this.props.page}
             currentPageNode={this.props.currentPageNode}

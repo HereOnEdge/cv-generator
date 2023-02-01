@@ -7,6 +7,7 @@ import TextEditorCont from "../TextEditor/TextEditorContainer";
 class DescPage extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.data);
     if (this.props.topic === "work") {
       this.id =
         this.props.currentPageNode.value().id == undefined
@@ -19,7 +20,11 @@ class DescPage extends React.Component {
             [this.props.topic]: {
               [this.id]: {
                 ...this.props.data[this.props.topic][this.id],
-                description: "",
+                description:
+                  this.props.data[this.props.topic][this.id].description !==
+                  undefined
+                    ? this.props.data[this.props.topic][this.id].description
+                    : "",
               },
             },
           }
@@ -89,7 +94,11 @@ class DescPage extends React.Component {
                 ? "Type in your responsibilities, achivements and job details."
                 : `Add your ${this.props.topic} here.`
             }
-            data={this.props.data}
+            data={
+              this.props.topic !== "work"
+                ? this.state[this.props.topic].description
+                : this.state[this.props.topic][this.id].description
+            }
             topic={this.props.topic}
             id={this.id !== undefined ? this.id : null}
           />
