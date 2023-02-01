@@ -13,6 +13,7 @@ class SummaryPage extends React.Component {
         : this.props.currentPageNode.value().id;
     this.findData();
     this.findTitle();
+    this.updateLinkedList();
     this.state = {
       data: this.items,
       [this.props.topic]: {
@@ -67,9 +68,6 @@ class SummaryPage extends React.Component {
       this.props.navLink.removeAt(descPageIndex);
     }
   };
-  componentDidMount() {
-    this.updateLinkedList();
-  }
   render() {
     return (
       <div className="summary-main main">
