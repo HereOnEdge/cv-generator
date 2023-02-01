@@ -4,7 +4,7 @@ class RemoveDataButton extends React.Component {
   removeData = () => {
     this.props.changeState(
       {
-        [this.props.id]: null,
+        [this.props.id]: undefined,
       },
       this.props.topic,
       this.props.page,

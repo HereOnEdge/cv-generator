@@ -28,6 +28,11 @@ class TextInput extends React.Component {
   }
   updateState() {
     if (this.props.data[this.topic] !== undefined) {
+      if (this.props.id !== undefined) {
+        if (this.props.data[this.topic][this.props.id] === undefined) {
+          return;
+        }
+      }
       const data =
         this.props.id == undefined
           ? this.props.data[this.topic][this.field]

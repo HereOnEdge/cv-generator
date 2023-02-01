@@ -38,12 +38,17 @@ class App extends React.Component {
             currentPageNode.value().topic === "educate"
           ) {
             // if data is coming from work or educate and there is already a data available from them, give them index
-            if (prevState.data[currentPageNode.value().topic !== undefined]) {
+            if (prevState.data[currentPageNode.value().topic] !== undefined) {
               let id =
                 currentPageNode.value().id == undefined
                   ? 0
                   : currentPageNode.value().id;
               prevState.data[currentPageNode.value().topic][id] = data[id];
+              // if new value is undefiend, remove the item from object
+              if (data[id] === undefined) {
+                console.log("been here");
+                delete prevState.data[currentPageNode.value().topic][id];
+              }
             } else {
               prevState.data[currentPageNode.value().topic] = data;
             }
@@ -51,6 +56,7 @@ class App extends React.Component {
             prevState.data[currentPageNode.value().topic] = data;
           }
         }
+        console.log(prevState.data);
         return {
           topic: topic,
           page: page,

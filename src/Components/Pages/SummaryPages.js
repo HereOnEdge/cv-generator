@@ -2,6 +2,7 @@ import React from "react";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import PreviewButton from "../Preview/PreviewButton";
 import PreviewContainer from "../Preview/PreviewContainer";
+import AddNewData from "../Summary/AddNewData";
 import DataSummary from "../Summary/DataSummary";
 
 class SummaryPage extends React.Component {
@@ -79,7 +80,7 @@ class SummaryPage extends React.Component {
         <div className="summary-body body">
           <div className="summary-data data">
             {this.state.data.map((item) =>
-              item !== null ? (
+              item !== undefined ? (
                 <DataSummary
                   id={item.id}
                   data={item}
@@ -93,6 +94,15 @@ class SummaryPage extends React.Component {
                 />
               ) : null
             )}
+            <AddNewData
+              id={this.items.length}
+              topic={this.props.topic}
+              page={this.props.page}
+              changeState={this.props.changeState}
+              currentPageNode={this.props.currentPageNode}
+              completedTopics={this.props.completedTopics}
+              data={this.state[this.props.topic]}
+            />
           </div>
           <div className="summary-preview whole preview">
             <PreviewContainer
