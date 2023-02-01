@@ -85,13 +85,16 @@
     cursor: default;
     z-index: 1;
     font-size: 0.7rem;
+    text-shadow: 0;
 }
 .moreInfo-button:hover {
     background-color: var(--my-blue);
     color: var(--my-white);
+    transition: all 0.5s
 }
 .moreInfo-button:hover .plus-sign {
-    border-color: var(--my-white);
+    transform: scale(1.2);
+    transition: transform 0.6s;
 }
 .plus-sign {
     width: 15px;
