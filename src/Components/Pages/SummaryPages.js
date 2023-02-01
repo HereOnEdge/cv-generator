@@ -31,7 +31,6 @@ class SummaryPage extends React.Component {
     for (const itemKey in this.props.data[this.props.topic]) {
       this.items.push(this.props.data[this.props.topic][itemKey]);
     }
-    console.log(this.items);
   };
 
   updateData = () => {
@@ -40,9 +39,40 @@ class SummaryPage extends React.Component {
       data: this.items,
     });
   };
-  //   updateLinkedList = () => {
-  //     this.props.navLink.
-  //   }
+  updateLinkedList = () => {
+    this.props.navLink.toString();
+    // find index of main page inside linked-list
+    const mainPageIndex = this.props.navLink.findIndex({
+      topic: this.props.topic,
+      page: "main",
+    });
+    // remove it if its not null
+    if (mainPageIndex !== null) {
+      this.props.navLink.removeAt(mainPageIndex);
+    }
+    // find index of desc page if it's available
+    const descPageIndex = this.props.navLink.contains({
+      topic: this.props.topic,
+      page: "description",
+    })
+      ? this.props.navLink.findIndex({
+          topic: this.props.topic,
+          page: "description",
+        })
+      : null;
+    // remove it if it,s not null
+    if (descPageIndex !== null) {
+      console.log("not null");
+      this.props.navLink.removeAt(descPageIndex);
+    }
+    console.log(mainPageIndex);
+    console.log(descPageIndex);
+
+    this.props.navLink.toString();
+  };
+  componentDidMount() {
+    this.updateLinkedList();
+  }
   render() {
     return (
       <div className="summary-main main">

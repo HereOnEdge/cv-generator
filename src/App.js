@@ -80,7 +80,6 @@ class App extends React.Component {
     this.navLink.append({ topic: "summary", page: "description" });
     this.navLink.append({ topic: "final", page: "main" });
   };
-
   render() {
     return (
       <div>

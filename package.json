@@ -36,6 +36,6 @@
     ]
   },
   "devDependencies": {
-    "@reza2022/linked-list": "^1.2.0"
+    "@reza2022/linked-list": "^1.5.5"
   }
 }
