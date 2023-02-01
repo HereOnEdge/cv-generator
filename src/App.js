@@ -51,7 +51,6 @@ class App extends React.Component {
             prevState.data[currentPageNode.value().topic] = data;
           }
         }
-        console.log(prevState.data);
         return {
           topic: topic,
           page: page,

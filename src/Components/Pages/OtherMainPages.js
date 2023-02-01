@@ -8,22 +8,32 @@ import DateInput from "../Input/DateInput";
 class OthersMainPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.data);
     this.id =
       this.props.currentPageNode.value().id == undefined
         ? 0
         : this.props.currentPageNode.value().id;
     this.state = {
       [this.props.topic]: {
-        [this.id]: {
-          id: this.id,
-          title: "",
-          employer: "",
-          city: "",
-          country: "",
-          startDate: "",
-          endDate: "",
-        },
+        [this.id]:
+          this.props.topic === "work"
+            ? {
+                id: this.id,
+                title: "",
+                employer: "",
+                city: "",
+                country: "",
+                startDate: "",
+                endDate: "",
+              }
+            : {
+                id: this.id,
+                university: "",
+                location: "",
+                qualification: "",
+                field: "",
+                startDate: "",
+                endDate: "",
+              },
       },
     };
   }

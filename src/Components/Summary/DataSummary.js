@@ -10,7 +10,6 @@ class DataSummary extends React.Component {
 
   findTitle = () => {
     if (this.props.topic === "work") {
-      console.log(this.props.data);
       this.mainTitle = this.props.data.title;
       this.secondTitle = this.props.data.employer;
     } else {

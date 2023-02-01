@@ -7,7 +7,6 @@ import TextEditorCont from "../TextEditor/TextEditorContainer";
 class DescPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.data);
     if (this.props.topic === "work") {
       this.id =
         this.props.currentPageNode.value().id == undefined

@@ -6,7 +6,6 @@ import NavigationButtons from "../NavigationButtons/NavigationButtons";
 class IntroPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.data);
     this.findTitles();
   }
 

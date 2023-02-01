@@ -69,12 +69,6 @@ class SummaryPage extends React.Component {
       this.props.navLink.removeAt(descPageIndex);
     }
   };
-  componentDidMount() {
-    console.log(this.props.data);
-  }
-  componentDidUpdate() {
-    console.log(this.props.data);
-  }
   render() {
     return (
       <div className="summary-main main">
