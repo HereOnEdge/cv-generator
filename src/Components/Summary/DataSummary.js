@@ -1,4 +1,5 @@
 import React from "react";
+import AddDesc from "./AddDescription";
 import EditDataButton from "./EditData";
 import RemoveDataButton from "./RemoveData";
 
@@ -58,9 +59,14 @@ class DataSummary extends React.Component {
                 ></li>
               </ul>
             ) : (
-              <div className="add-description">
-                <span className="plus">+</span> <span>Add a description</span>
-              </div>
+              <AddDesc
+                changeState={this.props.changeState}
+                data={this.props.data}
+                topic={this.props.topic}
+                currentPageNode={this.props.currentPageNode}
+                completedTopics={this.props.completedTopics}
+                id={this.props.id}
+              />
             )}
           </div>
         </div>
