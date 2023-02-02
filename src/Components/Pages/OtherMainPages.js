@@ -24,6 +24,11 @@ class OthersMainPage extends React.Component {
                 country: "",
                 startDate: "",
                 endDate: "",
+                description:
+                  this.props.data[this.props.topic][this.id].description ===
+                  undefined
+                    ? ""
+                    : this.props.data[this.props.topic][this.id].description,
               }
             : {
                 id: this.id,
@@ -33,6 +38,11 @@ class OthersMainPage extends React.Component {
                 field: "",
                 startDate: "",
                 endDate: "",
+                description:
+                  this.props.data[this.props.topic][this.id].description ===
+                  undefined
+                    ? ""
+                    : this.props.data[this.props.topic][this.id].description,
               },
       },
     };

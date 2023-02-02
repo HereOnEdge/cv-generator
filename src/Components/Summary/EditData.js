@@ -1,16 +1,13 @@
 import React from "react";
+import AddNewData from "./AddNewData";
 
-class EditDataButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class EditDataButton extends AddNewData {
   render() {
     return (
       <button
         className="edit-button summary-button"
         type="button"
-        onClick={null}
+        onClick={this.addData}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
