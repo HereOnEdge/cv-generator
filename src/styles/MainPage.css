@@ -1,8 +1,9 @@
 .main {
     width: min(100%, 740px);
+    min-height: 440px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: max(60px, 10vh) max(300px,35vh) 60px;
+    grid-template-rows: max(60px, 10vh) 1fr 60px;
     row-gap: 10px;
     padding: 0 5px;
 }
