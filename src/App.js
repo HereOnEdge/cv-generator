@@ -31,6 +31,21 @@ class App extends React.Component {
   ) {
     this.setState(
       (prevState) => {
+        // if we are editing data in summary page, it means we are deleting somthing
+        if (currentPageNode.value().page === newPageNode.value().page) {
+          // find the id of peace of info that we are going to delete
+          let id = Object.keys(data)[0];
+          // delete the peace of info and update the data
+          prevState.data[currentPageNode.value().topic][id] = data[id];
+          delete prevState.data[currentPageNode.value().topic][id];
+          return {
+            topic: topic,
+            page: page,
+            data: prevState.data,
+            completedTopics: completedTopics,
+            currentPageNode: newPageNode,
+          };
+        }
         if (data !== prevState.data) {
           // update data only if it has changed
           if (
@@ -46,7 +61,7 @@ class App extends React.Component {
               prevState.data[currentPageNode.value().topic][id] = data[id];
               // if new value is undefiend, remove the item from object
               if (data[id] === undefined) {
-                console.log("been here");
+                console.log(id);
                 delete prevState.data[currentPageNode.value().topic][id];
               }
             } else {

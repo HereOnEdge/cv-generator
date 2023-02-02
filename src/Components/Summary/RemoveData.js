@@ -2,6 +2,7 @@ import React from "react";
 
 class RemoveDataButton extends React.Component {
   removeData = () => {
+    console.log(this.props.id);
     this.props.changeState(
       {
         [this.props.id]: undefined,
