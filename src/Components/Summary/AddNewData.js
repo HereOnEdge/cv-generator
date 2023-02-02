@@ -30,8 +30,8 @@ class AddNewData extends React.Component {
   };
   render() {
     return (
-      <div className="add-data-container">
-        <span className="add-data-button" onClick={this.addData}>
+      <div className="add-data-container" onClick={this.addData}>
+        <span className="add-data-button">
           <span className="plus">+</span> Add another position
         </span>
       </div>
