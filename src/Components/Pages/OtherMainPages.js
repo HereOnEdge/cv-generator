@@ -25,10 +25,14 @@ class OthersMainPage extends React.Component {
                 startDate: "",
                 endDate: "",
                 description:
-                  this.props.data[this.props.topic][this.id].description ===
-                  undefined
-                    ? ""
-                    : this.props.data[this.props.topic][this.id].description,
+                  this.props.data[this.props.topic] !== undefined
+                    ? this.props.data[this.props.topic][this.id] !== undefined
+                      ? this.props.data[this.props.topic][this.id]
+                          .description === undefined
+                        ? ""
+                        : this.props.data[this.props.topic][this.id].description
+                      : ""
+                    : "",
               }
             : {
                 id: this.id,
@@ -39,10 +43,14 @@ class OthersMainPage extends React.Component {
                 startDate: "",
                 endDate: "",
                 description:
-                  this.props.data[this.props.topic][this.id].description ===
-                  undefined
-                    ? ""
-                    : this.props.data[this.props.topic][this.id].description,
+                  this.props.data[this.props.topic] !== undefined
+                    ? this.props.data[this.props.topic][this.id] !== undefined
+                      ? this.props.data[this.props.topic][this.id]
+                          .description === undefined
+                        ? ""
+                        : this.props.data[this.props.topic][this.id].description
+                      : ""
+                    : "",
               },
       },
     };
