@@ -97,7 +97,7 @@ class SummaryPage extends React.Component {
               ) : null
             )}
             <AddNewData
-              id={this.items.length}
+              id={randomKey()}
               topic={this.props.topic}
               page={this.props.page}
               changeState={this.props.changeState}
