@@ -21,7 +21,7 @@ class DataSummary extends React.Component {
   render() {
     return (
       <div className="data-summary">
-        <div className="summary-id">{this.props.id + 1}</div>
+        <div className="summary-id">{this.props.index + 1}</div>
         <div className="data-summary-main">
           <div className="summary-title">
             <span className="bold">{this.mainTitle}</span>, {this.secondTitle}

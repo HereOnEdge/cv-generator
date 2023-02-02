@@ -4,6 +4,7 @@ import PreviewButton from "../Preview/PreviewButton";
 import PreviewContainer from "../Preview/PreviewContainer";
 import AddNewData from "../Summary/AddNewData";
 import DataSummary from "../Summary/DataSummary";
+import { v1 as randomKey } from "uuid";
 
 class SummaryPage extends React.Component {
   constructor(props) {
@@ -79,9 +80,10 @@ class SummaryPage extends React.Component {
         </div>
         <div className="summary-body body">
           <div className="summary-data data">
-            {this.state.data.map((item) =>
+            {this.state.data.map((item, index) =>
               item !== undefined ? (
                 <DataSummary
+                  index={index}
                   id={item.id}
                   data={item}
                   topic={this.props.topic}
@@ -89,7 +91,7 @@ class SummaryPage extends React.Component {
                   changeState={this.props.changeState}
                   currentPageNode={this.props.currentPageNode}
                   completedTopics={this.props.completedTopics}
-                  key={item.id.toString()}
+                  key={randomKey()}
                   updateData={this.updateData}
                 />
               ) : null
