@@ -8,6 +8,7 @@ import DateInput from "../Input/DateInput";
 class OthersMainPage extends React.Component {
   constructor(props) {
     super(props);
+    this.findInputReqs();
     this.id =
       this.props.currentPageNode.value().id == undefined
         ? 0
@@ -64,7 +65,47 @@ class OthersMainPage extends React.Component {
       };
     });
   };
-
+  findInputReqs = () => {
+    let topic = this.props.topic;
+    this.preReqs = {
+      first: {
+        label: topic === "work" ? "JOB TITLE" : "INSTITUTION NAME",
+        field: topic === "work" ? "title" : "university",
+        placeHolder:
+          topic === "work"
+            ? "e.g. Product Manager"
+            : "e.g.University of Liverpool",
+      },
+      second: {
+        label: topic === "work" ? "EMPLOYER" : "CITY/COUNTRY",
+        field: topic === "work" ? "employer" : "location",
+        placeHolder:
+          topic === "work"
+            ? "e.g. Somersby & Smithers"
+            : "e.g. Liverpool, United Kingdom",
+      },
+      third: {
+        label: topic === "work" ? "CITY/TOWN" : "QUALIFICATION",
+        field: topic === "work" ? "city" : "qualification",
+        placeHolder: topic === "work" ? "e.g. Oxford" : "e.g. Bachelor of Arts",
+      },
+      forth: {
+        label: topic === "work" ? "COUNTRY" : "FIELD OF STUDY",
+        field: topic === "work" ? "country" : "field",
+        placeHolder: topic === "work" ? "e.g. Mexico" : "e.g. Economics",
+      },
+      fifth: {
+        label: "START DATE",
+        field: "startDate",
+        placeHolder: "Select",
+      },
+      sixth: {
+        label: "END DATE",
+        field: "endDate",
+        placeHolder: "Select",
+      },
+    };
+  };
   render() {
     return (
       <div className="others-main main">
@@ -79,10 +120,10 @@ class OthersMainPage extends React.Component {
           <div className="others-form form">
             <TextInput
               className="half"
-              label="JOB TITLE"
+              label={this.preReqs.first.label}
               changeData={this.changeData}
-              field="title"
-              placeHolder="e.g. Product Manager "
+              field={this.preReqs.first.field}
+              placeHolder={this.preReqs.first.placeHolder}
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
@@ -90,10 +131,10 @@ class OthersMainPage extends React.Component {
             />
             <TextInput
               className="half"
-              label="EMPLOYER"
+              label={this.preReqs.second.label}
               changeData={this.changeData}
-              field="employer"
-              placeHolder="e.g. Somersby & Smithers "
+              field={this.preReqs.second.field}
+              placeHolder={this.preReqs.second.placeHolder}
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
@@ -101,10 +142,10 @@ class OthersMainPage extends React.Component {
             />
             <TextInput
               className="half"
-              label="CITY/TOWN"
+              label={this.preReqs.third.label}
               changeData={this.changeData}
-              field="city"
-              placeHolder="e.g. Oxford "
+              field={this.preReqs.third.field}
+              placeHolder={this.preReqs.third.placeHolder}
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
@@ -112,10 +153,10 @@ class OthersMainPage extends React.Component {
             />
             <TextInput
               className="half"
-              label="COUNTRY"
+              label={this.preReqs.forth.label}
               changeData={this.changeData}
-              field="country"
-              placeHolder="e.g. Mexico "
+              field={this.preReqs.forth.field}
+              placeHolder={this.preReqs.forth.placeHolder}
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
@@ -123,10 +164,10 @@ class OthersMainPage extends React.Component {
             />
             <DateInput
               className="half"
-              label="START DATE"
+              label={this.preReqs.fifth.label}
               changeData={this.changeData}
-              field="startDate"
-              placeHolder={`Select`}
+              field={this.preReqs.fifth.field}
+              placeHolder={this.preReqs.fifth.placeHolder}
               validationType="month"
               data={this.props.data}
               topic={this.props.topic}
@@ -134,10 +175,10 @@ class OthersMainPage extends React.Component {
             />
             <DateInput
               className="half"
-              label="END DATE"
+              label={this.preReqs.sixth.label}
               changeData={this.changeData}
-              field="endDate"
-              placeHolder={`Select`}
+              field={this.preReqs.sixth.field}
+              placeHolder={this.preReqs.sixth.placeHolder}
               validationType="month"
               data={this.props.data}
               topic={this.props.topic}

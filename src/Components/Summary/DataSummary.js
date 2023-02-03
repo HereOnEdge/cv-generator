@@ -15,7 +15,7 @@ class DataSummary extends React.Component {
       this.secondTitle = this.props.data.employer;
     } else {
       this.mainTitle = this.props.data.field;
-      this.secondTitle = this.props.university;
+      this.secondTitle = this.props.data.university;
     }
   };
 
