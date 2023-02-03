@@ -23,6 +23,39 @@ class IntroPage extends React.Component {
           We'll suggest bullet points that make a great impression
         </p>
       );
+    } else if (this.props.topic === "educate") {
+      this.mainTitle = "education";
+      this.sideTitle = "Great, let's work on your";
+      this.paragraph = (
+        <p className="intro-p">
+          Start with your most recent qualification and work backwards.
+        </p>
+      );
+    } else if (this.props.topic === "skills") {
+      this.mainTitle = "skills";
+      this.sideTitle = "Next, let's take care of your";
+      this.paragraph = (
+        <p className="intro-p">
+          Add four to eight skills from your previous jobs relevant to the job
+          you want. <br />
+          In original application we suggest few keywords that employers look
+          for based on your title,
+          <br />
+          But we don't have that here. instead we got a beautiful picture from a
+          wierd pink stairway.
+        </p>
+      );
+    } else if (this.props.topic === "summary") {
+      this.mainTitle = "summary";
+      this.sideTitle = "Finally, let's work on your";
+      this.paragraph = (
+        <p className="intro-p">
+          Write a career summary to show companies how your background matches
+          the job you want. <br />
+          If you're applying for a job you haven't done before, focus on your
+          relevant experience and skills that the new job would use
+        </p>
+      );
     }
   }
   render() {
