@@ -93,6 +93,7 @@ class SummaryPage extends React.Component {
                   completedTopics={this.props.completedTopics}
                   key={randomKey()}
                   updateData={this.updateData}
+                  originalData={this.props.data}
                 />
               ) : null
             )}

@@ -30,7 +30,7 @@ class DataSummary extends React.Component {
           <div className="summary-buttons">
             <EditDataButton
               changeState={this.props.changeState}
-              data={this.props.data}
+              data={this.props.originalData}
               topic={this.props.topic}
               page={this.props.page}
               currentPageNode={this.props.currentPageNode}
@@ -40,7 +40,7 @@ class DataSummary extends React.Component {
             />
             <RemoveDataButton
               changeState={this.props.changeState}
-              data={this.props.data}
+              data={this.props.originalData}
               topic={this.props.topic}
               page={this.props.page}
               currentPageNode={this.props.currentPageNode}
@@ -61,7 +61,7 @@ class DataSummary extends React.Component {
             ) : (
               <AddDesc
                 changeState={this.props.changeState}
-                data={this.props.data}
+                data={this.props.originalData}
                 topic={this.props.topic}
                 currentPageNode={this.props.currentPageNode}
                 completedTopics={this.props.completedTopics}
