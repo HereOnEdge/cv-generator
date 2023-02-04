@@ -177,6 +177,16 @@
 .others-form {
     grid-area: 1 / 1 / 2 / 4;
 }
+.others-title {
+    width: 100%;
+}
+.others-title > p{
+    margin-top: 0;
+    width: 80%;
+}
+.others-main {
+    grid-template-rows: auto 1fr 60px;
+}
 /* description page */
 .desc-main {
     grid-template-rows: auto 1fr 60px;
