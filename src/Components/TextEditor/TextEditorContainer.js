@@ -36,4 +36,9 @@ class TextEditorCont extends React.Component {
     );
   }
 }
-export default TextEditorCont;
+class EducateTextEditorCont extends TextEditorCont {
+  saveData = (value) => {
+    this.props.changeData("description", value, this.props.id);
+  };
+}
+export { EducateTextEditorCont, TextEditorCont };

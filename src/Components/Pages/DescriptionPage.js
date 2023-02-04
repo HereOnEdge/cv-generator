@@ -2,7 +2,7 @@
 import React from "react";
 import PreviewButton from "../Preview/PreviewButton";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
-import TextEditorCont from "../TextEditor/TextEditorContainer";
+import { TextEditorCont } from "../TextEditor/TextEditorContainer";
 
 class DescPage extends React.Component {
   constructor(props) {
@@ -29,7 +29,10 @@ class DescPage extends React.Component {
           }
         : {
             [this.props.topic]: {
-              description: "",
+              description:
+                this.props.data[this.props.topic].description !== undefined
+                  ? this.props.data[this.props.topic].description
+                  : "",
             },
           };
     this.findTitles();
