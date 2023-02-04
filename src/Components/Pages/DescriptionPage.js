@@ -30,6 +30,7 @@ class DescPage extends React.Component {
         : {
             [this.props.topic]: {
               description:
+                this.props.data[this.props.topic] !== undefined &&
                 this.props.data[this.props.topic].description !== undefined
                   ? this.props.data[this.props.topic].description
                   : "",
