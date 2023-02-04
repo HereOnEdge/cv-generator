@@ -121,8 +121,16 @@ class OthersMainPage extends React.Component {
       <div className="others-main main">
         <div className="others-header header">
           <div className="others-title">
-            <h1>Tell us about your work history</h1>
-            <p>Start with your most recent job and work backwards.</p>
+            <h1>
+              {this.props.topic === "work"
+                ? "Tell us about your work history"
+                : "Tell us about your education"}
+            </h1>
+            <p>
+              {this.props.topic === "work"
+                ? "Start with your most recent job and work backwards."
+                : "List universities, colleges or institutions where you studied. If you didn't attend education, then list your school or any other place of training. particulary if it corresponds to the position sought."}
+            </p>
           </div>
           <PreviewButton />
         </div>
