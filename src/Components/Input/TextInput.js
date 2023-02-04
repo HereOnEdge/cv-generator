@@ -1,6 +1,6 @@
 import React from "react";
 import InputValidation from "./InputValidation";
-import { checkValidation } from "../../validation/validation";
+import { checkValidation } from "../../validation/input-validation";
 import RemoveInputField from "./RemoveInputField";
 import "../../styles/TextInput.css";
 
