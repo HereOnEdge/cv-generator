@@ -353,10 +353,10 @@
 .educate-desc-container.open{
     height: min(500px, 80vh);
 }
-.educate-desc-container > span > svg {
+.educate-desc-container > div > span > svg {
     transition: transform ease-out 0.5s;
 }
-.educate-desc-container.open > span > svg {
+.educate-desc-container.open > div > span > svg {
     transform: rotate(180deg);
 }
 .educate-desc-title {
