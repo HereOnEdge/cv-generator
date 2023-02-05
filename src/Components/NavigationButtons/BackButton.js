@@ -13,7 +13,10 @@ class BackButton extends React.Component {
       completedTopics.pop();
     }
     completedTopics.pop();
-    if (this.props.filledVitalInputs) {
+    if (
+      this.props.filledVitalInputs === undefined ||
+      this.props.filledVitalInputs
+    ) {
       this.props.editData(
         this.props.data,
         this.nextPageTopic,
