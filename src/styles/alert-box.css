@@ -1,0 +1,109 @@
+.alert-box-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    grid-area: 1 / 1 / 4 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alert-box-background::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--my-cream);
+    opacity: 0.8;
+}
+.alert-box {
+    width: min(90%, 350px);
+    height: min(40%, 170px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1px 1px 10px var(--my-grey);
+    border-radius: 15px;
+    background-color: var(--my-white);
+    opacity: 1;
+    z-index: 1;
+    overflow: hidden;
+    padding: 5px ;
+    animation: openAlert 0.4s ease-out 0.1ms 1 normal forwards;
+}
+.alert-box > * {
+    opacity: 0;
+    animation: appearText 0.3s linear 0.15s 1 normal forwards;
+}
+.close-alert{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--my-grey);
+}
+.close-alert > svg {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-alert > svg:hover {
+color: var(--my-green);
+}
+.alert-desc{
+    font-size: 0.7em;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.alert-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 5px; */
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.7em;
+    margin-top: auto;
+}
+.alert-addButton {
+    width: 50%;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--my-green);
+    color: var(--my-white);
+    padding: 5px 0;
+    cursor: pointer;
+}
+.alert-addButton:hover {
+    background-color: var(--my-dark-green);
+}
+.alert-skipButton {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--my-green);
+    cursor: pointer;
+    padding: 5px 0;
+}
+.alert-skipButton:hover {
+    text-decoration: underline;
+}
+@keyframes openAlert {
+    0%{width: 0; height: 0;}
+    /* 60%{width: min(40%, 150px); height: min(25%, 90px);} */
+    80%{width: min(100%, 400px); height: min(60%, 210px);}
+    100%{width: min(90%, 350px);  height:min(40%, 170px);}
+}
+@keyframes appearText {
+    0%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 1;}
+}

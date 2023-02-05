@@ -1,5 +1,6 @@
 .main {
     width: min(100%, 740px);
+    height: 100%;
     min-height: 440px;
     display: grid;
     grid-template-columns: 100%;
@@ -142,7 +143,6 @@
 .foot {
     width: 100%;
     height: 100%;
-    /* margin-top: 10px; */
 }
 
 /* contact page */
@@ -184,8 +184,17 @@
     margin-top: 0;
     width: 80%;
 }
+.others-main-container {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
 .others-main {
     grid-template-rows: auto 1fr 60px;
+    grid-area: 1 / 1 / 2 / 2;
 }
 /* description page */
 .desc-main {
