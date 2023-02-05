@@ -59,6 +59,7 @@ class OthersMainPage extends React.Component {
       isDescOpen: false,
       showAlertBox: false,
       filledVitalInputs: false,
+      showVitalInputs: false,
     };
   }
 
@@ -83,12 +84,10 @@ class OthersMainPage extends React.Component {
             : "e.g.University of Liverpool",
       },
       second: {
-        label: topic === "work" ? "EMPLOYER" : "CITY/COUNTRY",
-        field: topic === "work" ? "employer" : "location",
+        label: topic === "work" ? "EMPLOYER" : "FIELD OF STUDY",
+        field: topic === "work" ? "employer" : "field",
         placeHolder:
-          topic === "work"
-            ? "e.g. Somersby & Smithers"
-            : "e.g. Liverpool, United Kingdom",
+          topic === "work" ? "e.g. Somersby & Smithers" : "e.g. Economics",
       },
       third: {
         label: topic === "work" ? "CITY/TOWN" : "QUALIFICATION",
@@ -96,9 +95,10 @@ class OthersMainPage extends React.Component {
         placeHolder: topic === "work" ? "e.g. Oxford" : "e.g. Bachelor of Arts",
       },
       forth: {
-        label: topic === "work" ? "COUNTRY" : "FIELD OF STUDY",
-        field: topic === "work" ? "country" : "field",
-        placeHolder: topic === "work" ? "e.g. Mexico" : "e.g. Economics",
+        label: topic === "work" ? "COUNTRY" : "CITY/COUNTRY",
+        field: topic === "work" ? "country" : "location",
+        placeHolder:
+          topic === "work" ? "e.g. Mexico" : "e.g. Liverpool, United Kingdom",
       },
       fifth: {
         label: "START DATE",
@@ -144,6 +144,14 @@ class OthersMainPage extends React.Component {
       }
     });
   };
+  showVitalInputs = () => {
+    this.setState((prevState) => {
+      prevState.showVitalInputs = this.state.filledVitalInputs ? false : true;
+      return {
+        showVitalInputs: prevState.showVitalInputs,
+      };
+    });
+  };
   render() {
     return (
       <div className="others-main main">
@@ -178,6 +186,13 @@ class OthersMainPage extends React.Component {
               data={this.props.data}
               topic={this.props.topic}
               id={this.id}
+              isRed={
+                this.state[this.props.topic][this.id][
+                  this.preReqs.first.field
+                ] === "" && this.state.showVitalInputs
+                  ? true
+                  : false
+              }
             />
             <TextInput
               className="half"
@@ -189,6 +204,13 @@ class OthersMainPage extends React.Component {
               data={this.props.data}
               topic={this.props.topic}
               id={this.id}
+              isRed={
+                this.state[this.props.topic][this.id][
+                  this.preReqs.second.field
+                ] === "" && this.state.showVitalInputs
+                  ? true
+                  : false
+              }
             />
             <TextInput
               className="half"
@@ -302,6 +324,7 @@ class OthersMainPage extends React.Component {
             toggleAlertBox={this.toggleAlertBox}
             originalData={this.props.data}
             filledVitalInputs={this.state.filledVitalInputs}
+            showVitalInputs={this.showVitalInputs}
           />
         </div>
         {this.state.showAlertBox ? (

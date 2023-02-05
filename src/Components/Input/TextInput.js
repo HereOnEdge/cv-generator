@@ -114,7 +114,11 @@ class TextInput extends React.Component {
         }`}
       >
         <label htmlFor={this.label}>{this.label}</label>
-        <div className={`input-container ${this.state.active ? "active" : ""}`}>
+        <div
+          className={`input-container ${this.state.active ? "active" : ""} ${
+            this.props.isRed ? "red" : ""
+          }`}
+        >
           <input
             name={this.label}
             id={this.field}

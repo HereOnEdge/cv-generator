@@ -56,6 +56,7 @@ class NavigationButtons extends React.Component {
           enable={this.props.hasNext}
           toggleAlertBox={this.props.toggleAlertBox}
           filledVitalInputs={this.props.filledVitalInputs}
+          showVitalInputs={this.props.showVitalInputs}
         />
         <BackButton
           topic={this.topic}

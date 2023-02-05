@@ -25,7 +25,12 @@ class NextButton extends React.Component {
         this.props.currentPageNode.next
       );
     } else {
-      this.props.toggleAlertBox();
+      if (this.props.toggleAlertBox !== undefined) {
+        this.props.showVitalInputs();
+        this.props.toggleAlertBox();
+      } else {
+        this.props.showVitalInputs();
+      }
     }
   }
   render() {

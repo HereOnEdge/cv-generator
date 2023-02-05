@@ -76,3 +76,7 @@ label {
 .remove-btn:hover {
     color: red
 }
+.red {
+    outline-color: red;
+    outline-width: 1.5px;
+}

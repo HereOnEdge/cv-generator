@@ -10,7 +10,6 @@ import NavigationButtons from "../NavigationButtons/NavigationButtons";
 class ContactMainPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.data);
     this.state = {
       contact: {
         photoSrc: "",
@@ -31,6 +30,8 @@ class ContactMainPage extends React.Component {
         nationality: false,
         address: true,
       },
+      filledVitalInputs: false,
+      showVitalInputs: false,
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
   }
@@ -42,6 +43,7 @@ class ContactMainPage extends React.Component {
         contact: prevState.contact,
       };
     });
+    this.checkVitalInputs();
   };
 
   changeExtraFields(fieldName, value) {
@@ -74,6 +76,25 @@ class ContactMainPage extends React.Component {
     }
   }
 
+  checkVitalInputs = () => {
+    this.setState((prevState) => {
+      prevState.filledVitalInputs =
+        this.state.contact.email === "" ||
+        this.state.contact.firstName === "" ||
+        this.state.contact.lastName === ""
+          ? false
+          : true;
+      return { filledVitalInputs: prevState.filledVitalInputs };
+    });
+  };
+  showVitalInputs = () => {
+    this.setState((prevState) => {
+      prevState.showVitalInputs = this.state.filledVitalInputs ? false : true;
+      return {
+        showVitalInputs: prevState.showVitalInputs,
+      };
+    });
+  };
   componentDidMount() {
     this.findPhotoSrc();
     this.findVisibleFields();
@@ -103,6 +124,12 @@ class ContactMainPage extends React.Component {
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
+              isRed={
+                this.state[this.props.topic].firstName === "" &&
+                this.state.showVitalInputs
+                  ? true
+                  : false
+              }
             />
             <TextInput
               className="half"
@@ -113,6 +140,12 @@ class ContactMainPage extends React.Component {
               validationType="text"
               data={this.props.data}
               topic={this.props.topic}
+              isRed={
+                this.state[this.props.topic].lastName === "" &&
+                this.state.showVitalInputs
+                  ? true
+                  : false
+              }
             />
             <TextInput
               className="half"
@@ -153,6 +186,12 @@ class ContactMainPage extends React.Component {
               validationType="email"
               data={this.props.data}
               topic={this.props.topic}
+              isRed={
+                this.state[this.props.topic].email === "" &&
+                this.state.showVitalInputs
+                  ? true
+                  : false
+              }
             />
             <TextInput
               className=""
@@ -253,6 +292,8 @@ class ContactMainPage extends React.Component {
             completedTopics={this.props.completedTopics}
             hasNext={this.props.currentPageNode.next === null ? false : true}
             hasBack={this.props.currentPageNode.back === null ? false : true}
+            filledVitalInputs={this.state.filledVitalInputs}
+            showVitalInputs={this.showVitalInputs}
           />
         </div>
       </div>
