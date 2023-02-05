@@ -12,14 +12,21 @@ class NextButton extends React.Component {
       this.props.currentPageNode.next.value().topic !== this.props.topic
         ? this.props.topic
         : null;
-    this.props.editData(
-      this.props.data,
-      this.nextPageTopic,
-      this.nextPagePage,
-      this.props.currentPageNode,
-      [...this.props.completedTopics, completeTopic],
-      this.props.currentPageNode.next
-    );
+    if (
+      this.props.filledVitalInputs === undefined ||
+      this.props.filledVitalInputs
+    ) {
+      this.props.editData(
+        this.props.data,
+        this.nextPageTopic,
+        this.nextPagePage,
+        this.props.currentPageNode,
+        [...this.props.completedTopics, completeTopic],
+        this.props.currentPageNode.next
+      );
+    } else {
+      this.props.toggleAlertBox();
+    }
   }
   render() {
     return this.props.enable ? (

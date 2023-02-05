@@ -13,14 +13,25 @@ class BackButton extends React.Component {
       completedTopics.pop();
     }
     completedTopics.pop();
-    this.props.editData(
-      this.props.data,
-      this.nextPageTopic,
-      this.nextPagePage,
-      this.props.currentPageNode,
-      completedTopics,
-      this.props.currentPageNode.back
-    );
+    if (this.props.filledVitalInputs) {
+      this.props.editData(
+        this.props.data,
+        this.nextPageTopic,
+        this.nextPagePage,
+        this.props.currentPageNode,
+        completedTopics,
+        this.props.currentPageNode.back
+      );
+    } else {
+      this.props.editData(
+        this.props.originalData,
+        this.nextPageTopic,
+        this.nextPagePage,
+        this.props.currentPageNode,
+        completedTopics,
+        this.props.currentPageNode.back
+      );
+    }
   }
   render() {
     return this.props.enable === true ? (

@@ -43,6 +43,7 @@ class MainPage extends React.Component {
         page={page}
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
+        navLink={navLink}
       />
     ) : page === "description" ? (
       <DescPage

@@ -5,6 +5,7 @@ import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import PreviewButton from "../Preview/PreviewButton";
 import DateInput from "../Input/DateInput";
 import { EducateTextEditorCont } from "../TextEditor/TextEditorContainer";
+import AlertBox from "../AlertBox";
 
 class OthersMainPage extends React.Component {
   constructor(props) {
@@ -56,6 +57,8 @@ class OthersMainPage extends React.Component {
               },
       },
       isDescOpen: false,
+      showAlertBox: false,
+      filledVitalInputs: false,
     };
   }
 
@@ -66,6 +69,7 @@ class OthersMainPage extends React.Component {
         [this.props.topic]: prevState[this.props.topic],
       };
     });
+    this.checkVitalInputs();
   };
   findInputReqs = () => {
     let topic = this.props.topic;
@@ -114,6 +118,30 @@ class OthersMainPage extends React.Component {
       return {
         isDescOpen: prevState.isDescOpen,
       };
+    });
+  };
+  toggleAlertBox = () => {
+    this.setState((prevState) => {
+      prevState.showAlertBox = prevState.showAlertBox ? false : true;
+      return {
+        showAlertBox: prevState.showAlertBox,
+      };
+    });
+  };
+  checkVitalInputs = () => {
+    this.setState((prevState) => {
+      const thePath = prevState[this.props.topic][this.id];
+      if (this.props.topic === "work") {
+        return {
+          filledVitalInputs:
+            thePath.title === "" || thePath.employer === "" ? false : true,
+        };
+      } else {
+        return {
+          filledVitalInputs:
+            thePath.university === "" || thePath.field === "" ? false : true,
+        };
+      }
     });
   };
   render() {
@@ -271,8 +299,22 @@ class OthersMainPage extends React.Component {
             completedTopics={this.props.completedTopics}
             hasNext={this.props.currentPageNode.next === null ? false : true}
             hasBack={this.props.currentPageNode.back === null ? false : true}
+            toggleAlertBox={this.toggleAlertBox}
+            originalData={this.props.data}
+            filledVitalInputs={this.state.filledVitalInputs}
           />
         </div>
+        {this.state.showAlertBox ? (
+          <AlertBox
+            toggleAlertBox={this.toggleAlertBox}
+            completedTopics={this.props.completedTopics}
+            topic={this.props.topic}
+            navLink={this.props.navLink}
+            currentPageNode={this.props.currentPageNode}
+            originalData={this.props.data}
+            changeState={this.props.changeState}
+          />
+        ) : null}
       </div>
     );
   }

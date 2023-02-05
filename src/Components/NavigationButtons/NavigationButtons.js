@@ -54,6 +54,8 @@ class NavigationButtons extends React.Component {
           currentPageNode={this.props.currentPageNode}
           completedTopics={this.props.completedTopics}
           enable={this.props.hasNext}
+          toggleAlertBox={this.props.toggleAlertBox}
+          filledVitalInputs={this.props.filledVitalInputs}
         />
         <BackButton
           topic={this.topic}
@@ -65,6 +67,8 @@ class NavigationButtons extends React.Component {
           currentPageNode={this.props.currentPageNode}
           completedTopics={this.props.completedTopics}
           enable={this.props.hasBack}
+          originalData={this.props.originalData}
+          filledVitalInputs={this.props.filledVitalInputs}
         />
       </div>
     );
