@@ -12,7 +12,7 @@ class BackButton extends React.Component {
     if (this.props.currentPageNode.back.value().topic !== this.props.topic) {
       completedTopics.pop();
     }
-    completedTopics.pop();
+    // completedTopics.pop();
     if (
       this.props.filledVitalInputs === undefined ||
       this.props.filledVitalInputs

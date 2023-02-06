@@ -12,6 +12,10 @@ class NextButton extends React.Component {
       this.props.currentPageNode.next.value().topic !== this.props.topic
         ? this.props.topic
         : null;
+    const completedTopics =
+      completeTopic !== null
+        ? [...this.props.completedTopics, completeTopic]
+        : [...this.props.completedTopics];
     if (
       this.props.filledVitalInputs === undefined ||
       this.props.filledVitalInputs
@@ -21,7 +25,7 @@ class NextButton extends React.Component {
         this.nextPageTopic,
         this.nextPagePage,
         this.props.currentPageNode,
-        [...this.props.completedTopics, completeTopic],
+        completedTopics,
         this.props.currentPageNode.next
       );
     } else {
