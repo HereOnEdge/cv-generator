@@ -16,6 +16,7 @@ class MainPage extends React.Component {
       completedTopics,
       currentPageNode,
       navLink,
+      __isEducateDescOpen,
     } = this.props;
     return topic === "contact" ? (
       <ContactMainPage
@@ -44,6 +45,7 @@ class MainPage extends React.Component {
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
         navLink={navLink}
+        __isEducateDescOpen={__isEducateDescOpen}
       />
     ) : page === "description" ? (
       <DescPage

@@ -56,7 +56,11 @@ class OthersMainPage extends React.Component {
                     : "",
               },
       },
-      isDescOpen: false,
+      isDescOpen:
+        this.props.__isEducateDescOpen !== undefined &&
+        this.props.__isEducateDescOpen === true
+          ? true
+          : false,
       showAlertBox: false,
       filledVitalInputs: false,
       showVitalInputs: false,

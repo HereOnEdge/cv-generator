@@ -15,6 +15,7 @@ class App extends React.Component {
       data: {},
       completedTopics: [],
       currentPageNode: this.navLink.head,
+      __isEducateDescOpen: undefined,
     };
 
     this.stateHandler = this.stateHandler.bind(this);
@@ -27,6 +28,7 @@ class App extends React.Component {
     currentPageNode,
     completedTopics,
     newPageNode,
+    __isEducateDescOpen,
     callBackFunc
   ) {
     this.setState(
@@ -71,13 +73,13 @@ class App extends React.Component {
             prevState.data[currentPageNode.value().topic] = data;
           }
         }
-        console.log(prevState.data);
         return {
           topic: topic,
           page: page,
           data: prevState.data,
           completedTopics: completedTopics,
           currentPageNode: newPageNode,
+          __isEducateDescOpen: __isEducateDescOpen === true ? true : undefined,
         };
       },
       callBackFunc !== undefined ? callBackFunc : null
@@ -119,6 +121,7 @@ class App extends React.Component {
             completedTopics={this.state.completedTopics}
             currentPageNode={this.state.currentPageNode}
             navLink={this.navLink}
+            __isEducateDescOpen={this.state.__isEducateDescOpen}
           />
         </main>
       </div>

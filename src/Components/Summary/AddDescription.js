@@ -21,7 +21,8 @@ class AddDesc extends React.Component {
       descPageNode.value().page,
       this.props.currentPageNode,
       this.props.completedTopics,
-      descPageNode
+      descPageNode,
+      this.props.topic === "educate" ? true : undefined
     );
   };
 
