@@ -5,6 +5,7 @@ import IntroPage from "./Pages/IntroPages";
 import OthersMainPage from "./Pages/OtherMainPages";
 import DescPage from "./Pages/DescriptionPage";
 import SummaryPage from "./Pages/SummaryPages";
+import FinalPage from "./Pages/FinalPage";
 
 class MainPage extends React.Component {
   render() {
@@ -17,6 +18,8 @@ class MainPage extends React.Component {
       currentPageNode,
       navLink,
       __isEducateDescOpen,
+      __cvDesign,
+      changeCvDesign,
     } = this.props;
     return topic === "contact" ? (
       <ContactMainPage
@@ -26,6 +29,7 @@ class MainPage extends React.Component {
         page={page}
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
+        cvDesign={__cvDesign}
       />
     ) : page === "intro" ? (
       <IntroPage
@@ -35,6 +39,7 @@ class MainPage extends React.Component {
         page={page}
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
+        cvDesign={__cvDesign}
       />
     ) : page === "main" ? (
       <OthersMainPage
@@ -46,6 +51,7 @@ class MainPage extends React.Component {
         currentPageNode={currentPageNode}
         navLink={navLink}
         __isEducateDescOpen={__isEducateDescOpen}
+        cvDesign={__cvDesign}
       />
     ) : page === "description" ? (
       <DescPage
@@ -55,6 +61,7 @@ class MainPage extends React.Component {
         page={page}
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
+        cvDesign={__cvDesign}
       />
     ) : page === "summary" ? (
       <SummaryPage
@@ -65,6 +72,18 @@ class MainPage extends React.Component {
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
         navLink={navLink}
+        cvDesign={__cvDesign}
+      />
+    ) : topic === "final" ? (
+      <FinalPage
+        changeState={changeState}
+        data={data}
+        topic={topic}
+        page={page}
+        completedTopics={completedTopics}
+        currentPageNode={currentPageNode}
+        cvDesign={__cvDesign}
+        changeCvDesign={changeCvDesign}
       />
     ) : (
       "where am I"

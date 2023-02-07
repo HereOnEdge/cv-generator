@@ -16,6 +16,35 @@ class App extends React.Component {
       completedTopics: [],
       currentPageNode: this.navLink.head,
       __isEducateDescOpen: undefined,
+      __cvDesign: {
+        templates: ["default"],
+        activeTemplate: "default",
+        templateColors: [],
+        activeTempColor: "",
+        fonts: [
+          "Verdana",
+          "Serif",
+          "Arial",
+          "Arial Narrow",
+          "Times",
+          "Times New Roman",
+          "Helvetica",
+          "Courier",
+          "Courier New",
+          "Candara",
+          "Geneva",
+          "Calibri",
+          "Cambria",
+          "Garamond",
+          "Lucidia Bright",
+          "Copperplate",
+        ],
+        activeFont: "Verdana",
+        fontSize: "16",
+        headingSize: "20",
+        gap: "10",
+        lineSpace: "4",
+      },
     };
 
     this.stateHandler = this.stateHandler.bind(this);
@@ -102,6 +131,57 @@ class App extends React.Component {
     this.navLink.append({ topic: "summary", page: "description" });
     this.navLink.append({ topic: "final", page: "main" });
   };
+  changeCvDesign = {
+    font: (font) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.activeFont = font;
+        return {
+          __cvDesign: prevState.__cvDesign,
+        };
+      });
+    },
+    template: (template) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.activeTemplate = template;
+        return {
+          __cvDesign: prevState.__cvDesign,
+        };
+      });
+    },
+    fontSize: (size) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.fontSize = size;
+        return {
+          __cvDesign: prevState.fontSize,
+        };
+      });
+    },
+    headingSize: (size) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.headingSize = size;
+        return {
+          __cvDesign: prevState.headingSize,
+        };
+      });
+    },
+    sectionGap: (size) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.gap = size;
+        return {
+          __cvDesign: prevState.gap,
+        };
+      });
+    },
+    lineSpace: (size) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.lineSpace = size;
+        return {
+          __cvDesign: prevState.lineSpace,
+        };
+      });
+    },
+  };
+
   render() {
     return (
       <div>
@@ -122,6 +202,8 @@ class App extends React.Component {
             currentPageNode={this.state.currentPageNode}
             navLink={this.navLink}
             __isEducateDescOpen={this.state.__isEducateDescOpen}
+            __cvDesign={this.state.__cvDesign}
+            changeCvDesign={this.changeCvDesign}
           />
         </main>
       </div>
