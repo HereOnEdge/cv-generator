@@ -5,6 +5,7 @@ import ProfilePhoto from "../ProfilePhoto";
 import PreviewContainer from "../Preview/PreviewContainer";
 import PreviewButton from "../Preview/PreviewButton";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
+import Preview from "../Preview/Preview";
 // import "../../styles/ContactMain.css";
 
 class ContactMainPage extends React.Component {
@@ -32,6 +33,7 @@ class ContactMainPage extends React.Component {
       },
       filledVitalInputs: false,
       showVitalInputs: false,
+      previewData: { ...this.props.data },
     };
     this.changeExtraFields = this.changeExtraFields.bind(this);
   }
@@ -39,8 +41,18 @@ class ContactMainPage extends React.Component {
   changeData = (field, value) => {
     this.setState((prevState) => {
       prevState.contact[field] = value;
+      this.props.changeState(
+        prevState.contact,
+        this.props.topic,
+        this.props.page,
+        this.props.currentPageNode,
+        this.props.completedTopics,
+        this.props.currentPageNode
+      );
+      prevState.previewData.contact = prevState.contact;
       return {
         contact: prevState.contact,
+        previewData: prevState.previewData,
       };
     });
     this.checkVitalInputs();
@@ -99,7 +111,6 @@ class ContactMainPage extends React.Component {
     this.findPhotoSrc();
     this.findVisibleFields();
   }
-
   render() {
     return (
       <div className="contact-main main">
@@ -276,10 +287,13 @@ class ContactMainPage extends React.Component {
           </div>
           <div className="contact-preview whole-preview">
             <PreviewContainer
-              data={this.props.data}
-              highlightArea={this.props.topic}
+              data={this.state.previewData}
+              changePreviewState={this.props.changePreviewState}
+              topic={this.props.topic}
+              page={this.props.page}
+              cvDesign={this.props.cvDesign}
             />
-            <PreviewButton />
+            <PreviewButton changePreviewState={this.props.changePreviewState} />
           </div>
         </div>
         <div className="contact-foot foot">
@@ -296,6 +310,14 @@ class ContactMainPage extends React.Component {
             showVitalInputs={this.showVitalInputs}
           />
         </div>
+        {this.props.isPreviewVisible ? (
+          <Preview
+            data={this.state.previewData}
+            cvDesign={this.props.cvDesign}
+            hasCloseButton={true}
+            changePreviewState={this.props.changePreviewState}
+          />
+        ) : null}
       </div>
     );
   }

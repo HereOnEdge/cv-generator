@@ -8,6 +8,9 @@ import SummaryPage from "./Pages/SummaryPages";
 import FinalPage from "./Pages/FinalPage";
 
 class MainPage extends React.Component {
+  componentDidUpdate() {
+    console.log(this.props.data);
+  }
   render() {
     const {
       changeState,
@@ -20,6 +23,8 @@ class MainPage extends React.Component {
       __isEducateDescOpen,
       __cvDesign,
       changeCvDesign,
+      isPreviewVisible,
+      changePreviewState,
     } = this.props;
     return topic === "contact" ? (
       <ContactMainPage
@@ -30,6 +35,8 @@ class MainPage extends React.Component {
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
         cvDesign={__cvDesign}
+        isPreviewVisible={isPreviewVisible}
+        changePreviewState={changePreviewState}
       />
     ) : page === "intro" ? (
       <IntroPage
@@ -40,6 +47,8 @@ class MainPage extends React.Component {
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
         cvDesign={__cvDesign}
+        isPreviewVisible={isPreviewVisible}
+        changePreviewState={changePreviewState}
       />
     ) : page === "main" ? (
       <OthersMainPage
@@ -52,6 +61,8 @@ class MainPage extends React.Component {
         navLink={navLink}
         __isEducateDescOpen={__isEducateDescOpen}
         cvDesign={__cvDesign}
+        isPreviewVisible={isPreviewVisible}
+        changePreviewState={changePreviewState}
       />
     ) : page === "description" ? (
       <DescPage
@@ -62,6 +73,8 @@ class MainPage extends React.Component {
         completedTopics={completedTopics}
         currentPageNode={currentPageNode}
         cvDesign={__cvDesign}
+        isPreviewVisible={isPreviewVisible}
+        changePreviewState={changePreviewState}
       />
     ) : page === "summary" ? (
       <SummaryPage
@@ -73,6 +86,8 @@ class MainPage extends React.Component {
         currentPageNode={currentPageNode}
         navLink={navLink}
         cvDesign={__cvDesign}
+        isPreviewVisible={isPreviewVisible}
+        changePreviewState={changePreviewState}
       />
     ) : topic === "final" ? (
       <FinalPage

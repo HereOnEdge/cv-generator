@@ -2,6 +2,7 @@ import React from "react";
 import PreviewContainer from "../Preview/PreviewContainer";
 import PreviewButton from "../Preview/PreviewButton";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
+import Preview from "../Preview/Preview";
 
 class IntroPage extends React.Component {
   constructor(props) {
@@ -76,9 +77,12 @@ class IntroPage extends React.Component {
           <div className={`intro-preview whole-preview`}>
             <PreviewContainer
               data={this.props.data}
-              highlightArea={this.props.topic}
+              changePreviewState={this.props.changePreviewState}
+              topic={this.props.topic}
+              page={this.props.page}
+              cvDesign={this.props.cvDesign}
             />
-            <PreviewButton />
+            <PreviewButton changePreviewState={this.props.changePreviewState} />
           </div>
         </div>
         <div className={`intro-foot foot`}>
@@ -93,6 +97,14 @@ class IntroPage extends React.Component {
             hasBack={this.props.currentPageNode.back === null ? false : true}
           />
         </div>
+        {this.props.isPreviewVisible ? (
+          <Preview
+            data={this.props.data}
+            cvDesign={this.props.cvDesign}
+            hasCloseButton={true}
+            changePreviewState={this.props.changePreviewState}
+          />
+        ) : null}
       </div>
     );
   }

@@ -6,6 +6,7 @@ import PreviewButton from "../Preview/PreviewButton";
 import DateInput from "../Input/DateInput";
 import { EducateTextEditorCont } from "../TextEditor/TextEditorContainer";
 import AlertBox from "../AlertBox";
+import Preview from "../Preview/Preview";
 
 class OthersMainPage extends React.Component {
   constructor(props) {
@@ -64,14 +65,25 @@ class OthersMainPage extends React.Component {
       showAlertBox: false,
       filledVitalInputs: false,
       showVitalInputs: false,
+      previewData: { ...this.props.data },
     };
   }
 
   changeData = (field, value, id) => {
     this.setState((prevState) => {
       prevState[this.props.topic][id][field] = value;
+      prevState.previewData[this.props.topic] = prevState[this.props.topic];
+      this.props.changeState(
+        prevState[this.props.topic],
+        this.props.topic,
+        this.props.page,
+        this.props.currentPageNode,
+        this.props.completedTopics,
+        this.props.currentPageNode
+      );
       return {
         [this.props.topic]: prevState[this.props.topic],
+        previewData: prevState.previewData,
       };
     });
     this.checkVitalInputs();
@@ -173,7 +185,7 @@ class OthersMainPage extends React.Component {
                   : "List universities, colleges or institutions where you studied. If you didn't attend education, then list your school or any other place of training. particulary if it corresponds to the position sought."}
               </p>
             </div>
-            <PreviewButton />
+            <PreviewButton changePreviewState={this.props.changePreviewState} />
           </div>
           <div
             className={`others-body body ${
@@ -341,8 +353,16 @@ class OthersMainPage extends React.Component {
             topic={this.props.topic}
             navLink={this.props.navLink}
             currentPageNode={this.props.currentPageNode}
-            originalData={this.props.data}
+            originalData={{ ...this.props.data[this.props.topic] }}
             changeState={this.props.changeState}
+          />
+        ) : null}
+        {this.props.isPreviewVisible ? (
+          <Preview
+            data={this.state.previewData}
+            cvDesign={this.props.cvDesign}
+            hasCloseButton={true}
+            changePreviewState={this.props.changePreviewState}
           />
         ) : null}
       </div>

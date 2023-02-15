@@ -3,7 +3,11 @@ import React from "react";
 class PreviewButton extends React.Component {
   render() {
     return (
-      <button className="preview-button">
+      <button
+        className="preview-button"
+        type="button"
+        onClick={this.props.changePreviewState}
+      >
         Preview
         <svg
           xmlns="http://www.w3.org/2000/svg"

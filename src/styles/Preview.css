@@ -1,0 +1,146 @@
+.preview-container {
+    outline: 1px solid blue;
+    width: 90%;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 0.1em;
+    padding: 0 !important;
+}
+.preview-button {
+    background-color: var(--my-white);
+    color: var(--my-light-blue);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.7em;
+}
+.preview {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.preview > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3%;
+}
+.leftSide {
+    width: 30%;
+    background-color: #3a3a3a;
+    color: var(--my-white);
+}
+.rightSide {
+    width: 60%;
+}
+.preview > div > div {
+    width: 100%;
+}
+.preview-header {
+    font-size: 4em !important;
+}
+.preview-container ul {
+    padding-left: 10%;
+}
+.preview-container .bold {
+    font-size: inherit;
+} 
+.image-container > img{
+    width: 100%;
+    height: 100%;
+}
+.highlight {
+    background-color: #faeed6;
+    outline: 3px solid #efc778;
+}
+.leftSide .highlight{
+    color: #666666;
+}
+.rightSide > div > div > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 1%;
+    
+}
+.contact-data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+.preview-container .contact-data-container {
+    gap: 1px;
+}
+.svg-container {
+    flex: 0 1 auto;
+    aspect-ratio: 1;
+    background-color: black;
+    color: var(--my-white);
+    border-radius: 50%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.preview-container .svg-container svg {
+    width: 5px !important;
+    height: 5px !important;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+}
+.image-container svg {
+    width: 100%;
+    height: 100%;
+}
+.preview-container h1{
+    margin: 5% 0;
+    /* font-size: 1em !important; */
+}
+.preview-container .between-line {
+    height: 4px !important;
+}
+.preview .between-line{
+    height: 10px;
+    width: 0;
+}
+.leftSide .between-line{
+    border-color: var(--my-grey);
+}
+.rightSide .between-line{
+    border-color: black;
+}
+.education-university-data, .education-university-container {
+    display: flex;
+    gap: 2%;
+}
+.work-data {
+    margin-bottom: 5%;
+}
+.work-desc-container, .education-desc-container{
+    display: block !important;
+    margin-top: 3%;
+    padding-left: 3%;
+}
+.education-data-container {
+    margin-bottom: 5%;
+}
+.work-employer-container {
+    display: flex;
+    gap: 1% !important;
+}

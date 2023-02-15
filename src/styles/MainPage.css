@@ -118,28 +118,6 @@
     align-items: flex-end;
     gap: 5px;
 }
-.preview-container {
-    outline: 1px solid blue;
-    width: 80%;
-    height: max(160px, 60%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.preview-button {
-    background-color: var(--my-white);
-    color: var(--my-light-blue);
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.7em;
-}
 .foot {
     width: 100%;
     height: 100%;
@@ -426,3 +404,6 @@
     height: 0;
     visibility: hidden;
 } 
+.italic {
+    font-style: italic;
+}

@@ -5,6 +5,7 @@ import PreviewContainer from "../Preview/PreviewContainer";
 import AddNewData from "../Summary/AddNewData";
 import DataSummary from "../Summary/DataSummary";
 import { v1 as randomKey } from "uuid";
+import Preview from "../Preview/Preview";
 
 class SummaryPage extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class SummaryPage extends React.Component {
       <div className="summary-main main">
         <div className="summary-header header">
           <h1>{this.title}</h1>
-          <PreviewButton />
+          <PreviewButton changePreviewState={this.props.changePreviewState} />
         </div>
         <div className="summary-body body">
           <div className="summary-data data">
@@ -110,7 +111,10 @@ class SummaryPage extends React.Component {
           <div className="summary-preview whole preview">
             <PreviewContainer
               data={this.props.data}
-              highlightArea={this.props.topic}
+              changePreviewState={this.props.changePreviewState}
+              topic={this.props.topic}
+              page={this.props.page}
+              cvDesign={this.props.cvDesign}
             />
           </div>
         </div>
@@ -126,6 +130,14 @@ class SummaryPage extends React.Component {
             hasBack={this.props.currentPageNode.back === null ? false : true}
           />
         </div>
+        {this.props.isPreviewVisible ? (
+          <Preview
+            data={this.props.data}
+            cvDesign={this.props.cvDesign}
+            hasCloseButton={true}
+            changePreviewState={this.props.changePreviewState}
+          />
+        ) : null}
       </div>
     );
   }

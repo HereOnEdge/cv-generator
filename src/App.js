@@ -20,7 +20,7 @@ class App extends React.Component {
         templates: ["default"],
         activeTemplate: "default",
         templateColors: [],
-        activeTempColor: "",
+        color: "black",
         fonts: [
           "Verdana",
           "Serif",
@@ -41,9 +41,10 @@ class App extends React.Component {
         ],
         activeFont: "Verdana",
         fontSize: "16",
-        headingSize: "20",
-        gap: "10",
-        lineSpace: "4",
+        headingSize: "10",
+        gap: "5",
+        lineSpace: "1",
+        previewVisible: false,
       },
     };
 
@@ -63,7 +64,10 @@ class App extends React.Component {
     this.setState(
       (prevState) => {
         // if we are editing data in summary page, it means we are deleting somthing
-        if (currentPageNode.value().page === newPageNode.value().page) {
+        if (
+          currentPageNode.value().page === "summary" &&
+          newPageNode.value().page === "summary"
+        ) {
           // find the id of peace of info that we are going to delete
           let id = Object.keys(data)[0];
           // delete the peace of info and update the data
@@ -180,8 +184,23 @@ class App extends React.Component {
         };
       });
     },
+    color: (col) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.color = col;
+        return {
+          __cvDesign: prevState.color,
+        };
+      });
+    },
   };
 
+  changePreviewState = () => {
+    this.setState((prevState) => {
+      return prevState.previewVisible
+        ? { previewVisible: false }
+        : { previewVisible: true };
+    });
+  };
   render() {
     return (
       <div>
@@ -204,6 +223,8 @@ class App extends React.Component {
             __isEducateDescOpen={this.state.__isEducateDescOpen}
             __cvDesign={this.state.__cvDesign}
             changeCvDesign={this.changeCvDesign}
+            isPreviewVisible={this.state.previewVisible}
+            changePreviewState={this.changePreviewState}
           />
         </main>
       </div>

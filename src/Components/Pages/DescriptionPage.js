@@ -3,6 +3,7 @@ import React from "react";
 import PreviewButton from "../Preview/PreviewButton";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import { TextEditorCont } from "../TextEditor/TextEditorContainer";
+import Preview from "../Preview/Preview";
 
 class DescPage extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class DescPage extends React.Component {
                     : "",
               },
             },
+            previewData: { ...this.props.data },
           }
         : {
             [this.props.topic]: {
@@ -35,6 +37,7 @@ class DescPage extends React.Component {
                   ? this.props.data[this.props.topic].description
                   : "",
             },
+            previewData: { ...this.props.data },
           };
     this.findTitles();
   }
@@ -63,21 +66,26 @@ class DescPage extends React.Component {
     }
   }
   changeData = (value, id) => {
-    if (this.props.topic === "work") {
-      this.setState((prevState) => {
+    this.setState((prevState) => {
+      if (this.props.topic === "work") {
         prevState[this.props.topic][id].description = value;
-        return {
-          [this.props.topic]: prevState[this.props.topic],
-        };
-      });
-    } else {
-      this.setState((prevState) => {
+      } else {
         prevState[this.props.topic].description = value;
-        return {
-          [this.props.topic]: prevState[this.props.topic],
-        };
-      });
-    }
+      }
+      this.props.changeState(
+        prevState[this.props.topic],
+        this.props.topic,
+        this.props.page,
+        this.props.currentPageNode,
+        this.props.completedTopics,
+        this.props.currentPageNode
+      );
+      prevState.previewData[this.props.topic] = prevState[this.props.topic];
+      return {
+        [this.props.topic]: prevState[this.props.topic],
+        previewData: prevState.previewData,
+      };
+    });
   };
   render() {
     return (
@@ -87,7 +95,7 @@ class DescPage extends React.Component {
             <h1>{this.pageTitle}</h1>
             <p>{this.pageParagraph}</p>
           </div>
-          <PreviewButton />
+          <PreviewButton changePreviewState={this.props.changePreviewState} />
         </div>
         <div className="desc-body body">
           <TextEditorCont
@@ -118,6 +126,14 @@ class DescPage extends React.Component {
             hasBack={this.props.currentPageNode.back === null ? false : true}
           />
         </div>
+        {this.props.isPreviewVisible ? (
+          <Preview
+            data={this.state.previewData}
+            cvDesign={this.props.cvDesign}
+            hasCloseButton={true}
+            changePreviewState={this.props.changePreviewState}
+          />
+        ) : null}
       </div>
     );
   }
