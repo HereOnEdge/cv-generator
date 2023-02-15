@@ -40,6 +40,9 @@ class ContactMainPage extends React.Component {
 
   changeData = (field, value) => {
     this.setState((prevState) => {
+      if (field === "firstName" || field === "lastName") {
+        value = value.charAt(0).toUpperCase() + value.slice(1);
+      }
       prevState.contact[field] = value;
       this.props.changeState(
         prevState.contact,
