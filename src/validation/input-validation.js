@@ -46,7 +46,7 @@ const validationList = {
     mustHave: null,
   },
   phone: {
-    notAllowed: [...letters, ...symbols, " "],
+    notAllowed: [...letters, ...symbols, " ", "/", ","],
     mustHave: null,
   },
   email: {
