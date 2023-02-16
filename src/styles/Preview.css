@@ -158,3 +158,6 @@
 .preview ul {
     padding-left: 0;
 }
+.main > .preview {
+    grid-area: 1 / 1/ -1 / -1;
+}

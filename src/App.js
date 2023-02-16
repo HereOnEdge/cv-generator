@@ -44,8 +44,8 @@ class App extends React.Component {
         headingSize: "1.4",
         gap: "5",
         lineSpace: "1",
-        previewVisible: false,
       },
+      previewVisible: false,
     };
 
     this.stateHandler = this.stateHandler.bind(this);
