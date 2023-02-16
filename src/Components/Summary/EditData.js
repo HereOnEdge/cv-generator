@@ -8,6 +8,7 @@ class EditDataButton extends AddNewData {
         className="edit-button summary-button"
         type="button"
         onClick={this.addData}
+        title="Edit"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
