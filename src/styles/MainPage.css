@@ -91,6 +91,7 @@
     z-index: 1;
     font-size: 0.7rem;
     text-shadow: 0;
+    cursor: pointer;
 }
 .moreInfo-button:hover {
     background-color: var(--my-blue);
