@@ -23,9 +23,9 @@ label {
     width: calc(50% - 20px);
 }
 .input-container {
-    width: 100%;
+    width: calc(100% - 0.6em);
     height: 25px;
-    padding: 4px;
+    padding: 0.3em;
     outline: 1px solid var(--my-grey);
     display: grid;
     grid-template-columns: 1fr 20px;
