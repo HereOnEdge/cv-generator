@@ -243,7 +243,9 @@ class ContactPreview extends React.Component {
       >
         <h1
           className="preview-header"
-          style={{ fontSize: `${++this.props.cvDesign.headingSize + 4}` }}
+          style={{
+            fontSize: `${parseInt(this.props.cvDesign.headingSize) + 2}em`,
+          }}
         >
           {this.fullName}
         </h1>

@@ -10,7 +10,7 @@ class SkillsPreview extends React.Component {
       >
         <h1
           className="preview-header"
-          style={{ fontSize: this.props.cvDesign.headingSize }}
+          style={{ fontSize: `${this.props.cvDesign.headingSize}em` }}
         >
           SKILLS
         </h1>

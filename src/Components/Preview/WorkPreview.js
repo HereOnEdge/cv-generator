@@ -75,7 +75,7 @@ class WorkPreview extends React.Component {
         }`}
       >
         <h1
-          style={{ fontSize: this.props.cvDesign.headingSize }}
+          style={{ fontSize: `${this.props.cvDesign.headingSize}em` }}
           className="preview-header"
         >
           WORK HISTORY

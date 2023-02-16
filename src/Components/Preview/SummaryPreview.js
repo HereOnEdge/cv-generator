@@ -36,7 +36,7 @@ class SumarryPreview extends React.Component {
       >
         <h1
           className="preview-header"
-          style={{ fontSize: this.props.cvDesign.headingSize }}
+          style={{ fontSize: `${this.props.cvDesign.headingSize}em` }}
         >
           PROFESSIONAL SUMMARY
         </h1>

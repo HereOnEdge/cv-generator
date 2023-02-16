@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    font-size: 0.1em;
+    font-size: 5px;
     padding: 0 !important;
 }
 .preview-button {
@@ -35,10 +35,11 @@
     justify-content: flex-start;
     align-items: center;
     padding: 3%;
+    overflow: hidden;
 }
 .leftSide {
     width: 30%;
-    background-color: #3a3a3a;
+    /* background-color: #3a3a3a; */
     color: var(--my-white);
 }
 .rightSide {
@@ -47,8 +48,8 @@
 .preview > div > div {
     width: 100%;
 }
-.preview-header {
-    font-size: 4em !important;
+.preview-container .preview-header {
+    /* font-size: 4em !important; */
 }
 .preview-container ul {
     padding-left: 10%;
@@ -78,13 +79,13 @@
 .contact-data-container {
     display: flex;
     flex-direction: column;
-    gap: 5%;
+    gap: 0.2em;
 }
 .preview-container .contact-data-container {
     gap: 1px;
 }
 .svg-container {
-    flex: 0 1 auto;
+    flex: 0 1 1em;
     aspect-ratio: 1;
     background-color: black;
     color: var(--my-white);
@@ -94,15 +95,15 @@
     justify-content: center;
     align-items: center;
 }
-.preview-container .svg-container svg {
-    width: 5px !important;
-    height: 5px !important;
+.svg-container svg {
+    width: 1em !important;
+    height: 1em !important;
 }
 .image-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 30px;
+    min-height: 2em;
 }
 .image-container svg {
     width: 100%;
@@ -110,10 +111,9 @@
 }
 .preview-container h1{
     margin: 5% 0;
-    /* font-size: 1em !important; */
 }
 .preview-container .between-line {
-    height: 4px !important;
+    height: 1em !important;
 }
 .preview .between-line{
     height: 10px;
@@ -127,6 +127,7 @@
 }
 .education-university-data, .education-university-container {
     display: flex;
+    justify-content: flex-start;
     gap: 2%;
 }
 .work-data {
@@ -135,7 +136,7 @@
 .work-desc-container, .education-desc-container{
     display: block !important;
     margin-top: 3%;
-    padding-left: 3%;
+    padding-left: 1.2em;
 }
 .education-data-container {
     margin-bottom: 5%;
@@ -143,4 +144,7 @@
 .work-employer-container {
     display: flex;
     gap: 1% !important;
+}
+.preview ul {
+    padding-left: 0;
 }

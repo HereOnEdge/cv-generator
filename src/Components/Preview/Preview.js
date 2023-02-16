@@ -16,6 +16,7 @@ class Preview extends React.Component {
       <div
         className="preview"
         style={{
+          fontSize: `${this.props.cvDesign.fontSize}em`,
           fontFamily: this.props.cvDesign.activeFont,
           lineHeight: this.props.cvDesign.lineSpace,
         }}
@@ -25,6 +26,7 @@ class Preview extends React.Component {
           style={{
             display: "flex",
             gap: `${this.props.cvDesign.gap}px`,
+            backgroundColor: this.props.cvDesign.color,
           }}
         >
           <ProfilePhotoPreview
