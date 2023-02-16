@@ -297,6 +297,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .summary-button:hover {
     background-color: var(--my-blue);
