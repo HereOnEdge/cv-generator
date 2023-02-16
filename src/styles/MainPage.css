@@ -289,12 +289,14 @@
 }
 .summary-button {
     padding: 0;
-    width: 30%;
     aspect-ratio: 1 /1;
     border: none;
     background-color: inherit;
     color: var(--my-light-blue);
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .summary-button:hover {
     background-color: var(--my-blue);
