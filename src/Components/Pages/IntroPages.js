@@ -103,7 +103,7 @@ class IntroPage extends React.Component {
         {this.props.isPreviewVisible ? (
           <div className="preview-background">
             <Preview
-              data={this.props.previewData}
+              data={this.props.data}
               cvDesign={this.props.cvDesign}
               hasCloseButton={true}
               changePreviewState={this.props.changePreviewState}
