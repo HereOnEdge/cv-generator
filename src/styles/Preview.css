@@ -1,5 +1,5 @@
 .preview-container {
-    outline: 1px solid blue;
+    outline: 1px solid var(--my-grey);
     width: 90%;
     min-height: 200px;
     display: flex;
