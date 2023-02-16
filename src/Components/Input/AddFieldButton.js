@@ -24,6 +24,7 @@ class AddFieldButton extends React.Component {
         name={`add ${this.name}`}
         type="button"
         onClick={() => this.addField()}
+        title={`Add ${this.name}'s input field`}
       >
         <span className="plus-sign">+</span>
         {this.capitalizeFirstLetter(this.name)}
