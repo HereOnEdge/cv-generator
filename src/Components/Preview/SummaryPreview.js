@@ -31,7 +31,7 @@ class SumarryPreview extends React.Component {
     return (
       <div
         className={`summary-preview ${
-          this.props.highlightArea === "summary" ? "highlight" : null
+          this.props.highlightArea === "summary" ? "highlight" : ""
         }`}
       >
         <h1

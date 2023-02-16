@@ -5,7 +5,7 @@ class SkillsPreview extends React.Component {
     return (
       <div
         className={`skills ${
-          this.props.highlightArea === "skills" ? "highlight" : null
+          this.props.highlightArea === "skills" ? "highlight" : ""
         }`}
       >
         <h1

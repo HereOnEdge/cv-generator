@@ -238,7 +238,7 @@ class ContactPreview extends React.Component {
     return (
       <div
         className={`contact-continer ${
-          this.props.highlightArea === "contact" ? "highlight" : null
+          this.props.highlightArea === "contact" ? "highlight" : ""
         }`}
       >
         <h1

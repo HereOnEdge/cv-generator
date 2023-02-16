@@ -87,7 +87,7 @@ class EducatePreview extends React.Component {
     return (
       <div
         className={`education ${
-          this.props.highlightArea === "educate" ? "highlight" : null
+          this.props.highlightArea === "educate" ? "highlight" : ""
         }`}
       >
         <h1
