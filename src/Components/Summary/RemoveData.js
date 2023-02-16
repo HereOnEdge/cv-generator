@@ -22,6 +22,7 @@ class RemoveDataButton extends React.Component {
         className="remove-button summary-button"
         type="button"
         onClick={this.removeData}
+        title="Delete"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
