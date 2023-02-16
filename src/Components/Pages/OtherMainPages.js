@@ -170,7 +170,7 @@ class OthersMainPage extends React.Component {
   };
   render() {
     return (
-      <div className="others-main-container">
+      <div className="main-container">
         <div className="others-main main">
           <div className="others-header header">
             <div className="others-title">
@@ -358,12 +358,14 @@ class OthersMainPage extends React.Component {
           />
         ) : null}
         {this.props.isPreviewVisible ? (
-          <Preview
-            data={this.state.previewData}
-            cvDesign={this.props.cvDesign}
-            hasCloseButton={true}
-            changePreviewState={this.props.changePreviewState}
-          />
+          <div className="preview-background">
+            <Preview
+              data={this.state.previewData}
+              cvDesign={this.props.cvDesign}
+              hasCloseButton={true}
+              changePreviewState={this.props.changePreviewState}
+            />
+          </div>
         ) : null}
       </div>
     );

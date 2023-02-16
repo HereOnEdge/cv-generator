@@ -18,6 +18,7 @@
     align-items: center;
     color: var(--my-dark-blue);
     font-size: 0.7rem;
+    grid-area: 1 / 1 / 2 / -1;
 }
 .body {
     display: grid;
@@ -25,6 +26,7 @@
     grid-template-rows: auto;
     color: var(--my-blue);
     width: 100%;
+    grid-area: 2 / 1 / 3 / -1;
 }
 .data {
     grid-area: 1 /1 / 2/3;
@@ -121,6 +123,15 @@
 .foot {
     width: 100%;
     height: 100%;
+    grid-area: 3 / 1 / 4 / -1;
+}
+.main-container {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
 }
 
 /* contact page */
@@ -161,14 +172,6 @@
 .others-title > p{
     margin-top: 0;
     width: 80%;
-}
-.others-main-container {
-    width: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
 }
 .others-main {
     grid-template-rows: auto 1fr 60px;

@@ -74,69 +74,73 @@ class SummaryPage extends React.Component {
   };
   render() {
     return (
-      <div className="summary-main main">
-        <div className="summary-header header">
-          <h1>{this.title}</h1>
-          <PreviewButton changePreviewState={this.props.changePreviewState} />
-        </div>
-        <div className="summary-body body">
-          <div className="summary-data data">
-            {this.state.data.map((item, index) =>
-              item !== undefined ? (
-                <DataSummary
-                  index={index}
-                  id={item.id}
-                  data={item}
-                  topic={this.props.topic}
-                  page={this.props.page}
-                  changeState={this.props.changeState}
-                  currentPageNode={this.props.currentPageNode}
-                  completedTopics={this.props.completedTopics}
-                  key={randomKey()}
-                  updateData={this.updateData}
-                  originalData={this.props.data}
-                />
-              ) : null
-            )}
-            <AddNewData
-              id={randomKey()}
+      <div className="main-container">
+        <div className="summary-main main">
+          <div className="summary-header header">
+            <h1>{this.title}</h1>
+            <PreviewButton changePreviewState={this.props.changePreviewState} />
+          </div>
+          <div className="summary-body body">
+            <div className="summary-data data">
+              {this.state.data.map((item, index) =>
+                item !== undefined ? (
+                  <DataSummary
+                    index={index}
+                    id={item.id}
+                    data={item}
+                    topic={this.props.topic}
+                    page={this.props.page}
+                    changeState={this.props.changeState}
+                    currentPageNode={this.props.currentPageNode}
+                    completedTopics={this.props.completedTopics}
+                    key={randomKey()}
+                    updateData={this.updateData}
+                    originalData={this.props.data}
+                  />
+                ) : null
+              )}
+              <AddNewData
+                id={randomKey()}
+                topic={this.props.topic}
+                page={this.props.page}
+                changeState={this.props.changeState}
+                currentPageNode={this.props.currentPageNode}
+                completedTopics={this.props.completedTopics}
+                data={this.state[this.props.topic]}
+              />
+            </div>
+            <div className="summary-preview whole-preview">
+              <PreviewContainer
+                data={this.props.data}
+                changePreviewState={this.props.changePreviewState}
+                topic={this.props.topic}
+                page={this.props.page}
+                cvDesign={this.props.cvDesign}
+              />
+            </div>
+          </div>
+          <div className="summary-foot foot">
+            <NavigationButtons
               topic={this.props.topic}
+              data={this.state[this.props.topic]}
+              editData={this.props.changeState}
               page={this.props.page}
-              changeState={this.props.changeState}
               currentPageNode={this.props.currentPageNode}
               completedTopics={this.props.completedTopics}
-              data={this.state[this.props.topic]}
+              hasNext={this.props.currentPageNode.next === null ? false : true}
+              hasBack={this.props.currentPageNode.back === null ? false : true}
             />
           </div>
-          <div className="summary-preview whole-preview">
-            <PreviewContainer
-              data={this.props.data}
-              changePreviewState={this.props.changePreviewState}
-              topic={this.props.topic}
-              page={this.props.page}
-              cvDesign={this.props.cvDesign}
-            />
-          </div>
-        </div>
-        <div className="summary-foot foot">
-          <NavigationButtons
-            topic={this.props.topic}
-            data={this.state[this.props.topic]}
-            editData={this.props.changeState}
-            page={this.props.page}
-            currentPageNode={this.props.currentPageNode}
-            completedTopics={this.props.completedTopics}
-            hasNext={this.props.currentPageNode.next === null ? false : true}
-            hasBack={this.props.currentPageNode.back === null ? false : true}
-          />
         </div>
         {this.props.isPreviewVisible ? (
-          <Preview
-            data={this.props.data}
-            cvDesign={this.props.cvDesign}
-            hasCloseButton={true}
-            changePreviewState={this.props.changePreviewState}
-          />
+          <div className="preview-background">
+            <Preview
+              data={this.props.previewData}
+              cvDesign={this.props.cvDesign}
+              hasCloseButton={true}
+              changePreviewState={this.props.changePreviewState}
+            />
+          </div>
         ) : null}
       </div>
     );

@@ -8,7 +8,6 @@ class IntroPage extends React.Component {
   constructor(props) {
     super(props);
     this.findTitles();
-    console.log(this.props.data);
   }
 
   findTitles() {
@@ -61,49 +60,55 @@ class IntroPage extends React.Component {
   }
   render() {
     return (
-      <div className="intro-main main">
-        <div className="intro-header header"></div>
-        <div className="intro-body body">
-          <div className="intro-data data">
-            <h1>
-              <span className="small small-title">
-                {this.sideTitle}
-                <br></br>
-              </span>{" "}
-              {this.mainTitle}
-            </h1>
-            {this.paragraph}
+      <div className="main-container">
+        <div className="intro-main main">
+          <div className="intro-header header"></div>
+          <div className="intro-body body">
+            <div className="intro-data data">
+              <h1>
+                <span className="small small-title">
+                  {this.sideTitle}
+                  <br></br>
+                </span>{" "}
+                {this.mainTitle}
+              </h1>
+              {this.paragraph}
+            </div>
+            <div className={`intro-preview whole-preview`}>
+              <PreviewContainer
+                data={this.props.data}
+                changePreviewState={this.props.changePreviewState}
+                topic={this.props.topic}
+                page={this.props.page}
+                cvDesign={this.props.cvDesign}
+              />
+              <PreviewButton
+                changePreviewState={this.props.changePreviewState}
+              />
+            </div>
           </div>
-          <div className={`intro-preview whole-preview`}>
-            <PreviewContainer
-              data={this.props.data}
-              changePreviewState={this.props.changePreviewState}
+          <div className={`intro-foot foot`}>
+            <NavigationButtons
               topic={this.props.topic}
+              data={this.props.data}
+              editData={this.props.changeState}
               page={this.props.page}
-              cvDesign={this.props.cvDesign}
+              currentPageNode={this.props.currentPageNode}
+              completedTopics={this.props.completedTopics}
+              hasNext={this.props.currentPageNode.next === null ? false : true}
+              hasBack={this.props.currentPageNode.back === null ? false : true}
             />
-            <PreviewButton changePreviewState={this.props.changePreviewState} />
           </div>
-        </div>
-        <div className={`intro-foot foot`}>
-          <NavigationButtons
-            topic={this.props.topic}
-            data={this.props.data}
-            editData={this.props.changeState}
-            page={this.props.page}
-            currentPageNode={this.props.currentPageNode}
-            completedTopics={this.props.completedTopics}
-            hasNext={this.props.currentPageNode.next === null ? false : true}
-            hasBack={this.props.currentPageNode.back === null ? false : true}
-          />
         </div>
         {this.props.isPreviewVisible ? (
-          <Preview
-            data={this.props.data}
-            cvDesign={this.props.cvDesign}
-            hasCloseButton={true}
-            changePreviewState={this.props.changePreviewState}
-          />
+          <div className="preview-background">
+            <Preview
+              data={this.props.previewData}
+              cvDesign={this.props.cvDesign}
+              hasCloseButton={true}
+              changePreviewState={this.props.changePreviewState}
+            />
+          </div>
         ) : null}
       </div>
     );

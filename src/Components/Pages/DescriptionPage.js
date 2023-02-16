@@ -89,50 +89,54 @@ class DescPage extends React.Component {
   };
   render() {
     return (
-      <div className="desc-main main">
-        <div className="desc-header header">
-          <div className="desc-title">
-            <h1>{this.pageTitle}</h1>
-            <p>{this.pageParagraph}</p>
+      <div className="main-container">
+        <div className="desc-main main">
+          <div className="desc-header header">
+            <div className="desc-title">
+              <h1>{this.pageTitle}</h1>
+              <p>{this.pageParagraph}</p>
+            </div>
+            <PreviewButton changePreviewState={this.props.changePreviewState} />
           </div>
-          <PreviewButton changePreviewState={this.props.changePreviewState} />
-        </div>
-        <div className="desc-body body">
-          <TextEditorCont
-            changeData={this.changeData}
-            placeHolder={
-              this.props.topic === "work"
-                ? "Type in your responsibilities, achivements and job details."
-                : `Add your ${this.props.topic} here.`
-            }
-            data={
-              this.props.topic !== "work"
-                ? this.state[this.props.topic].description
-                : this.state[this.props.topic][this.id].description
-            }
-            topic={this.props.topic}
-            id={this.id !== undefined ? this.id : null}
-          />
-        </div>
-        <div className="contact-foot foot">
-          <NavigationButtons
-            topic={this.props.topic}
-            data={this.state[this.props.topic]}
-            editData={this.props.changeState}
-            page={this.props.page}
-            currentPageNode={this.props.currentPageNode}
-            completedTopics={this.props.completedTopics}
-            hasNext={this.props.currentPageNode.next === null ? false : true}
-            hasBack={this.props.currentPageNode.back === null ? false : true}
-          />
+          <div className="desc-body body">
+            <TextEditorCont
+              changeData={this.changeData}
+              placeHolder={
+                this.props.topic === "work"
+                  ? "Type in your responsibilities, achivements and job details."
+                  : `Add your ${this.props.topic} here.`
+              }
+              data={
+                this.props.topic !== "work"
+                  ? this.state[this.props.topic].description
+                  : this.state[this.props.topic][this.id].description
+              }
+              topic={this.props.topic}
+              id={this.id !== undefined ? this.id : null}
+            />
+          </div>
+          <div className="contact-foot foot">
+            <NavigationButtons
+              topic={this.props.topic}
+              data={this.state[this.props.topic]}
+              editData={this.props.changeState}
+              page={this.props.page}
+              currentPageNode={this.props.currentPageNode}
+              completedTopics={this.props.completedTopics}
+              hasNext={this.props.currentPageNode.next === null ? false : true}
+              hasBack={this.props.currentPageNode.back === null ? false : true}
+            />
+          </div>
         </div>
         {this.props.isPreviewVisible ? (
-          <Preview
-            data={this.state.previewData}
-            cvDesign={this.props.cvDesign}
-            hasCloseButton={true}
-            changePreviewState={this.props.changePreviewState}
-          />
+          <div className="preview-background">
+            <Preview
+              data={this.state.previewData}
+              cvDesign={this.props.cvDesign}
+              hasCloseButton={true}
+              changePreviewState={this.props.changePreviewState}
+            />
+          </div>
         ) : null}
       </div>
     );
