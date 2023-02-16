@@ -7,6 +7,7 @@
     grid-template-rows: max(60px, 10vh) 1fr 60px;
     row-gap: 10px;
     padding: 0 0.4em;
+    grid-area: 1 /1 /-1 /-1;
 }
 .header > p , .header > h1 {
     margin: 0;

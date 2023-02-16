@@ -21,6 +21,7 @@ class App extends React.Component {
         activeTemplate: "default",
         templateColors: [],
         color: "#3a3a3a",
+        secondColor: "#ffffff",
         fonts: [
           "Verdana",
           "Serif",
