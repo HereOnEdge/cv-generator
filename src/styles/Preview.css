@@ -159,9 +159,12 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
+    padding: 1em 0;
 }
 .preview-background > .preview {
     z-index: 1;
+    width: min(90%, 750px);
+    /* height: 60%; */
 }
 .preview .close-button {
     position: absolute;
