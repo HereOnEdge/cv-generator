@@ -8,6 +8,7 @@
     overflow: hidden;
     font-size: 5px;
     padding: 0 !important;
+    cursor: pointer;
 }
 .preview-button {
     background-color: var(--my-white);
