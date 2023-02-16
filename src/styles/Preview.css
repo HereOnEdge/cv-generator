@@ -49,12 +49,6 @@
 .preview > div > div {
     width: 100%;
 }
-.preview-container .preview-header {
-    /* font-size: 4em !important; */
-}
-.preview-container ul {
-    padding-left: 10%;
-}
 .preview-container .bold {
     font-size: inherit;
 } 
