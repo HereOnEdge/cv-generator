@@ -32,6 +32,7 @@ class PreviewContainer extends React.Component {
       <div
         className="preview-container"
         onClick={this.props.changePreviewState}
+        title="Preview in Full-Screen"
       >
         <Preview
           data={this.props.data}

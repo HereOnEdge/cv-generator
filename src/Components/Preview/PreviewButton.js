@@ -7,6 +7,7 @@ class PreviewButton extends React.Component {
         className="preview-button"
         type="button"
         onClick={this.props.changePreviewState}
+        title="Preview in Full-Screen"
       >
         Preview
         <svg
