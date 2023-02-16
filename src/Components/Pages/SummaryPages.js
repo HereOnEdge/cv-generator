@@ -108,7 +108,7 @@ class SummaryPage extends React.Component {
               data={this.state[this.props.topic]}
             />
           </div>
-          <div className="summary-preview whole preview">
+          <div className="summary-preview whole-preview">
             <PreviewContainer
               data={this.props.data}
               changePreviewState={this.props.changePreviewState}
