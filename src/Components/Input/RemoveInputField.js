@@ -16,6 +16,7 @@ class RemoveInputField extends React.Component {
             this.props.saveData("");
           }}
           name={`remove ${this.props.field}'s input field`}
+          title={`Remove ${this.props.field}'s input field`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
