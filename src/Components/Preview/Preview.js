@@ -110,6 +110,7 @@ class Preview extends React.Component {
                 ? this.props.data.summary
                 : null
             }
+            highlightArea={this.props.highlightArea}
           />
           <WorkPreview
             data={
