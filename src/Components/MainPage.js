@@ -50,6 +50,17 @@ class MainPage extends React.Component {
         isPreviewVisible={isPreviewVisible}
         changePreviewState={changePreviewState}
       />
+    ) : topic === "final" ? (
+      <FinalPage
+        changeState={changeState}
+        data={data}
+        topic={topic}
+        page={page}
+        completedTopics={completedTopics}
+        currentPageNode={currentPageNode}
+        cvDesign={__cvDesign}
+        changeCvDesign={changeCvDesign}
+      />
     ) : page === "main" ? (
       <OthersMainPage
         changeState={changeState}
@@ -88,17 +99,6 @@ class MainPage extends React.Component {
         cvDesign={__cvDesign}
         isPreviewVisible={isPreviewVisible}
         changePreviewState={changePreviewState}
-      />
-    ) : topic === "final" ? (
-      <FinalPage
-        changeState={changeState}
-        data={data}
-        topic={topic}
-        page={page}
-        completedTopics={completedTopics}
-        currentPageNode={currentPageNode}
-        cvDesign={__cvDesign}
-        changeCvDesign={changeCvDesign}
       />
     ) : (
       "where am I"
