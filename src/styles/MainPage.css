@@ -414,3 +414,8 @@
 .italic {
     font-style: italic;
 }
+.template-color {
+    width: 10px;
+    aspect-ratio: 1;
+    
+}

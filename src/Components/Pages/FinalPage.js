@@ -13,7 +13,37 @@ class FinalPage extends React.Component {
       isEditTemplateOpen: false,
       isEditTextOpen: false,
     };
+    this.activeColor = this.props.cvDesign.color;
+    this.findColors();
   }
+  openContainer = (field) => {
+    this.setState((prevState) => {
+      prevState[field] = prevState[field] ? false : true;
+      return { [field]: prevState[field] };
+    });
+  };
+  findColors = () => {
+    this.colorChanger = (
+      <div className="color-changer">
+        {this.props.cvDesign.templateColors.map((color) => (
+          <div
+            className="template-color"
+            style={{ backgroundColor: color }}
+            onClick={() => {
+              this.props.changeCvDesign.color(color);
+              this.activeColor = color;
+            }}
+            onMouseOver={() => {
+              this.props.changeCvDesign.color(color);
+            }}
+            onMouseLeave={() =>
+              this.props.changeCvDesign.color(this.activeColor)
+            }
+          ></div>
+        ))}
+      </div>
+    );
+  };
   render() {
     return (
       <div className="final-main main">
@@ -26,7 +56,10 @@ class FinalPage extends React.Component {
           <Preview data={this.props.data} cvDesign={this.props.cvDesign} />
           <div className="edit-cv-section">
             <div className="cv-editBox">
-              <div className="edit-template-button">
+              <div
+                className="edit-template-button"
+                onClick={() => this.openContainer("isEditTemplateOpen")}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -48,9 +81,15 @@ class FinalPage extends React.Component {
                 </div>
               </div>
               {this.state.isEditTemplateOpen ? (
-                <div className="edit-template-container"></div>
+                <div className="edit-template-container">
+                  {this.colorChanger}
+                  <div className="template-changer"></div>
+                </div>
               ) : null}
-              <div className="edit-text-button">
+              <div
+                className="edit-text-button"
+                onClick={() => this.openContainer("isEditTextOpen")}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

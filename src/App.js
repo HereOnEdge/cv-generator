@@ -19,7 +19,7 @@ class App extends React.Component {
       __cvDesign: {
         templates: ["default"],
         activeTemplate: "default",
-        templateColors: [],
+        templateColors: ["#3a3a3a", "#23a3e3", "#ee00e0", "#23ee7a"],
         color: "#3a3a3a",
         secondColor: "#ffffff",
         fonts: [
@@ -189,7 +189,7 @@ class App extends React.Component {
       this.setState((prevState) => {
         prevState.__cvDesign.color = col;
         return {
-          __cvDesign: prevState.color,
+          __cvDesign: prevState.__cvDesign,
         };
       });
     },
