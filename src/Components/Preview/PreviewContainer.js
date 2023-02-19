@@ -6,7 +6,7 @@ class PreviewContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      highlightArea: "",
+      highlightArea: this.props.topic,
     };
   }
   findHighlightedArea() {
