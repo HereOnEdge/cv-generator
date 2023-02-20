@@ -20,7 +20,15 @@ class ContactPreview extends React.Component {
         {this.nationalityElement}
       </div>
     );
+    this.state = {
+      color: this.props.cvDesign.color,
+    };
   }
+  changeColor = (color) => {
+    this.setState({
+      color: color,
+    });
+  };
   findFullName = () => {
     this.fullName =
       this.props.data !== null && this.props.data.firstName !== undefined
@@ -95,7 +103,10 @@ class ContactPreview extends React.Component {
   };
   createAddressElement = () => {
     this.addressSvg = (
-      <div className="svg-container">
+      <div
+        className="svg-container"
+        style={{ backgroundColor: this.props.cvDesign.color }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -142,7 +153,10 @@ class ContactPreview extends React.Component {
       this.props.data.nationality !== undefined &&
       this.props.data.nationality !== "" ? (
         <div className="nationality-container">
-          <div className="svg-container">
+          <div
+            className="svg-container"
+            style={{ backgroundColor: this.props.cvDesign.color }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -165,7 +179,10 @@ class ContactPreview extends React.Component {
       this.props.data.website !== undefined &&
       this.props.data.website !== "" ? (
         <div className="website-container">
-          <div className="svg-container">
+          <div
+            className="svg-container"
+            style={{ backgroundColor: this.props.cvDesign.color }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -193,7 +210,10 @@ class ContactPreview extends React.Component {
       this.props.data.linkedin !== undefined &&
       this.props.data.linkedin !== "" ? (
         <div className="linkedin-container">
-          <div className="svg-container">
+          <div
+            className="svg-container"
+            style={{ backgroundColor: this.props.cvDesign.color }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -233,6 +253,10 @@ class ContactPreview extends React.Component {
         {this.nationalityElement}
       </div>
     );
+    // this part just updates the state so that components can re render. although state's data is not getting used anywhere
+    if (this.props.cvDesign.color !== this.state.color) {
+      this.changeColor(this.props.cvDesign.color);
+    }
   }
   render() {
     return (

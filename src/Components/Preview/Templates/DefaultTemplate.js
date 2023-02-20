@@ -63,7 +63,7 @@ class DefaultTemplate extends React.Component {
             display: "flex",
             gap: `${this.props.cvDesign.gap}px`,
             backgroundColor: this.props.cvDesign.secondColor,
-            color: this.props.cvDesign.color,
+            // color: this.props.cvDesign.color,
           }}
         >
           {this.props.closeButton}
