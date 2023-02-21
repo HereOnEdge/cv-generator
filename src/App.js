@@ -157,7 +157,7 @@ class App extends React.Component {
       this.setState((prevState) => {
         prevState.__cvDesign.fontSize = size;
         return {
-          __cvDesign: prevState.fontSize,
+          __cvDesign: prevState.__cvDesign,
         };
       });
     },
@@ -165,7 +165,7 @@ class App extends React.Component {
       this.setState((prevState) => {
         prevState.__cvDesign.headingSize = size;
         return {
-          __cvDesign: prevState.headingSize,
+          __cvDesign: prevState.__cvDesign,
         };
       });
     },
@@ -173,7 +173,7 @@ class App extends React.Component {
       this.setState((prevState) => {
         prevState.__cvDesign.gap = size;
         return {
-          __cvDesign: prevState.gap,
+          __cvDesign: prevState.__cvDesign,
         };
       });
     },
@@ -181,7 +181,7 @@ class App extends React.Component {
       this.setState((prevState) => {
         prevState.__cvDesign.lineSpace = size;
         return {
-          __cvDesign: prevState.lineSpace,
+          __cvDesign: prevState.__cvDesign,
         };
       });
     },

@@ -1,5 +1,6 @@
 import React from "react";
 import DropDownMenu from "../Input/DropDownMenu";
+import RangeInput from "../Input/RangeInput";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import Preview from "../Preview/Preview";
 
@@ -149,6 +150,14 @@ class FinalPage extends React.Component {
                     activeData={this.props.cvDesign.activeFont}
                     changeData={this.props.changeCvDesign.font}
                     options={this.props.cvDesign.fonts}
+                  />
+                  <RangeInput
+                    label={"FONT SIZE"}
+                    changeData={this.props.changeCvDesign.fontSize}
+                    min={"0.5"}
+                    max={"4"}
+                    step={"0.1"}
+                    activeValue={this.props.cvDesign.fontSize}
                   />
                 </div>
               ) : null}
