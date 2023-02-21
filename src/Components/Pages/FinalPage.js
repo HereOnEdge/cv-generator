@@ -1,4 +1,5 @@
 import React from "react";
+import DropDownMenu from "../Input/DropDownMenu";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import Preview from "../Preview/Preview";
 
@@ -143,7 +144,13 @@ class FinalPage extends React.Component {
                 </div>
               </div>
               {this.state.isEditTextOpen ? (
-                <div className="edit-text-container"></div>
+                <div className="edit-text-container">
+                  <DropDownMenu
+                    activeData={this.props.cvDesign.activeFont}
+                    changeData={this.props.changeCvDesign.font}
+                    options={this.props.cvDesign.fonts}
+                  />
+                </div>
               ) : null}
             </div>
           </div>
