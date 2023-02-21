@@ -159,6 +159,14 @@ class FinalPage extends React.Component {
                     step={"0.1"}
                     activeValue={this.props.cvDesign.fontSize}
                   />
+                  <RangeInput
+                    label={"HEADING SIZE"}
+                    changeData={this.props.changeCvDesign.headingSize}
+                    min={"1"}
+                    max={"2"}
+                    step={"0.1"}
+                    activeValue={this.props.cvDesign.headingSize}
+                  />
                 </div>
               ) : null}
             </div>
