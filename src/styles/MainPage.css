@@ -417,5 +417,15 @@
 .template-color {
     width: 10px;
     aspect-ratio: 1;
-    
+
+}
+.template-changer {
+}
+.template {
+    height: 85px;
+    width: 70px;
+    font-size: 2px;
+}
+.template.active {
+    border: 3px solid var(--my-blue);
 }

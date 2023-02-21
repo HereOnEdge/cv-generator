@@ -15,6 +15,7 @@ class FinalPage extends React.Component {
     };
     this.activeColor = this.props.cvDesign.color;
     this.findColors();
+    this.findTemplates();
   }
   openContainer = (field) => {
     this.setState((prevState) => {
@@ -44,6 +45,39 @@ class FinalPage extends React.Component {
       </div>
     );
   };
+  findTemplates = () => {
+    let activeTemplate = this.props.cvDesign.activeTemplate;
+    this.templateChanger = (
+      <div className="template-changer">
+        {this.props.cvDesign.templates.map((template) => {
+          let cvDesign = this.props.cvDesign;
+          cvDesign.activeTemplate = template;
+          return (
+            <div
+              className={`template ${
+                activeTemplate === template ? "active" : ""
+              }`}
+              onMouseOver={() => {
+                this.props.changeCvDesign.template(template);
+              }}
+              onMouseLeave={() => {
+                this.props.changeCvDesign.template(activeTemplate);
+              }}
+              onClick={() => {
+                this.props.changeCvDesign.template(template);
+                activeTemplate = template;
+              }}
+            >
+              <Preview data={this.props.data} cvDesign={cvDesign} />
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+  componentDidUpdate() {
+    this.findTemplates();
+  }
   render() {
     return (
       <div className="final-main main">
@@ -83,7 +117,7 @@ class FinalPage extends React.Component {
               {this.state.isEditTemplateOpen ? (
                 <div className="edit-template-container">
                   {this.colorChanger}
-                  <div className="template-changer"></div>
+                  {this.templateChanger}
                 </div>
               ) : null}
               <div
