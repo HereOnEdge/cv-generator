@@ -4,7 +4,7 @@ export default class DropDownMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeData: this.props.activeData,
+      // activeData: this.props.activeData,
       isMenuOpen: false,
     };
   }
@@ -17,12 +17,12 @@ export default class DropDownMenu extends React.Component {
       };
     });
   };
-  componentDidUpdate() {
-    // update the activeData state if data has been updated
-    if (this.props.activeData !== this.state.activeData) {
-      this.setState({ activeData: this.props.activeData });
-    }
-  }
+  // componentDidUpdate() {
+  //   // update the activeData state if data has been updated
+  //   if (this.props.activeData !== this.state.activeData) {
+  //     this.setState({ activeData: this.props.activeData });
+  //   }
+  // }
   render() {
     return (
       <div className="drop-down-container">
@@ -33,7 +33,7 @@ export default class DropDownMenu extends React.Component {
             this.toggleMenu();
           }}
         >
-          <span>{this.state.activeData}</span>
+          <span>{this.props.activeData}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="12"
@@ -49,17 +49,17 @@ export default class DropDownMenu extends React.Component {
               <div
                 key={option}
                 className={`drop-down-option ${
-                  option === this.state.activeData ? "active" : ""
+                  option === this.props.activeData ? "active" : ""
                 }`}
                 onMouseOver={() => {
                   this.props.changeData(option);
                 }}
                 onMouseLeave={() => {
-                  this.props.changeData(this.state.activeData);
+                  this.props.changeData(this.props.activeData);
                 }}
                 onClick={() => {
                   this.props.changeData(option);
-                  this.setState({ activeData: option });
+                  this.props.changeActiveData(option);
                 }}
               >
                 {option}

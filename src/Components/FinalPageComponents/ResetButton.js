@@ -18,7 +18,7 @@ export default class ResetButton extends React.Component {
         onClick={() => {
           this.setDefaultValues();
           this.props.changeCvDesign.all(this.defaultValues);
-          console.log("clicked");
+          this.props.changeActiveFont(this.defaultValues.activeFont);
         }}
       >
         Reset Formatting

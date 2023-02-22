@@ -14,6 +14,7 @@ class FinalPage extends React.Component {
       isEditTemplateOpen: false,
       isEditTextOpen: false,
       cvDesign: this.props.cvDesign, // state.cvDesign does not get used anywhere. its only for sake of rerendering
+      activeFont: this.props.cvDesign.activeFont,
     };
   }
   openContainer = (field) => {
@@ -24,6 +25,9 @@ class FinalPage extends React.Component {
   };
   changeCvDesign = (newDesign) => {
     this.setState({ cvDesign: newDesign });
+  };
+  changeActiveFont = (newFont) => {
+    this.setState({ activeFont: newFont });
   };
   componentDidUpdate() {
     // rerender the component if the data has changed but component has not
@@ -105,7 +109,8 @@ class FinalPage extends React.Component {
               {this.state.isEditTextOpen ? (
                 <div className="edit-text-container">
                   <DropDownMenu
-                    activeData={this.props.cvDesign.activeFont}
+                    activeData={this.state.activeFont}
+                    changeActiveData={this.changeActiveFont}
                     changeData={this.props.changeCvDesign.font}
                     options={this.props.cvDesign.fonts}
                   />
@@ -128,6 +133,7 @@ class FinalPage extends React.Component {
                   <ResetButton
                     cvDesign={this.props.cvDesign}
                     changeCvDesign={this.props.changeCvDesign}
+                    changeActiveFont={this.changeActiveFont}
                   />
                 </div>
               ) : null}
