@@ -137,6 +137,9 @@ class App extends React.Component {
     this.navLink.append({ topic: "final", page: "main" });
   };
   changeCvDesign = {
+    all: (cvDesignObject) => {
+      this.setState({ __cvDesign: cvDesignObject });
+    },
     font: (font) => {
       this.setState((prevState) => {
         prevState.__cvDesign.activeFont = font;
@@ -234,39 +237,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// {
-//   contact: {
-//     firstName: "",
-//     lastName: "",
-//     country: "",
-//     city: "",
-//     address: "",
-//     phone: "",
-//     email: "",
-//     website: "",
-//   },
-//   workHistory: {
-//     job1: {
-//       title: "",
-//       employer: "",
-//       city: "",
-//       country: "",
-//       startDate: "",
-//       endDate: "",
-//       description: "",
-//     },
-//   },
-//   education: {
-//     diploma1: {
-//       university: "",
-//       location: "",
-//       qualification: "",
-//       field: "",
-//       startDate: "",
-//       endDate: "",
-//     },
-//   },
-//   skills: {},
-//   summary: "",
-// },

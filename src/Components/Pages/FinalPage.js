@@ -1,4 +1,7 @@
 import React from "react";
+import ColorChanger from "../FinalPageComponents/ColorChanger";
+import ResetButton from "../FinalPageComponents/ResetButton";
+import TemplateChanger from "../FinalPageComponents/TemplateChanger";
 import DropDownMenu from "../Input/DropDownMenu";
 import RangeInput from "../Input/RangeInput";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
@@ -7,17 +10,11 @@ import Preview from "../Preview/Preview";
 class FinalPage extends React.Component {
   constructor(props) {
     super(props);
-    this.defaultCvStyles = this.props.cvDesign;
-    this.activeFont = this.props.cvDesign.activeFont;
-    this.activeTemplate = this.props.cvDesign.activeTemplate;
-    this.activeTempColor = this.props.cvDesign.activeTempColor;
     this.state = {
       isEditTemplateOpen: false,
       isEditTextOpen: false,
+      cvDesign: this.props.cvDesign, // state.cvDesign does not get used anywhere. its only for sake of rerendering
     };
-    this.activeColor = this.props.cvDesign.color;
-    this.findColors();
-    this.findTemplates();
   }
   openContainer = (field) => {
     this.setState((prevState) => {
@@ -25,60 +22,14 @@ class FinalPage extends React.Component {
       return { [field]: prevState[field] };
     });
   };
-  findColors = () => {
-    this.colorChanger = (
-      <div className="color-changer">
-        {this.props.cvDesign.templateColors.map((color) => (
-          <div
-            className="template-color"
-            style={{ backgroundColor: color }}
-            onClick={() => {
-              this.props.changeCvDesign.color(color);
-              this.activeColor = color;
-            }}
-            onMouseOver={() => {
-              this.props.changeCvDesign.color(color);
-            }}
-            onMouseLeave={() =>
-              this.props.changeCvDesign.color(this.activeColor)
-            }
-          ></div>
-        ))}
-      </div>
-    );
-  };
-  findTemplates = () => {
-    let activeTemplate = this.props.cvDesign.activeTemplate;
-    this.templateChanger = (
-      <div className="template-changer">
-        {this.props.cvDesign.templates.map((template) => {
-          let cvDesign = this.props.cvDesign;
-          cvDesign.activeTemplate = template;
-          return (
-            <div
-              className={`template ${
-                activeTemplate === template ? "active" : ""
-              }`}
-              onMouseOver={() => {
-                this.props.changeCvDesign.template(template);
-              }}
-              onMouseLeave={() => {
-                this.props.changeCvDesign.template(activeTemplate);
-              }}
-              onClick={() => {
-                this.props.changeCvDesign.template(template);
-                activeTemplate = template;
-              }}
-            >
-              <Preview data={this.props.data} cvDesign={cvDesign} />
-            </div>
-          );
-        })}
-      </div>
-    );
+  changeCvDesign = (newDesign) => {
+    this.setState({ cvDesign: newDesign });
   };
   componentDidUpdate() {
-    this.findTemplates();
+    // rerender the component if the data has changed but component has not
+    if (this.props.cvDesign !== this.state.cvDesign) {
+      this.changeCvDesign(this.props.cvDesign);
+    }
   }
   render() {
     return (
@@ -118,8 +69,15 @@ class FinalPage extends React.Component {
               </div>
               {this.state.isEditTemplateOpen ? (
                 <div className="edit-template-container">
-                  {this.colorChanger}
-                  {this.templateChanger}
+                  <ColorChanger
+                    cvDesign={this.props.cvDesign}
+                    changeCvDesign={this.props.changeCvDesign}
+                  />
+                  <TemplateChanger
+                    cvDesign={this.props.cvDesign}
+                    changeCvDesign={this.props.changeCvDesign}
+                    data={this.props.data}
+                  />
                 </div>
               ) : null}
               <div
@@ -166,6 +124,10 @@ class FinalPage extends React.Component {
                     max={"2"}
                     step={"0.1"}
                     activeValue={this.props.cvDesign.headingSize}
+                  />
+                  <ResetButton
+                    cvDesign={this.props.cvDesign}
+                    changeCvDesign={this.props.changeCvDesign}
                   />
                 </div>
               ) : null}
