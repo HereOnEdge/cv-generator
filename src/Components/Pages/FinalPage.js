@@ -159,6 +159,15 @@ class FinalPage extends React.Component {
                     activeValue={this.props.cvDesign.upDownMargin}
                     format="px"
                   />
+                  <RangeInput
+                    label={"PHOTO SIZE"}
+                    changeData={this.props.changeCvDesign.photoSize}
+                    min={10}
+                    max={100}
+                    step={1}
+                    activeValue={this.props.cvDesign.photoSize}
+                    format="%"
+                  />
                   <ResetButton
                     cvDesign={this.props.cvDesign}
                     changeCvDesign={this.props.changeCvDesign}

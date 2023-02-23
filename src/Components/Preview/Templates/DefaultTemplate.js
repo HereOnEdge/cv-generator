@@ -29,6 +29,7 @@ class DefaultTemplate extends React.Component {
           }}
         >
           <ProfilePhotoPreview
+            cvDesign={this.props.cvDesign}
             data={
               this.props.data !== undefined &&
               this.props.data.contact !== undefined &&

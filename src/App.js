@@ -46,6 +46,7 @@ class App extends React.Component {
         gap: "5",
         lineSpace: "1",
         upDownMargin: "10",
+        photoSize: "100",
       },
       previewVisible: false,
     };
@@ -200,6 +201,14 @@ class App extends React.Component {
     upDownMargin: (margin) => {
       this.setState((prevState) => {
         prevState.__cvDesign.upDownMargin = margin;
+        return {
+          __cvDesign: prevState.__cvDesign,
+        };
+      });
+    },
+    photoSize: (size) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.photoSize = size;
         return {
           __cvDesign: prevState.__cvDesign,
         };

@@ -3,7 +3,10 @@ import React from "react";
 class ProfilePhotoPreview extends React.Component {
   render() {
     return (
-      <div className="image-container">
+      <div
+        className="image-container"
+        style={{ width: `${this.props.cvDesign.photoSize}%` }}
+      >
         {this.props.data !== "" && this.props.data !== null ? (
           <img src={this.props.data} alt="my cv portrait" />
         ) : (
