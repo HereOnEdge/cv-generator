@@ -117,17 +117,17 @@ class FinalPage extends React.Component {
                   <RangeInput
                     label={"FONT SIZE"}
                     changeData={this.props.changeCvDesign.fontSize}
-                    min={"0.5"}
-                    max={"4"}
-                    step={"0.1"}
+                    min={0.5}
+                    max={4}
+                    step={0.1}
                     activeValue={this.props.cvDesign.fontSize}
                   />
                   <RangeInput
                     label={"HEADING SIZE"}
                     changeData={this.props.changeCvDesign.headingSize}
-                    min={"1"}
-                    max={"2"}
-                    step={"0.1"}
+                    min={1}
+                    max={2}
+                    step={0.1}
                     activeValue={this.props.cvDesign.headingSize}
                   />
                   <ResetButton

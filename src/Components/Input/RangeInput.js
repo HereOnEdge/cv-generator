@@ -1,10 +1,12 @@
 import React from "react";
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/index.css";
 
 export default class RangeInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeValue: this.props.activeValue,
+      activeValue: Number(this.props.activeValue),
     };
   }
   componentDidUpdate() {
@@ -20,17 +22,18 @@ export default class RangeInput extends React.Component {
       <div className="range-input">
         <span>{this.props.label}</span>
         <span>{this.state.activeValue}</span>
-        <input
+        <InputRange
           type={"range"}
-          min={this.props.min}
-          max={this.props.max}
+          minValue={this.props.min}
+          maxValue={this.props.max}
+          value={this.state.activeValue}
           step={this.props.step}
-          onChange={(e) => {
-            console.log(e);
-            this.props.changeData(e.target.value);
-            this.setState({ activeValue: e.target.value });
+          onChange={(val) => {
+            val = Number(val.toFixed(1));
+            this.props.changeData(val);
+            this.setState({ activeValue: val });
           }}
-        ></input>
+        />
       </div>
     );
   }
