@@ -121,6 +121,7 @@ class FinalPage extends React.Component {
                     max={4}
                     step={0.1}
                     activeValue={this.props.cvDesign.fontSize}
+                    format="em"
                   />
                   <RangeInput
                     label={"HEADING SIZE"}
@@ -129,6 +130,16 @@ class FinalPage extends React.Component {
                     max={2}
                     step={0.1}
                     activeValue={this.props.cvDesign.headingSize}
+                    format="em"
+                  />
+                  <RangeInput
+                    label={"SECTION SPACING"}
+                    changeData={this.props.changeCvDesign.sectionGap}
+                    min={1}
+                    max={50}
+                    step={1}
+                    activeValue={this.props.cvDesign.gap}
+                    format="px"
                   />
                   <ResetButton
                     cvDesign={this.props.cvDesign}

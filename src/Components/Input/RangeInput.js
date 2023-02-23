@@ -21,13 +21,21 @@ export default class RangeInput extends React.Component {
     return (
       <div className="range-input">
         <span>{this.props.label}</span>
-        <span>{this.state.activeValue}</span>
+        <span>
+          {this.state.activeValue}
+          {this.props.format !== undefined ? this.props.format : null}
+        </span>
         <InputRange
           type={"range"}
           minValue={this.props.min}
           maxValue={this.props.max}
           value={this.state.activeValue}
           step={this.props.step}
+          formatLabel={(value) =>
+            `${value} ${
+              this.props.format !== undefined ? this.props.format : ""
+            }`
+          }
           onChange={(val) => {
             val = Number(val.toFixed(1));
             this.props.changeData(val);
