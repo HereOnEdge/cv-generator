@@ -24,6 +24,8 @@ class DefaultTemplate extends React.Component {
             gap: `${this.props.cvDesign.gap}px`,
             backgroundColor: this.props.cvDesign.color,
             color: this.props.cvDesign.secondColor,
+            paddingTop: this.props.cvDesign.upDownMargin,
+            paddingBottom: this.props.cvDesign.upDownMargin,
           }}
         >
           <ProfilePhotoPreview
@@ -63,7 +65,8 @@ class DefaultTemplate extends React.Component {
             display: "flex",
             gap: `${this.props.cvDesign.gap}px`,
             backgroundColor: this.props.cvDesign.secondColor,
-            // color: this.props.cvDesign.color,
+            paddingTop: this.props.cvDesign.upDownMargin,
+            paddingBottom: this.props.cvDesign.upDownMargin,
           }}
         >
           {this.props.closeButton}

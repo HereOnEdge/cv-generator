@@ -150,6 +150,15 @@ class FinalPage extends React.Component {
                     activeValue={this.props.cvDesign.lineSpace}
                     format="x"
                   />
+                  <RangeInput
+                    label={"TOP & BOTTOM MARGIN"}
+                    changeData={this.props.changeCvDesign.upDownMargin}
+                    min={0}
+                    max={100}
+                    step={5}
+                    activeValue={this.props.cvDesign.upDownMargin}
+                    format="px"
+                  />
                   <ResetButton
                     cvDesign={this.props.cvDesign}
                     changeCvDesign={this.props.changeCvDesign}

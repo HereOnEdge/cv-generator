@@ -45,6 +45,7 @@ class App extends React.Component {
         headingSize: "1.4",
         gap: "5",
         lineSpace: "1",
+        upDownMargin: "10",
       },
       previewVisible: false,
     };
@@ -191,6 +192,14 @@ class App extends React.Component {
     color: (col) => {
       this.setState((prevState) => {
         prevState.__cvDesign.color = col;
+        return {
+          __cvDesign: prevState.__cvDesign,
+        };
+      });
+    },
+    upDownMargin: (margin) => {
+      this.setState((prevState) => {
+        prevState.__cvDesign.upDownMargin = margin;
         return {
           __cvDesign: prevState.__cvDesign,
         };
