@@ -141,6 +141,15 @@ class FinalPage extends React.Component {
                     activeValue={this.props.cvDesign.gap}
                     format="px"
                   />
+                  <RangeInput
+                    label={"LINE SPACING"}
+                    changeData={this.props.changeCvDesign.lineSpace}
+                    min={1}
+                    max={3}
+                    step={0.1}
+                    activeValue={this.props.cvDesign.lineSpace}
+                    format="x"
+                  />
                   <ResetButton
                     cvDesign={this.props.cvDesign}
                     changeCvDesign={this.props.changeCvDesign}
