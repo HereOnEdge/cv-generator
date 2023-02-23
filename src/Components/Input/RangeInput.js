@@ -11,9 +11,9 @@ export default class RangeInput extends React.Component {
   }
   componentDidUpdate() {
     // update and rerender the component when the active value has changed
-    if (this.props.activeValue !== this.state.activeValue) {
+    if (Number(this.props.activeValue) !== this.state.activeValue) {
       this.setState({
-        activeValue: this.props.activeValue,
+        activeValue: Number(this.props.activeValue),
       });
     }
   }

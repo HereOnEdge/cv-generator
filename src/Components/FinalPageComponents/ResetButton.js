@@ -7,8 +7,10 @@ export default class ResetButton extends React.Component {
       activeFont: "Verdana",
       fontSize: "1",
       headingSize: "1.4",
-      gap: "5",
+      gap: "1",
       lineSpace: "1",
+      upDownMargin: "1",
+      photoSize: "100",
     };
   };
   render() {
