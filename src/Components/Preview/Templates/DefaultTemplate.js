@@ -21,11 +21,11 @@ class DefaultTemplate extends React.Component {
           className="leftSide"
           style={{
             display: "flex",
-            gap: `${this.props.cvDesign.gap}px`,
+            gap: `${this.props.cvDesign.gap}em`,
             backgroundColor: this.props.cvDesign.color,
             color: this.props.cvDesign.secondColor,
-            paddingTop: this.props.cvDesign.upDownMargin,
-            paddingBottom: this.props.cvDesign.upDownMargin,
+            paddingTop: `${this.props.cvDesign.upDownMargin}em`,
+            paddingBottom: `${this.props.cvDesign.upDownMargin}em`,
           }}
         >
           <ProfilePhotoPreview
@@ -64,10 +64,10 @@ class DefaultTemplate extends React.Component {
           className="rightSide"
           style={{
             display: "flex",
-            gap: `${this.props.cvDesign.gap}px`,
+            gap: `${this.props.cvDesign.gap}em`,
             backgroundColor: this.props.cvDesign.secondColor,
-            paddingTop: this.props.cvDesign.upDownMargin,
-            paddingBottom: this.props.cvDesign.upDownMargin,
+            paddingTop: `${this.props.cvDesign.upDownMargin}em`,
+            paddingBottom: `${this.props.cvDesign.upDownMargin}em`,
           }}
         >
           {this.props.closeButton}

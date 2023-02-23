@@ -136,10 +136,10 @@ class FinalPage extends React.Component {
                     label={"SECTION SPACING"}
                     changeData={this.props.changeCvDesign.sectionGap}
                     min={1}
-                    max={50}
-                    step={1}
+                    max={5}
+                    step={0.1}
                     activeValue={this.props.cvDesign.gap}
-                    format="px"
+                    format="em"
                   />
                   <RangeInput
                     label={"LINE SPACING"}
@@ -154,10 +154,10 @@ class FinalPage extends React.Component {
                     label={"TOP & BOTTOM MARGIN"}
                     changeData={this.props.changeCvDesign.upDownMargin}
                     min={0}
-                    max={100}
-                    step={5}
+                    max={5}
+                    step={0.1}
                     activeValue={this.props.cvDesign.upDownMargin}
-                    format="px"
+                    format="em"
                   />
                   <RangeInput
                     label={"PHOTO SIZE"}
