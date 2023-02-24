@@ -8,6 +8,7 @@ import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import Preview from "../Preview/Preview";
 import html2pdf from "html2pdf.js";
 import PdfSizeChanger from "../FinalPageComponents/PdfSizeChanger";
+import FileNameChanger from "../FinalPageComponents/FileNameChanger";
 
 class FinalPage extends React.Component {
   constructor(props) {
@@ -37,6 +38,9 @@ class FinalPage extends React.Component {
   };
   changePdfFormat = (format) => {
     this.setState({ pdfFormat: format });
+  };
+  changePdfName = (name) => {
+    this.setState({ pdfFileName: name });
   };
   componentDidUpdate() {
     // rerender the component if the data has changed but component has not
@@ -80,7 +84,10 @@ class FinalPage extends React.Component {
           </div>
           <div ref={this.pdfRef}>
             <div className="pdf-edit-section">
-              <span className="file-name"></span>
+              <FileNameChanger
+                changeFileName={this.changePdfName}
+                activeName={this.state.pdfFileName}
+              />
               <PdfSizeChanger
                 changeFormat={this.changePdfFormat}
                 activeFormat={this.state.pdfFormat}
