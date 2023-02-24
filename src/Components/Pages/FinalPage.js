@@ -6,6 +6,8 @@ import DropDownMenu from "../Input/DropDownMenu";
 import RangeInput from "../Input/RangeInput";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import Preview from "../Preview/Preview";
+import html2pdf from "html2pdf.js";
+import PdfSizeChanger from "../FinalPageComponents/PdfSizeChanger";
 
 class FinalPage extends React.Component {
   constructor(props) {
@@ -15,7 +17,11 @@ class FinalPage extends React.Component {
       isEditTextOpen: false,
       cvDesign: this.props.cvDesign, // state.cvDesign does not get used anywhere. its only for sake of rerendering
       activeFont: this.props.cvDesign.activeFont,
+      pdfHeight: 500,
+      pdfFormat: "a5",
+      pdfFileName: `${this.props.data.contact.firstName}_${this.props.data.contact.lastName}_CV`,
     };
+    this.pdfRef = React.createRef();
   }
   openContainer = (field) => {
     this.setState((prevState) => {
@@ -29,11 +35,21 @@ class FinalPage extends React.Component {
   changeActiveFont = (newFont) => {
     this.setState({ activeFont: newFont });
   };
+  changePdfFormat = (format) => {
+    this.setState({ pdfFormat: format });
+  };
   componentDidUpdate() {
     // rerender the component if the data has changed but component has not
     if (this.props.cvDesign !== this.state.cvDesign) {
       this.changeCvDesign(this.props.cvDesign);
     }
+  }
+  componentDidMount() {
+    this.setState({
+      pdfHeight: parseInt(
+        getComputedStyle(this.pdfRef.current.children[1]).height
+      ),
+    });
   }
   render() {
     return (
@@ -43,8 +59,35 @@ class FinalPage extends React.Component {
           <p>You can change template style and many other things:)</p>
         </div>
         <div className="final-body body">
-          <div className="save-options"></div>
-          <Preview data={this.props.data} cvDesign={this.props.cvDesign} />
+          <div className="save-options">
+            <div className="savePdf-container">
+              <div
+                className="savePdf"
+                onClick={() => {
+                  html2pdf(this.pdfRef.current.children[1], {
+                    filename: this.state.pdfFileName,
+                    html2canvas: {
+                      height: this.state.pdfHeight,
+                      windowHeight: this.state.pdfHeight,
+                    },
+                    jsPDF: { format: this.state.pdfFormat },
+                  });
+                }}
+              >
+                pdf LOGO
+              </div>
+            </div>
+          </div>
+          <div ref={this.pdfRef}>
+            <div className="pdf-edit-section">
+              <span className="file-name"></span>
+              <PdfSizeChanger
+                changeFormat={this.changePdfFormat}
+                activeFormat={this.state.pdfFormat}
+              />
+            </div>
+            <Preview data={this.props.data} cvDesign={this.props.cvDesign} />
+          </div>
           <div className="edit-cv-section">
             <div className="cv-editBox">
               <div
