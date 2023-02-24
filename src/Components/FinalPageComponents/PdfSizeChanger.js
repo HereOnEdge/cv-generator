@@ -18,7 +18,7 @@ export default class PdfSizeChanger extends React.Component {
   };
   render() {
     return (
-      <span className="paper-size">
+      <span className="paper-size" title="Edit Page Size">
         Paper size -{" "}
         <div>
           <span className="bold" onClick={this.toggleEditPdfFormat}>

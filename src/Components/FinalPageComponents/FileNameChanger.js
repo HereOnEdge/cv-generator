@@ -10,13 +10,11 @@ export default class FileNameChanger extends React.Component {
   }
   render() {
     return (
-      <span className="file-name">
+      <span className="file-name" title="Edit File Name">
         [
         <span
           ref={this.editableRed}
           contentEditable="true"
-          //   value={this.props.activeName}
-          //   innerText={this.props.activeName}
           onInput={(e) => {
             this.props.changeFileName(e.target.innerText);
           }}
