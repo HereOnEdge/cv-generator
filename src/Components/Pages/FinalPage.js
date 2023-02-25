@@ -19,7 +19,7 @@ class FinalPage extends React.Component {
       cvDesign: this.props.cvDesign, // state.cvDesign does not get used anywhere. its only for sake of rerendering
       activeFont: this.props.cvDesign.activeFont,
       pdfHeight: 500,
-      pdfFormat: "a5",
+      pdfFormat: "A4",
       pdfFileName: `${this.props.data.contact.firstName}_${this.props.data.contact.lastName}_CV`,
     };
     this.pdfRef = React.createRef();
@@ -89,7 +89,7 @@ class FinalPage extends React.Component {
               </svg>
             </div>
           </div>
-          <div ref={this.pdfRef}>
+          <div ref={this.pdfRef} className="main-preview-container">
             <div className="pdf-edit-section">
               <FileNameChanger
                 changeFileName={this.changePdfName}
@@ -129,7 +129,7 @@ class FinalPage extends React.Component {
                 </div>
               </div>
               {this.state.isEditTemplateOpen ? (
-                <div className="edit-template-container">
+                <div className="edit-template-container edit-container">
                   <ColorChanger
                     cvDesign={this.props.cvDesign}
                     changeCvDesign={this.props.changeCvDesign}
@@ -164,7 +164,7 @@ class FinalPage extends React.Component {
                 </div>
               </div>
               {this.state.isEditTextOpen ? (
-                <div className="edit-text-container">
+                <div className="edit-text-container edit-container">
                   <DropDownMenu
                     activeData={this.state.activeFont}
                     changeActiveData={this.changeActiveFont}

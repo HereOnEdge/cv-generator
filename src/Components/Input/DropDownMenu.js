@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/drop-down-menu.css";
 
 export default class DropDownMenu extends React.Component {
   constructor(props) {

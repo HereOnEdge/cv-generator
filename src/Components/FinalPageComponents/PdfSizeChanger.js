@@ -4,13 +4,12 @@ export default class PdfSizeChanger extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pdfFormats: ["a5", "a4", "a3"],
+      pdfFormats: ["A5", "A4", "A3"],
       isEditFormatOpen: false,
     };
   }
   toggleEditPdfFormat = () => {
     this.setState((prevState) => {
-      console.log(prevState.isEditFormatOpen);
       return {
         isEditFormatOpen: prevState.isEditFormatOpen ? false : true,
       };
@@ -20,7 +19,7 @@ export default class PdfSizeChanger extends React.Component {
     return (
       <span className="paper-size" title="Edit Page Size">
         Paper size -{" "}
-        <div>
+        <span>
           <span className="bold" onClick={this.toggleEditPdfFormat}>
             {this.props.activeFormat}{" "}
             <svg
@@ -28,6 +27,7 @@ export default class PdfSizeChanger extends React.Component {
               width="12"
               height="12"
               viewBox="0 0 16 16"
+              className={`${this.state.isEditFormatOpen ? "open" : ""}`}
             >
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
@@ -49,7 +49,7 @@ export default class PdfSizeChanger extends React.Component {
               )}
             </div>
           ) : null}
-        </div>
+        </span>
       </span>
     );
   }

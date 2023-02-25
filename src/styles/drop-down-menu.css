@@ -1,0 +1,50 @@
+.drop-down-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.drop-down-button {
+    width: calc(100% - 1.4em);
+    padding: 0.7em;
+    outline: 1px solid var(--my-grey) !important;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.drop-down-button.open {
+    outline-color: var(--my-green) !important;
+    outline-width: 1.5px !important;
+}
+.drop-down-button > svg {
+    transition: transform 0.5s;
+}
+.drop-down-button.open > svg {
+    transform: rotate(180deg);
+}
+.drop-down-menu {
+    position: absolute;
+    background-color: var(--my-white);
+    top: 110%;
+    width: 100%;
+    height: 10em;
+    overflow: scroll;
+    z-index: 1;
+    box-shadow: 1px 1px 5px 1px var(--my-grey);
+}
+.drop-down-option {
+    padding-left: 0.5em;
+    cursor: default;
+}
+.drop-down-option:hover, .drop-down-option.active{
+    background-color: var(--my-light-green);
+}
+.reset-button {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+.reset-button > svg {
+    transform: rotate(-90deg);
+}

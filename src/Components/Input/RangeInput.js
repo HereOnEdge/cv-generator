@@ -20,10 +20,12 @@ export default class RangeInput extends React.Component {
   render() {
     return (
       <div className="range-input">
-        <span>{this.props.label}</span>
-        <span>
-          {this.state.activeValue}
-          {this.props.format !== undefined ? this.props.format : null}
+        <span className="range-input-label-container">
+          <span>{this.props.label}</span>
+          <span>
+            {this.state.activeValue}
+            {this.props.format !== undefined ? this.props.format : null}
+          </span>
         </span>
         <InputRange
           type={"range"}

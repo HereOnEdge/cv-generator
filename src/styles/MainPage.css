@@ -422,13 +422,14 @@
     gap: 0.3em;
 }
 .final-body {
-    grid-template-columns: 5% 70% 25%;
+    grid-template-columns: 5% 55% 35%;
+    justify-content: space-between;
 }
 .save-options {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5em;
 }
 .save-options > div {
@@ -450,6 +451,117 @@
     transform: scale(1.5);
     transition: transform 0.5s;
 }
+.main-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+.main-preview-container .preview{
+    box-shadow: 0 -3px 7px 0 var(--my-grey);
+}
+.pdf-edit-section {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+}
+.paper-size {
+    position: relative;
+}
+.paper-size > span {
+    cursor: pointer;
+}
+.paper-size svg {
+    transition: transform  0.5s;
+}
+.paper-size svg.open {
+    transform: rotate(180deg);
+}
+.edit-format-options-container {
+    position: absolute;
+    right: 1em;
+    z-index: 1;
+}
+.edit-format-options-container > div:hover {
+    color: var(--my-green);
+}
+.paper-size .bold {
+    font-size: 1em;
+}
+.edit-cv-section{
+    padding: 1em;
+    font-size: 0.7em;
+}
+.cv-editBox {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--my-grey);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 20%;
+}
+.cv-editBox > div {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    background-color: var(--my-cream);
+    border-bottom: 1px solid var(--my-grey);
+}
+.cv-editBox > div:not(.edit-container){
+    cursor: pointer;
+    font-weight: 600;
+}
+.cv-editBox > div:hover:not(.edit-container){
+    background-color: var(--my-light-green);
+}
+.cv-editBox :last-child {
+    border-bottom: none;
+}
+.edit-container {
+    background-color: inherit !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 1em;
+}
+.openingArrow-container{
+    display: grid;
+    place-items: center;
+}
+.openingArrow {
+    width: 6px;
+    aspect-ratio: 1;
+    border-top: 2px solid var(--my-blue);
+    border-right: 2px solid var(--my-blue);
+    transform: rotate(135deg);
+    transition: transform 0.5s;
+}
+.openingArrow.open {
+    transform: rotate(-45deg);
+}
+.edit-cv-section {
+    /* max-width: 100%; */
+    /* width: 100%; */
+}
+.template-changer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+}
+.template-changer .preview{
+    /* height: 100% !important; */
+    min-height: 100%;
+}
+.color-changer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+.color-changer > div {
+    width: 1.2em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+}
 .template-color {
     width: 10px;
     aspect-ratio: 1;
@@ -458,7 +570,26 @@
     height: 85px;
     width: 70px;
     font-size: 2px;
+    cursor: pointer;
 }
 .template.active {
     border: 3px solid var(--my-blue);
+}
+.input-range__track{
+    background-color: var(--my-grey) !important;
+} 
+.input-range__track--active, .input-range__slider {
+    background-color: var(--my-blue) !important;
+}
+.input-range__label-container {
+    display: none !important;
+}
+.range-input-label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.range-input {
+    font-size: 0.8em;
+    font-weight: 600;
 }
