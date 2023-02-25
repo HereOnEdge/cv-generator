@@ -78,7 +78,10 @@ class FinalPage extends React.Component {
                   });
                 }}
               >
-                <div className="download-svg-container">
+                <div
+                  className="download-svg-container"
+                  title="Download as PDF file"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
