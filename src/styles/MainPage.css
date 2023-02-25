@@ -414,6 +414,35 @@
 .italic {
     font-style: italic;
 }
+/* final page */
+.final-header {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.3em;
+}
+.final-body {
+    grid-template-columns: 5% 70% 25%;
+}
+.download-svg-container {
+    width: 2em;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--my-green);
+    border-radius: 50%;
+    color: var(--my-white);
+    cursor: pointer;
+}
+.download-svg-container:hover {
+    background-color: var(--my-white);
+    color: var(--my-green);
+}
+.download-svg-container:hover > svg {
+    transform: scale(1.5);
+    transition: transform 0.5s;
+}
 .template-color {
     width: 10px;
     aspect-ratio: 1;
