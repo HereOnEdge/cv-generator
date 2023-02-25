@@ -424,7 +424,14 @@
 .final-body {
     grid-template-columns: 5% 70% 25%;
 }
-.download-svg-container {
+.save-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5em;
+}
+.save-options > div {
     width: 2em;
     aspect-ratio: 1;
     display: flex;
@@ -435,20 +442,17 @@
     color: var(--my-white);
     cursor: pointer;
 }
-.download-svg-container:hover {
+.save-options > div:hover {
     background-color: var(--my-white);
     color: var(--my-green);
 }
-.download-svg-container:hover > svg {
+.save-options > div:hover > svg {
     transform: scale(1.5);
     transition: transform 0.5s;
 }
 .template-color {
     width: 10px;
     aspect-ratio: 1;
-
-}
-.template-changer {
 }
 .template {
     height: 85px;
