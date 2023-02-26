@@ -37,3 +37,35 @@ main {
   align-items: flex-start ;
   /* background-color: rgba(0, 0, 0, 0.3); */
 }
+@media (width <= 630px) {
+  .progressBar-circle-container {
+    display: none !important;
+  }
+  .progressBar-circle-container.active {
+    display: flex !important;
+    gap: 0;
+  }
+  .progressBar-line {
+    display: none;
+  }
+  .progressBar-circle.active {
+    display: block;
+    width: max-content;
+    border: none !important;
+    font-weight: 100 !important;
+    font-size: 0.7em;
+  }
+  .progressBar-circle.active::before{
+    content: 'Step ';
+  }
+  .progressBar-circle.active::after {
+    content: ' of 6';
+  }
+  .progressBar-circle-name {
+    width: max-content !important;
+  }
+  header {
+    padding: 0.5em 0;
+    color: var(--my-blue);
+  }
+}

@@ -4,7 +4,11 @@ class Circle extends React.Component {
   render() {
     const { number, name, topic, completedTopics, currentNode } = this.props;
     const circleElement = (
-      <div className="progressBar-circle-container">
+      <div
+        className={`progressBar-circle-container ${
+          topic === currentNode.value().topic ? " active" : ""
+        }`}
+      >
         <div
           className={`progressBar-circle${
             topic === currentNode.value().topic ? " active" : ""
