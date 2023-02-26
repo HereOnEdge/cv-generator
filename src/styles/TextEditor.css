@@ -70,3 +70,12 @@
     color: var(--my-grey);
     font-size: 0.7em;
 }
+@media (width <= 630px) {
+    .suggestBox {
+        display: none;
+    }
+    .editor-buttons {
+        gap: 0;
+        padding-left: 0;
+    }
+}
