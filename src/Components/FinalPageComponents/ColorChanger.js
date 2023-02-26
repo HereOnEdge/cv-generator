@@ -8,22 +8,43 @@ export default class ColorChanger extends React.Component {
   render() {
     return (
       <div className="color-changer">
-        {this.props.cvDesign.templateColors.map((color) => (
-          <div
-            className="template-color"
-            style={{ backgroundColor: color }}
-            onClick={() => {
-              this.props.changeCvDesign.color(color);
-              this.activeColor = color;
-            }}
-            onMouseOver={() => {
-              this.props.changeCvDesign.color(color);
-            }}
-            onMouseLeave={() =>
-              this.props.changeCvDesign.color(this.activeColor)
-            }
-          ></div>
-        ))}
+        {this.props.cvDesign.templateColors.map((color) =>
+          this.activeColor === color ? (
+            <div className="active-color">
+              <div
+                key={`${color}-key`}
+                className="template-color"
+                style={{ backgroundColor: color }}
+                onClick={() => {
+                  this.props.changeCvDesign.color(color);
+                  this.activeColor = color;
+                }}
+                onMouseOver={() => {
+                  this.props.changeCvDesign.color(color);
+                }}
+                onMouseLeave={() =>
+                  this.props.changeCvDesign.color(this.activeColor)
+                }
+              ></div>
+            </div>
+          ) : (
+            <div
+              key={`${color}-key`}
+              className="template-color"
+              style={{ backgroundColor: color }}
+              onClick={() => {
+                this.props.changeCvDesign.color(color);
+                this.activeColor = color;
+              }}
+              onMouseOver={() => {
+                this.props.changeCvDesign.color(color);
+              }}
+              onMouseLeave={() =>
+                this.props.changeCvDesign.color(this.activeColor)
+              }
+            ></div>
+          )
+        )}
       </div>
     );
   }

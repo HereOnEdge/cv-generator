@@ -558,30 +558,32 @@
 .openingArrow.open {
     transform: rotate(-45deg);
 }
-.edit-cv-section {
-    /* max-width: 100%; */
-    /* width: 100%; */
-}
 .template-changer {
     display: flex;
     flex-wrap: wrap;
     gap: 0.3em;
 }
 .template-changer .preview{
-    /* height: 100% !important; */
     min-height: 100%;
 }
 .color-changer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 0.5em;
 }
-.color-changer > div {
-    width: 1.2em;
+.color-changer > div,.active-color > div {
+    width: 1.5em;
     aspect-ratio: 1;
     border-radius: 50%;
     cursor: pointer;
+}
+.active-color {
+    width: 1.7em !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--my-grey);
 }
 .template-color {
     width: 10px;
