@@ -666,3 +666,21 @@
     25%, 75% {transform: rotate(2deg);}
     50% {transform: rotate(-2deg);}
 }
+/* scorll-bar */
+::-webkit-scrollbar{
+    width: 0.2em;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--my-grey);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--my-dark-green);
+}
+::-webkit-scrollbar-track {
+    background-color: var(--my-cream);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-button {
+    display: none;
+}
