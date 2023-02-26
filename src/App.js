@@ -19,7 +19,18 @@ class App extends React.Component {
       __cvDesign: {
         templates: ["default"],
         activeTemplate: "default",
-        templateColors: ["#3a3a3a", "#23a3e3", "#ee00e0", "#23ee7a", "#901232"],
+        templateColors: [
+          "#3a3a3a",
+          "#23a3e3",
+          "#892343",
+          "#e1a4d2",
+          "#929496",
+          "#b9481f",
+          "#166c60",
+          "#496267",
+          "#102a73",
+          "#4a4a4a",
+        ],
         color: "#3a3a3a",
         secondColor: "#ffffff",
         fonts: [
