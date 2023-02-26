@@ -769,4 +769,33 @@
     .others-form :first-child, .others-form :nth-child(2) {
         flex: 1 0 100%;
     }
+    .others-form {
+        height: auto;
+    }
+    /* summary-page */
+    .data-summary {
+        width: 100%;
+        min-height: 100px;
+    }
+    .summary-title {
+        font-size: 1em;
+    }
+    .summary-description {
+        grid-area: 2 / 1 / 3/ 2;
+        font-size: 1em;
+    }
+    .summary-buttons {
+        /* gap: 1em; */
+        justify-content: flex-start !important;
+        grid-area: 2 / 2 /3/ 3;
+    }
+    .summary-button {
+        width: 30px;
+        height: 30px;
+    }
+    .add-data-container {
+        width: 100%;
+        border: none;
+        font-size: 1.3em;
+    }
 }
