@@ -81,3 +81,20 @@ label {
     outline-color: red;
     outline-width: 1.5px;
 }
+@media (width <= 630px) {
+    .half {
+        width: calc(50% - .3em);
+    }
+    .whole-input-container {
+        height: 4em;
+    }
+    .whole-input-container:not(.half) {
+        width: 100%;
+    }
+    .input-container {
+        height: calc(40px - .3em);
+    }
+    .input-container > input::placeholder {
+        font-size: 1em;
+    }
+}

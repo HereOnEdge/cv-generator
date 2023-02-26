@@ -42,3 +42,13 @@
     background-color: var(--my-blue);
     color: var(--my-white);
 }
+@media (width <= 630px) {
+    .navigation-buttons {
+        align-items: center;
+    }
+    .next-button {
+        width: 100%;
+        padding: 1.5em 0 !important;
+        font-size: 1em !important;
+    }
+}
