@@ -466,26 +466,43 @@
 }
 .paper-size {
     position: relative;
+    display: flex;
+    margin-right: 2.5em;
 }
 .paper-size > span {
+    position: absolute;
+    left: 100%;
+    top: 0;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 1.3em;
+    transition: height 0.4s;
+    overflow: hidden;
+    z-index: 1;
+    padding: 0 .2em;
+}
+.paper-size > span.open {
+    background-color: var(--my-light-blue);
+    color: var(--my-cream);
+    border-radius: 5px;
+    height: 4em;
+    padding: 0.2em;
 }
 .paper-size svg {
     transition: transform  0.5s;
 }
 .paper-size svg.open {
     transform: rotate(180deg);
-}
-.edit-format-options-container {
-    position: absolute;
-    right: 1em;
-    z-index: 1;
+    color: var(--my-cream) !important;
 }
 .edit-format-options-container > div:hover {
-    color: var(--my-green);
+    background-color: var(--my-cream);
+    color: var(--my-light-blue);
 }
 .paper-size .bold {
     font-size: 1em;
+    width: max-content;
 }
 .edit-cv-section{
     padding: 1em;
@@ -594,8 +611,11 @@
     font-weight: 600;
 }
 .file-name {
+    height: min-content;
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: flex-start;
 }
 .file-name > span:focus {
     cursor: text;
@@ -615,7 +635,7 @@
     cursor: default;
     z-index: 1;
     color: var(--my-cream);
-    animation: shake 0.5s linear 1s 2 normal forwards;
+    animation: shake 0.3s linear 1s 2 normal forwards;
     animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 .file-name-helper::before {
