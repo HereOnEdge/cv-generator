@@ -701,8 +701,13 @@
         font-size: 0.7em;
         color: var(--my-blue);
     }
-    .whole-preview{
+    .whole-preview:not(.intro-preview), .preview-button{
         display: none;
+    }
+    .preview-container {
+        width: max(160px, 30%);
+        align-self: center;
+        font-size: 3px;
     }
     .body {
         display: flex;

@@ -38,6 +38,9 @@ main {
   /* background-color: rgba(0, 0, 0, 0.3); */
 }
 @media (width <= 630px) {
+  main {
+    padding: 0.5em 0;
+  }
   .progressBar-circle-container {
     display: none !important;
   }
