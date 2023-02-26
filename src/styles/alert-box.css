@@ -18,7 +18,7 @@
 }
 .alert-box {
     width: min(90%, 350px);
-    height: min(40%, 170px);
+    /* height: min(40%, 170px); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,11 +96,35 @@ color: var(--my-green);
 .alert-skipButton:hover {
     text-decoration: underline;
 }
+@media (width <= 630px) {
+    .alert-box {
+        font-size: 1.5em;
+        padding-bottom: 1em;
+    }
+    .alert-title{
+        width: 70%;
+        text-align: center;
+        font-weight: 600;
+        color: var(--my-blue);
+    }
+    .alert-desc {
+        color: var(--my-blue);
+        line-height: 1.6em;
+        width: 90%;
+    }
+    .alert-addButton {
+        width: 80%;
+        padding: 0.5em 0;
+    }
+    .alert-skipButton {
+        color: var(--my-light-blue);
+        font-size: 0.8em;
+    }
+}
 @keyframes openAlert {
-    0%{width: 0; height: 0;}
-    /* 60%{width: min(40%, 150px); height: min(25%, 90px);} */
-    80%{width: min(100%, 400px); height: min(60%, 210px);}
-    100%{width: min(90%, 350px);  height:min(40%, 170px);}
+    0% {transform: scale(0);}
+    80%{transform: scale(1);}
+    100%{transform: scale(0.9);}
 }
 @keyframes appearText {
     0%{opacity: 0;}

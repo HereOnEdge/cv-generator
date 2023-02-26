@@ -697,6 +697,9 @@
         width: calc(100% - 2em);
         grid-template-rows: auto 1fr 60px;
     }
+    .main-container {
+        min-height: calc(100vh - 50px) !important;
+    }
     .header {
         font-size: 0.7em;
         color: var(--my-blue);
@@ -761,5 +764,9 @@
     .moreInfo-button {
         font-size: 1em;
         font-weight: 100;
+    }
+    /* others-main-page */
+    .others-form :first-child, .others-form :nth-child(2) {
+        flex: 1 0 100%;
     }
 }
