@@ -3,14 +3,22 @@ import React, { createRef } from "react";
 export default class FileNameChanger extends React.Component {
   constructor(props) {
     super(props);
-    this.editableRed = createRef();
+    this.editableRef = createRef();
+    this.state = { isHelperOpen: false };
   }
   componentDidMount() {
-    this.editableRed.current.innerText = this.props.activeName;
+    this.editableRef.current.innerText = this.props.activeName;
   }
   render() {
     return (
-      <span className="file-name" title="Edit File Name">
+      <span
+        className="file-name"
+        title="Edit File Name"
+        onClick={() => {
+          this.editableRef.current.focus();
+          console.log(this.editableRef);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -22,13 +30,20 @@ export default class FileNameChanger extends React.Component {
         </svg>
         [
         <span
-          ref={this.editableRed}
+          ref={this.editableRef}
+          onFocus={() => this.setState({ isHelperOpen: true })}
+          onBlur={() => this.setState({ isHelperOpen: false })}
           contentEditable="true"
           onInput={(e) => {
             this.props.changeFileName(e.target.innerText);
           }}
         ></span>
         ]
+        {this.state.isHelperOpen ? (
+          <div className="help-rail rail">
+            <div className="file-name-helper helper">Change File Name</div>
+          </div>
+        ) : null}
       </span>
     );
   }

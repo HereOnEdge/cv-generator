@@ -593,3 +593,56 @@
     font-size: 0.8em;
     font-weight: 600;
 }
+.file-name {
+    position: relative;
+    cursor: pointer;
+}
+.file-name > span:focus {
+    cursor: text;
+    outline: 2px solid var(--my-green);
+}
+.file-name-helper {
+    position: relative;
+    width: max-content;
+    background-color: var(--my-light-blue);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0.5em ;
+    font-weight: 600;
+    font-size: .9em;
+    cursor: default;
+    z-index: 1;
+    color: var(--my-cream);
+    animation: shake 0.5s linear 1s 2 normal forwards;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+.file-name-helper::before {
+    content: '';
+    width: 0.5em;
+    height: 0.5em;
+    border-left: 3px solid var(--my-cream);
+    border-bottom: 3px solid var(--my-cream);
+    transform: rotate(45deg);
+    position:relative;
+    animation: attention 2s linear 0.1s infinite normal forwards;
+}
+.rail {
+    position: absolute;
+    height: 1px;
+    top: 50%;
+    left: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes attention {
+    0%,50%,100% {left: 0;}
+    25%, 75% {left: -0.5em;}
+}
+@keyframes shake {
+    0%, 100% {transform: rotate(0deg);}
+    25%, 75% {transform: rotate(2deg);}
+    50% {transform: rotate(-2deg);}
+}
