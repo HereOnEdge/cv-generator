@@ -5,7 +5,6 @@ export default class DropDownMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // activeData: this.props.activeData,
       isMenuOpen: false,
     };
   }
@@ -17,12 +16,6 @@ export default class DropDownMenu extends React.Component {
       };
     });
   };
-  // componentDidUpdate() {
-  //   // update the activeData state if data has been updated
-  //   if (this.props.activeData !== this.state.activeData) {
-  //     this.setState({ activeData: this.props.activeData });
-  //   }
-  // }
   render() {
     return (
       <div className="drop-down-container">
