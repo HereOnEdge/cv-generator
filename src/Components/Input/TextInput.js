@@ -34,10 +34,10 @@ class TextInput extends React.Component {
         }
       }
       const data =
+        // eslint-disable-next-line eqeqeq
         this.props.id == undefined
           ? this.props.data[this.topic][this.field]
           : this.props.data[this.topic][this.props.id][this.field];
-      console.log(this.props.data);
       this.setState({
         input: data,
       });

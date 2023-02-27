@@ -9,7 +9,10 @@ class EducatePreview extends React.Component {
     this.educateDataElement =
       this.props.data !== null ? (
         Object.keys(this.props.data).map((key) => (
-          <div className="education-data-container">
+          <div
+            className="education-data-container"
+            key={`yetAnotherUnique${key}`}
+          >
             <div className="education-time-container italic">
               {this.props.data[key].startDate !== undefined &&
               this.props.data[key].startDate !== ""

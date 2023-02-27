@@ -16,7 +16,6 @@ export default class FileNameChanger extends React.Component {
         title="Edit File Name"
         onClick={() => {
           this.editableRef.current.focus();
-          console.log(this.editableRef);
         }}
       >
         <svg

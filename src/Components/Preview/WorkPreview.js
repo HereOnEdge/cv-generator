@@ -10,7 +10,7 @@ class WorkPreview extends React.Component {
     this.workDataElement =
       this.props.data !== null ? (
         Object.keys(this.props.data).map((key) => (
-          <div className="work-data">
+          <div className="work-data" key={`unique${key}`}>
             <div className="work-date-container">
               <span className="italic">{this.props.data[key].startDate}</span>/
               <span className="italic">{this.props.data[key].endDate}</span>

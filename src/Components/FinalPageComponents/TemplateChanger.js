@@ -26,6 +26,7 @@ export default class TemplateChanger extends React.Component {
               className={`template ${
                 this.state.activeTemplate === template ? "active" : ""
               }`}
+              key={`templateUnique${template}`}
               onMouseOver={() => {
                 this.props.changeCvDesign.template(template);
               }}

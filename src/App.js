@@ -114,7 +114,6 @@ class App extends React.Component {
               prevState.data[currentPageNode.value().topic][id] = data[id];
               // if new value is undefiend, remove the item from object
               if (data[id] === undefined) {
-                console.log(id);
                 delete prevState.data[currentPageNode.value().topic][id];
               }
             } else {

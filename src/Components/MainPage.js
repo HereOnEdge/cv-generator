@@ -8,9 +8,7 @@ import SummaryPage from "./Pages/SummaryPages";
 import FinalPage from "./Pages/FinalPage";
 
 class MainPage extends React.Component {
-  componentDidUpdate() {
-    console.log(this.props.data);
-  }
+  componentDidUpdate() {}
   render() {
     const {
       changeState,

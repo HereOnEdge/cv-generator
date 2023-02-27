@@ -13,9 +13,9 @@ export default class ColorChanger extends React.Component {
             className={`color-wrapper ${
               this.activeColor === color ? "active" : ""
             }`}
+            key={`${color}-key`}
           >
             <div
-              key={`${color}-key`}
               className="template-color"
               style={{ backgroundColor: color }}
               onClick={() => {

@@ -10,7 +10,6 @@ export default class DropDownMenu extends React.Component {
     };
   }
   toggleMenu = () => {
-    console.log("toggled");
     this.setState((prevState) => {
       prevState.isMenuOpen = prevState.isMenuOpen ? false : true;
       return {

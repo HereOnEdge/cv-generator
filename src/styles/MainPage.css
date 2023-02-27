@@ -897,6 +897,9 @@
         grid-area: 1 / 2 / 2/ 3;
         cursor: pointer;
     }
+    .edit-text-container {
+        display: none !important;
+    }
 }
 
 @keyframes comeUp {

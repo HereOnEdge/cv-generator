@@ -26,7 +26,6 @@ class TextEditorButtons extends React.Component {
       ) {
         this.setState((prevState) => {
           for (const item in prevState.justify) {
-            console.log(item);
             if (item) {
               prevState.justify[item] = false;
               prevState.justify[buttonAction] = true;
