@@ -57,11 +57,10 @@
     justify-content: space-around;
     align-items: flex-start;
     gap: 5px;
+    font-size: 0.8em;
 }
 .bold {
-    /* display: block; */
     font-weight: 600;
-    /* font-size: 0.8rem; */
 }
 .small {
     font-size: 0.9em;
@@ -748,10 +747,17 @@
         background-color: var(--my-white);
     }
     /* contact-main-page */
-    
+    .moreInfoSection {
+        margin-top: 25px;
+        gap: 25px;
+    }
     .moreInfo-button {
-        font-size: 1em;
+        font-size: 1.3em;
         font-weight: 100;
+        padding: 0.3em 0.6em;
+    }
+    .contact-buttons {
+        gap: 1.2em;
     }
     /* others-main-page */
     .others-form :first-child, .others-form :nth-child(2) {
