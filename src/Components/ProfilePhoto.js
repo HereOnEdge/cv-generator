@@ -36,6 +36,14 @@ class ProfilePhoto extends React.Component {
           onChange={(event) => this.savePhotoSrc(event)}
         ></input>
         <label htmlFor="profile-picture">+ Upload photo</label>
+        <div className="picture-desc">
+          <span className="bold">Add a photo to your CV</span>
+          <div>
+            Supported file formats are .jpg .png . jpeg .svg.
+            <br />
+            There is no file size limit.
+          </div>
+        </div>
       </div>
     ) : (
       <div className="photo-container">

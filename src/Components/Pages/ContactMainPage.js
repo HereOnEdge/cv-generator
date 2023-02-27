@@ -6,7 +6,6 @@ import PreviewContainer from "../Preview/PreviewContainer";
 import PreviewButton from "../Preview/PreviewButton";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import Preview from "../Preview/Preview";
-// import "../../styles/ContactMain.css";
 
 class ContactMainPage extends React.Component {
   constructor(props) {
