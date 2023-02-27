@@ -5,7 +5,7 @@ export default class ResetButton extends React.Component {
     this.defaultValues = {
       ...this.props.cvDesign,
       activeFont: "Verdana",
-      fontSize: "1",
+      fontSize: "0.8",
       headingSize: "1.4",
       gap: "1",
       lineSpace: "1",

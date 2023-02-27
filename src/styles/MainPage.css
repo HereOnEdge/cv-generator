@@ -61,7 +61,7 @@
 .bold {
     /* display: block; */
     font-weight: 600;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
 }
 .small {
     font-size: 0.9em;
@@ -535,28 +535,32 @@
 .template-changer .preview{
     min-height: 100%;
 }
+.color-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+}
+.color-wrapper.active {
+    border-color: var(--my-green);
+}
 .color-changer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.2em;
+    border-radius: 50%;
 }
-.color-changer > div,.active-color > div {
-    width: 1.5em;
+.color-changer > div {
+    width: 1.7em;
     aspect-ratio: 1;
     border-radius: 50%;
     cursor: pointer;
 }
-.active-color {
-    width: 1.7em !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--my-grey);
-}
 .template-color {
-    width: 10px;
+    width: 90%;
     aspect-ratio: 1;
+    border-radius: 50%;
 }
 .template {
     height: 85px;
@@ -631,6 +635,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.edit-template-button.mobile {
+    display: none;
+    height: min-content;
+}
+.savePdf-container.mobile {
+    display: none;
+}
+.close-template-editor {
+    display: none;
 }
 @keyframes attention {
     0%,50%,100% {left: 0;}
@@ -759,7 +773,6 @@
         font-size: 1em;
     }
     .summary-buttons {
-        /* gap: 1em; */
         justify-content: flex-start !important;
         grid-area: 2 / 2 /3/ 3;
     }
@@ -772,4 +785,121 @@
         border: none;
         font-size: 1.3em;
     }
+    /* final-page */
+    .file-name, .save-options, .paper-size {
+        display: none;
+    }
+    .pdf-edit-section {
+        justify-content: flex-end;
+    }
+    .edit-template-button.mobile {
+        display: flex;
+        height: min-content;
+        align-items: center;
+        cursor: pointer;
+        color: var(--my-light-blue);
+    }
+    .edit-template-button.mobile > svg {
+        height: 1em;
+    }
+    .main-preview-container > .preview {
+        grid-area: 2 / 1 / -1 / -1;
+        font-size: 0.6em !important;
+    }
+    .savePdf-container.mobile {
+        display: flex;
+        justify-content: center;
+        width: calc(90% - 3em);
+        padding: 1em;
+        border-radius: 30px;
+        background-color: var(--my-green);
+        color: var(--my-white);
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .final-main {
+        grid-template-rows: auto 1fr auto;
+        padding: 0 !important;
+        width: 100%;
+        height: 100vh;
+        /* background-color: var(--my-cream); */
+    }
+    .final-body {
+        padding: 0 1em ;
+        width: calc(100% - 2em);
+    }
+    .final-header {
+        display: none;
+    }
+    .final-foot {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--my-cream);
+        padding: 0.3em 0;
+    }
+    .final-foot .navigation-buttons {
+        height: 0;
+    }
+    .edit-template-container {
+        position: fixed;
+        width: calc(100% - 2em);
+        left: 0;
+        bottom: -5px;
+        background-color: var(--my-cream) !important;
+        box-shadow: 0 -1px var(--my-grey);
+        z-index: 1;
+        opacity: 0;
+        height: 220px;
+        animation: comeUp 0.8s linear 0.1ms 1 normal forwards;
+        display: grid !important;
+        grid-template-columns: 90% 10% !important;
+        grid-template-rows: 20% 80%;
+        gap: 0;
+    }
+    .template-changer {
+        grid-area: 2 / 1/ 3 /2;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: scroll;
+    } 
+    .template {
+        height: 85%;
+        width: 110px;
+        
+    }
+    .edit-template-button:not(.edit-template-button.mobile) ,.edit-text-button {
+        display: none !important;
+    }
+    .edit-cv-section {
+        height: 0;
+        border: none;
+    }
+    .color-changer {
+        /* gap: 1em; */
+    }
+    .color-wrapper {
+        width: 2.5em !important;
+    }
+    .close-template-editor {
+        justify-self: flex-end;
+        align-self: flex-start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        aspect-ratio: 1;
+        grid-area: 1 / 2 / 2/ 3;
+        cursor: pointer;
+    }
+}
+
+@keyframes comeUp {
+    0% {transform: translate(0, 150px); opacity: 0;}
+    25%{opacity: 0;}
+    50%{transform:translate(0, 0); opacity: 0.5; }
+    70% {transform: translate(0, -5px);opacity: 1;}
+    100%{transform: translate(0, 0); opacity: 1;}
 }

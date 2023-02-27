@@ -19,7 +19,7 @@ class FinalPage extends React.Component {
       cvDesign: this.props.cvDesign, // state.cvDesign does not get used anywhere. its only for sake of rerendering
       activeFont: this.props.cvDesign.activeFont,
       pdfHeight: 500,
-      pdfFormat: "A4",
+      pdfFormat: "A5",
       pdfFileName: `${this.props.data.contact.firstName}_${this.props.data.contact.lastName}_CV`,
     };
     this.pdfRef = React.createRef();
@@ -51,7 +51,7 @@ class FinalPage extends React.Component {
   componentDidMount() {
     this.setState({
       pdfHeight: parseInt(
-        getComputedStyle(this.pdfRef.current.children[1]).height
+        getComputedStyle(this.pdfRef.current.children[2]).height
       ),
     });
   }
@@ -73,13 +73,30 @@ class FinalPage extends React.Component {
                 changeFormat={this.changePdfFormat}
                 activeFormat={this.state.pdfFormat}
               />
+              <div
+                className="edit-template-button mobile"
+                onClick={() => this.openContainer("isEditTemplateOpen")}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
+                </svg>
+                <span className="cv-edit-placeholder">
+                  Templates and colors
+                </span>
+              </div>
             </div>
             <div className="save-options">
               <div
                 className="savePdf-container"
                 title="Download as PDF file"
                 onClick={() => {
-                  html2pdf(this.pdfRef.current.children[1], {
+                  html2pdf(this.pdfRef.current.children[2], {
                     filename: this.state.pdfFileName,
                     html2canvas: {
                       height: this.state.pdfHeight,
@@ -139,6 +156,22 @@ class FinalPage extends React.Component {
                     changeCvDesign={this.props.changeCvDesign}
                     data={this.props.data}
                   />
+                  <div
+                    className="close-template-editor"
+                    onClick={() => this.setState({ isEditTemplateOpen: false })}
+                    title="Close Template Editor"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      onClick={this.props.toggleAlertBox}
+                    >
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                  </div>
                 </div>
               ) : null}
               <div
@@ -174,9 +207,9 @@ class FinalPage extends React.Component {
                   <RangeInput
                     label={"FONT SIZE"}
                     changeData={this.props.changeCvDesign.fontSize}
-                    min={0.5}
-                    max={4}
-                    step={0.1}
+                    min={0.4}
+                    max={1}
+                    step={0.05}
                     activeValue={this.props.cvDesign.fontSize}
                     format="em"
                   />
@@ -236,6 +269,22 @@ class FinalPage extends React.Component {
           </div>
         </div>
         <div className="final-foot foot">
+          <div
+            className="savePdf-container mobile"
+            title="Download as PDF file"
+            onClick={() => {
+              html2pdf(this.pdfRef.current.children[2], {
+                filename: this.state.pdfFileName,
+                html2canvas: {
+                  height: this.state.pdfHeight,
+                  windowHeight: this.state.pdfHeight,
+                },
+                jsPDF: { format: this.state.pdfFormat },
+              });
+            }}
+          >
+            Download Your CV
+          </div>
           <NavigationButtons
             topic={this.props.topic}
             data={this.state[this.props.topic]}

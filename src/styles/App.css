@@ -40,6 +40,8 @@ main {
 @media (width <= 630px) {
   main {
     padding: 0.5em 0;
+    border-radius: 0;
+    padding-bottom: 0;
   }
   .progressBar-circle-container {
     display: none !important;

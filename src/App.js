@@ -56,7 +56,7 @@ class App extends React.Component {
           "Comic Sans MS",
         ],
         activeFont: "Verdana",
-        fontSize: "1",
+        fontSize: "0.8",
         headingSize: "1.4",
         gap: "1",
         lineSpace: "1",
