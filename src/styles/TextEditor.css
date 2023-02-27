@@ -44,9 +44,6 @@
     justify-content: center;
     align-items: center;
 }
-.editor-buttons button:hover {
-    background-color: var(--my-cream);
-}
 .editor-buttons button.active {
     background-color: var(--my-cream);
 }
@@ -77,5 +74,11 @@
     .editor-buttons {
         gap: 0;
         padding-left: 0;
+    }
+}
+/* have hover only on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .editor-buttons button:hover {
+        background-color: var(--my-cream);
     }
 }

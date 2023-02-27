@@ -46,9 +46,6 @@
     cursor: pointer;
     transition: color 0.2s;
 }
-.close-alert > svg:hover {
-color: var(--my-green);
-}
 .alert-desc{
     font-size: 0.7em;
     width: 80%;
@@ -80,9 +77,7 @@ color: var(--my-green);
     padding: 5px 0;
     cursor: pointer;
 }
-.alert-addButton:hover {
-    background-color: var(--my-dark-green);
-}
+
 .alert-skipButton {
     width: 100%;
     height: 50%;
@@ -93,9 +88,7 @@ color: var(--my-green);
     cursor: pointer;
     padding: 5px 0;
 }
-.alert-skipButton:hover {
-    text-decoration: underline;
-}
+
 @media (width <= 630px) {
     .alert-box {
         font-size: 1.5em;
@@ -130,4 +123,16 @@ color: var(--my-green);
     0%{opacity: 0;}
     80%{opacity: 0;}
     100%{opacity: 1;}
+}
+/* have hover only on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .close-alert > svg:hover {
+        color: var(--my-green);
+    }
+    .alert-addButton:hover {
+        background-color: var(--my-dark-green);
+    }
+    .alert-skipButton:hover {
+        text-decoration: underline;
+    }
 }

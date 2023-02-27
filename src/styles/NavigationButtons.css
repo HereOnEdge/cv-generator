@@ -33,15 +33,6 @@
 .back-button svg path{
     margin-left: 0;
 }
-.next-button:hover {
-    background-color: var(--my-white);
-    color: var(--my-green);
-    border-color: var(--my-green);
-}
-.back-button:hover {
-    background-color: var(--my-blue);
-    color: var(--my-white);
-}
 @media (width <= 630px) {
     .navigation-buttons {
         align-items: center;
@@ -65,5 +56,17 @@
     .back-button > svg {
         width: 35px;
         height: 35px;
+    }
+}
+/* have hover only on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .next-button:hover {
+        background-color: var(--my-white);
+        color: var(--my-green);
+        border-color: var(--my-green);
+    }
+    .back-button:hover {
+        background-color: var(--my-blue);
+        color: var(--my-white);
     }
 }

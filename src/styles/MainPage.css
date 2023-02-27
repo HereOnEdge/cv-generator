@@ -92,15 +92,7 @@
     text-shadow: 0;
     cursor: pointer;
 }
-.moreInfo-button:hover {
-    background-color: var(--my-blue);
-    color: var(--my-white);
-    transition: all 0.5s
-}
-.moreInfo-button:hover .plus-sign {
-    transform: scale(1.2);
-    transition: transform 0.6s;
-}
+
 .plus-sign {
     width: 16px;
     height: 16px;
@@ -267,9 +259,7 @@
     gap: 4px;
     font-weight: 600;
 }
-.add-description:hover :last-child{
-    text-decoration:underline;
-}
+
 .plus {
     font-size: 1.6em;
     text-decoration: none;
@@ -303,11 +293,7 @@
     align-items: center;
     cursor: pointer;
 }
-.summary-button:hover {
-    background-color: var(--my-blue);
-    color: var(--my-white);
-    transition: all 0.6s;
-}
+
 .add-data-container {
     width: 90%;
     border: 1px dashed var(--my-light-blue) ;
@@ -360,9 +346,6 @@
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
-}
-.educate-desc-title span:hover {
-    background-color: #eeeeee;
 }
 .educate-desc-title span{
     word-spacing: 2px;
@@ -444,14 +427,6 @@
     color: var(--my-white);
     cursor: pointer;
 }
-.save-options > div:hover {
-    background-color: var(--my-white);
-    color: var(--my-green);
-}
-.save-options > div:hover > svg {
-    transform: scale(1.5);
-    transition: transform 0.5s;
-}
 .main-preview-container {
     display: grid;
     grid-template-columns: 8% 1fr;
@@ -500,10 +475,6 @@
     transform: rotate(180deg);
     color: var(--my-cream) !important;
 }
-.edit-format-options-container > div:hover {
-    background-color: var(--my-cream);
-    color: var(--my-light-blue);
-}
 .paper-size .bold {
     font-size: 1em;
     width: max-content;
@@ -531,9 +502,7 @@
     cursor: pointer;
     font-weight: 600;
 }
-.cv-editBox > div:hover:not(.edit-container){
-    background-color: var(--my-light-green);
-}
+
 .cv-editBox :last-child {
     border-bottom: none;
 }
@@ -690,7 +659,46 @@
 ::-webkit-scrollbar-button {
     display: none;
 }
+/* only have hover on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .moreInfo-button:hover {
+        background-color: var(--my-blue);
+        color: var(--my-white);
+        transition: all 0.5s
+    }
+    .moreInfo-button:hover .plus-sign {
+        transform: scale(1.2);
+        transition: transform 0.6s;
+    }
+    .add-description:hover :last-child{
+        text-decoration:underline;
+    }
+    .summary-button:hover {
+        background-color: var(--my-blue);
+        color: var(--my-white);
+        transition: all 0.6s;
+    }
+    .educate-desc-title span:hover {
+        background-color: #eeeeee;
+    }
+    .save-options > div:hover {
+        background-color: var(--my-white);
+        color: var(--my-green);
+    }
+    .save-options > div:hover > svg {
+        transform: scale(1.5);
+        transition: transform 0.5s;
+    }
+    .edit-format-options-container > div:hover {
+        background-color: var(--my-cream);
+        color: var(--my-light-blue);
+    }
+    .cv-editBox > div:hover:not(.edit-container){
+        background-color: var(--my-light-green);
+    }
+    
 
+}
 @media (width <=630px) {
     .main {
         padding: 0 1em !important;

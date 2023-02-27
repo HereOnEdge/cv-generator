@@ -43,9 +43,6 @@
     padding-left: 0.5em;
     cursor: default;
 }
-.drop-down-option:hover, .drop-down-option.active{
-    background-color: var(--my-light-green);
-}
 .reset-button {
     display: flex;
     cursor: pointer;
@@ -54,4 +51,10 @@
 }
 .reset-button > svg {
     transform: rotate(-90deg);
+}
+/* have hover only on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .drop-down-option:hover, .drop-down-option.active{
+        background-color: var(--my-light-green);
+    }
 }

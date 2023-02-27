@@ -74,9 +74,6 @@ label {
     border-radius: 50%;
     cursor: pointer;
 }
-.remove-btn:hover {
-    color: red
-}
 .red {
     outline-color: red;
     outline-width: 1.5px;
@@ -96,5 +93,11 @@ label {
     }
     .input-container > input::placeholder {
         font-size: 1em;
+    }
+}
+/* have hover only on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .remove-btn:hover {
+        color: red
     }
 }
