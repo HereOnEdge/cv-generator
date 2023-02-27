@@ -41,10 +41,15 @@ class SummaryPage extends React.Component {
   };
 
   updateData = () => {
-    this.findData();
-    this.setState({
-      data: this.items,
-      [this.props.topic]: { ...this.props.data[this.props.topic] },
+    this.setState((prevState) => {
+      prevState.data = [];
+      for (const itemKey in this.props.data[this.props.topic]) {
+        prevState.data.push(this.props.data[this.props.topic][itemKey]);
+      }
+      return {
+        data: prevState.data,
+        [this.props.topic]: { ...this.props.data[this.props.topic] },
+      };
     });
   };
   updateLinkedList = () => {
