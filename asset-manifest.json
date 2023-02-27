@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/cv-generator/static/css/main.7ee823d3.css",
+    "main.js": "/cv-generator/static/js/main.99b45205.js",
+    "static/js/703.c1ba393b.chunk.js": "/cv-generator/static/js/703.c1ba393b.chunk.js",
+    "static/js/172.5149f6da.chunk.js": "/cv-generator/static/js/172.5149f6da.chunk.js",
+    "static/media/stairs.jpeg": "/cv-generator/static/media/stairs.010a9f0ded7742f4e2eb.jpeg",
+    "index.html": "/cv-generator/index.html",
+    "main.7ee823d3.css.map": "/cv-generator/static/css/main.7ee823d3.css.map",
+    "main.99b45205.js.map": "/cv-generator/static/js/main.99b45205.js.map",
+    "703.c1ba393b.chunk.js.map": "/cv-generator/static/js/703.c1ba393b.chunk.js.map",
+    "172.5149f6da.chunk.js.map": "/cv-generator/static/js/172.5149f6da.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ee823d3.css",
+    "static/js/main.99b45205.js"
+  ]
+}
