@@ -883,9 +883,6 @@
         height: 0;
         border: none;
     }
-    .color-changer {
-        /* gap: 1em; */
-    }
     .color-wrapper {
         width: 2.5em !important;
     }
