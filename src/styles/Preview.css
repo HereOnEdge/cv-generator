@@ -165,7 +165,9 @@
     z-index: 1;
 }
 .preview-background > .preview {
-    width: min(90%, 750px);
+    width: min(90%, 450px);
+    min-height: 500px;
+    max-height: 700px;
 }
 .preview .close-button {
     position: absolute;
