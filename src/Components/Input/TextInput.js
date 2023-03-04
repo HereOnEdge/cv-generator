@@ -113,7 +113,7 @@ class TextInput extends React.Component {
           this.props.className === "half" ? "half" : ""
         }`}
       >
-        <label htmlFor={this.label}>{this.label}</label>
+        <label htmlFor={this.field}>{this.label}</label>
         <div
           className={`input-container ${this.state.active ? "active" : ""} ${
             this.props.isRed ? "red" : ""
