@@ -202,17 +202,17 @@ const makeLinkedList = () => {
 };
 
 // create all the necessary contexts
-export const topicContext = createContext(null);
-export const pageContext = createContext(null);
-export const dataContext = createContext(null);
-export const completedTopicsContext = createContext(null);
-export const currentPageNode = createContext(null);
-export const cvDesign = createContext(null);
-export const changeStateContext = createContext(null);
-export const navLinkContext = createContext(null);
-export const changeCvDesignContext = createContext(null);
-export const isPreviewVisible = createContext(null);
-export const changePreviewState = createContext(null);
+export const TopicContext = createContext(null);
+export const PageContext = createContext(null);
+export const DataContext = createContext(null);
+export const CompletedTopicsContext = createContext(null);
+export const CurrentPageNodeContext = createContext(null);
+export const CvDesignContext = createContext(null);
+export const ChangeStateContext = createContext(null);
+export const NavLinkContext = createContext(null);
+export const ChangeCvDesignContext = createContext(null);
+export const IsPreviewVisibleContext = createContext(null);
+export const ChangePreviewStateContext = createContext(null);
 
 // initial cv design
 const initialCvDesign = {
