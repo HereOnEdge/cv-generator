@@ -60,16 +60,16 @@ const ContactMainPage = () => {
       if (field === "firstName" || field === "lastName") {
         value = value.charAt(0).toUpperCase() + value.slice(1);
       }
-      prevState[field] = value;
+      const result = { ...prevState, [field]: value };
       changeState(
-        prevState,
+        result,
         topic,
         page,
         currentPageNode,
         completedTopics,
         currentPageNode
       );
-      return prevState;
+      return result;
     });
 
     // check vital inputs to see if they are filled
@@ -79,8 +79,7 @@ const ContactMainPage = () => {
   // declare a function to toggle Extra Fields visibility
   const changeExtraFieldsFunc = (fieldName, value) => {
     changeExtraFields((prevState) => {
-      prevState[fieldName] = value;
-      return prevState;
+      return { ...prevState, [fieldName]: value };
     });
   };
 
@@ -131,7 +130,7 @@ const ContactMainPage = () => {
     // find the source of users's profile photo
     findPhotoSrc();
     // check which Extra Fields should be visible
-    findVisibleFields();
+    // findVisibleFields();
   }, []);
 
   return (
@@ -217,7 +216,7 @@ const ContactMainPage = () => {
               changeData={changeData}
               field="address"
               placeHolder="e.g. number 12, example st"
-              changeField={changeExtraFields}
+              changeField={changeExtraFieldsFunc}
               visible={extraFields.address}
               removable={true}
               validationType="text"
@@ -230,7 +229,7 @@ const ContactMainPage = () => {
               changeData={changeData}
               field="website"
               placeHolder="e.g. www.myWebsite.com"
-              changeField={changeExtraFields}
+              changeField={changeExtraFieldsFunc}
               visible={extraFields.website}
               removable={true}
               validationType="link"
@@ -243,7 +242,7 @@ const ContactMainPage = () => {
               changeData={changeData}
               field="linkedin"
               placeHolder="e.g. example.linkedin.com"
-              changeField={changeExtraFields}
+              changeField={changeExtraFieldsFunc}
               visible={extraFields.linkedin}
               removable={true}
               validationType="link"
@@ -256,7 +255,7 @@ const ContactMainPage = () => {
               changeData={changeData}
               field="nationality"
               placeHolder="e.g. Iranian"
-              changeField={changeExtraFields}
+              changeField={changeExtraFieldsFunc}
               visible={extraFields.nationality}
               removable={true}
               validationType="text"
