@@ -1,271 +1,266 @@
-/* eslint-disable eqeqeq */
-import React from "react";
-import "./styles/App.css";
-import MainPage from "./Components/MainPage";
-import ProgressBar from "./Components/ProgressBar/ProgressBar";
+import { useState, createContext } from "react";
 import { node, linkedList } from "@reza2022/linked-list";
+import ProgressBar from "./Components/ProgressBar/ProgressBar";
+import MainPage from "./Components/MainPage";
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.makeLinkedList();
-    this.state = {
-      topic: this.navLink.head.value().topic,
-      page: this.navLink.head.value().page,
-      data: {},
-      completedTopics: [],
-      currentPageNode: this.navLink.head,
-      __isEducateDescOpen: undefined,
-      __cvDesign: {
-        templates: ["default"],
-        activeTemplate: "default",
-        templateColors: [
-          "#3a3a3a",
-          "#23a3e3",
-          "#892343",
-          "#e1a4d2",
-          "#929496",
-          "#b9481f",
-          "#166c60",
-          "#496267",
-          "#102a73",
-          "#4a4a4a",
-        ],
-        color: "#3a3a3a",
-        secondColor: "#ffffff",
-        fonts: [
-          "Verdana",
-          "Tahoma",
-          "Arial",
-          "Arial Black",
-          "Trebuchet MS",
-          "Impact",
-          "Helvetica",
-          "Courier",
-          "Gill Sans",
-          "Times New Roman",
-          "Georgia",
-          "Palatino",
-          "Baskerville",
-          "Andalé Mono",
-          "Lucida",
-          "Monaco",
-          "Bradley Hand",
-          "Brush Script MT",
-          "Luminari",
-          "Comic Sans MS",
-        ],
-        activeFont: "Verdana",
-        fontSize: "0.8",
-        headingSize: "1.4",
-        gap: "1",
-        lineSpace: "1",
-        upDownMargin: "1",
-        photoSize: "100",
-      },
-      previewVisible: false,
-    };
+const App = () => {
+  // when App component is first initialized
+  // make a navLink
+  const navLinkObj = makeLinkedList();
+  // extract the navlink and store it inside a variable
+  const navLink = navLinkObj.navLink;
+  // declare all the necessary states
+  const [topic, changeTopic] = useState(navLink.head.value().topic);
+  const [page, changePage] = useState(navLink.head.value().page);
+  const [data, changeData] = useState({});
+  const [completedTopics, changeCompletedTopics] = useState([]);
+  const [currentPageNode, changeCurrentPageNode] = useState(navLink.head);
+  const [isEducateDescOpen, changeIsEducateDescOpen] = useState(undefined);
+  const [cvDesign, changeCvDesign] = useState(initialCvDesign);
+  const [isPreviewVisible, changeIsPreviewVisible] = useState(false);
 
-    this.stateHandler = this.stateHandler.bind(this);
-  }
-
-  stateHandler(
+  // declare a function to change all the main states
+  const stateHandler = (
     data,
     topic,
     page,
     currentPageNode,
     completedTopics,
     newPageNode,
-    __isEducateDescOpen,
-    callBackFunc
-  ) {
-    this.setState(
-      (prevState) => {
-        // if we are editing data in summary page, it means we are deleting somthing
+    isEducateDescOpen
+  ) => {
+    // if we are editing data in summary page, it means we are deleting something
+    if (
+      currentPageNode.value().page === "summary" &&
+      newPageNode.value().page === "summary"
+    ) {
+      // find the id of peace of info that we are going to delete
+      let id = Object.keys(data)[0];
+      // delete the peace of info and update the data
+      changeData((prevState) => {
+        prevState[currentPageNode.value().topic][id] = data[id];
+        delete prevState[currentPageNode.value().topic][id];
+        return prevState;
+      });
+      return;
+    }
+    // update data only if it has changed
+    changeData((prevState) => {
+      if (data !== prevState) {
+        // if data is coming from work or educate and there is already a data available from them, give them index
         if (
-          currentPageNode.value().page === "summary" &&
-          newPageNode.value().page === "summary"
+          currentPageNode.value().topic === "work" ||
+          currentPageNode.value().topic === "educate"
         ) {
-          // find the id of peace of info that we are going to delete
-          let id = Object.keys(data)[0];
-          // delete the peace of info and update the data
-          prevState.data[currentPageNode.value().topic][id] = data[id];
-          delete prevState.data[currentPageNode.value().topic][id];
-          return {
-            topic: topic,
-            page: page,
-            data: prevState.data,
-            completedTopics: completedTopics,
-            currentPageNode: newPageNode,
-          };
-        }
-        if (data !== prevState.data) {
-          // update data only if it has changed
-          if (
-            currentPageNode.value().topic === "work" ||
-            currentPageNode.value().topic === "educate"
-          ) {
-            // if data is coming from work or educate and there is already a data available from them, give them index
-            if (prevState.data[currentPageNode.value().topic] !== undefined) {
-              let id =
-                currentPageNode.value().id == undefined
-                  ? 0
-                  : currentPageNode.value().id;
-              prevState.data[currentPageNode.value().topic][id] = data[id];
-              // if new value is undefiend, remove the item from object
-              if (data[id] === undefined) {
-                delete prevState.data[currentPageNode.value().topic][id];
-              }
-            } else {
-              prevState.data[currentPageNode.value().topic] = data;
+          if (prevState[currentPageNode.value().topic] !== undefined) {
+            let id =
+              currentPageNode.value().id == undefined
+                ? 0
+                : currentPageNode.value().id;
+            prevState[currentPageNode.value().topic][id] = data[id];
+            // if new value is undefined, remove the item from object
+            if (data[id] === undefined) {
+              delete prevState.data[currentPageNode.value().topic][id];
             }
           } else {
-            prevState.data[currentPageNode.value().topic] = data;
+            prevState[currentPageNode.value().topic] = data;
           }
+        } else {
+          prevState[currentPageNode.value().topic] = data;
         }
-        return {
-          topic: topic,
-          page: page,
-          data: prevState.data,
-          completedTopics: completedTopics,
-          currentPageNode: newPageNode,
-          __isEducateDescOpen: __isEducateDescOpen === true ? true : undefined,
-        };
-      },
-      callBackFunc !== undefined ? callBackFunc : null
-    );
-  }
+      }
+      return prevState;
+    });
+    // update topic
+    changeTopic(topic);
 
-  makeLinkedList = () => {
-    const contactNode = node({ topic: "contact", page: "main" }, null, null);
-    this.navLink = linkedList(contactNode);
-    this.navLink.append({ topic: "work", page: "intro" });
-    this.navLink.append({ topic: "work", page: "main" });
-    this.navLink.append({ topic: "work", page: "description" });
-    this.navLink.append({ topic: "work", page: "summary" });
-    this.navLink.append({ topic: "educate", page: "intro" });
-    this.navLink.append({ topic: "educate", page: "main" });
-    this.navLink.append({ topic: "educate", page: "summary" });
-    this.navLink.append({ topic: "skills", page: "intro" });
-    this.navLink.append({ topic: "skills", page: "description" });
-    this.navLink.append({ topic: "summary", page: "intro" });
-    this.navLink.append({ topic: "summary", page: "description" });
-    this.navLink.append({ topic: "final", page: "main" });
+    // update page
+    changePage(page);
+
+    // update completedTopics
+    changeCompletedTopics(completedTopics);
+
+    // update currentPageNode
+    changeCurrentPageNode(currentPageNode);
+
+    // update isEducateOpen
+    changeIsEducateDescOpen(isEducateDescOpen === true ? true : undefined);
   };
-  changeCvDesign = {
+
+  // declare an object to update cvDesign state
+  const changeCvDesignObj = {
     all: (cvDesignObject) => {
-      this.setState({ __cvDesign: cvDesignObject });
+      changeCvDesign(cvDesignObject);
     },
     font: (font) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.activeFont = font;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.activeFont = font;
+        return prevState;
       });
     },
     template: (template) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.activeTemplate = template;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.activeTemplate = template;
+        return prevState;
       });
     },
     fontSize: (size) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.fontSize = size;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.fontSize = size;
+        return prevState;
       });
     },
     headingSize: (size) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.headingSize = size;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.headingSize = size;
+        return prevState;
       });
     },
     sectionGap: (size) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.gap = size;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.gap = size;
+        return prevState;
       });
     },
     lineSpace: (size) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.lineSpace = size;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.lineSpace = size;
+        return prevState;
       });
     },
     color: (col) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.color = col;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.color = col;
+        return prevState;
       });
     },
     upDownMargin: (margin) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.upDownMargin = margin;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.upDownMargin = margin;
+        return prevState;
       });
     },
     photoSize: (size) => {
-      this.setState((prevState) => {
-        prevState.__cvDesign.photoSize = size;
-        return {
-          __cvDesign: prevState.__cvDesign,
-        };
+      changeCvDesign((prevState) => {
+        prevState.photoSize = size;
+        return prevState;
       });
     },
   };
-
-  changePreviewState = () => {
-    this.setState((prevState) => {
-      return prevState.previewVisible
-        ? { previewVisible: false }
-        : { previewVisible: true };
+  // declare a function to change the state of Preview
+  const changePreviewState = () => {
+    changeIsPreviewVisible((prevState) => {
+      return prevState ? false : true;
     });
   };
-  render() {
-    return (
-      <div>
-        <header>
-          <ProgressBar
-            topic={this.state.topic}
-            completedTopics={this.state.completedTopics}
-            currentPageNode={this.state.currentPageNode}
-          />
-        </header>
-        <main>
-          <MainPage
-            changeState={this.stateHandler}
-            data={this.state.data}
-            page={this.state.page}
-            topic={this.state.topic}
-            completedTopics={this.state.completedTopics}
-            currentPageNode={this.state.currentPageNode}
-            navLink={this.navLink}
-            __isEducateDescOpen={this.state.__isEducateDescOpen}
-            __cvDesign={this.state.__cvDesign}
-            changeCvDesign={this.changeCvDesign}
-            isPreviewVisible={this.state.previewVisible}
-            changePreviewState={this.changePreviewState}
-          />
-        </main>
-      </div>
-    );
-  }
-}
+  return (
+    <>
+      <header>
+        <ProgressBar
+          topic={topic}
+          completedTopics={completedTopics}
+          currentPageNode={currentPageNode}
+        />
+      </header>
+      <main>
+        <MainPage
+          changeState={stateHandler}
+          data={data}
+          page={page}
+          topic={topic}
+          completedTopics={completedTopics}
+          currentPageNode={currentPageNode}
+          navLink={navLink}
+          isEducateDescOpen={isEducateDescOpen}
+          cvDesign={cvDesign}
+          changeCvDesign={changeCvDesignObj}
+          isPreviewVisible={isPreviewVisible}
+          changePreviewState={changePreviewState}
+        />
+      </main>
+    </>
+  );
+};
+
+// make a function to create the initial linkedList for the website's pages
+const makeLinkedList = () => {
+  const contactNode = node({ topic: "contact", page: "main" }, null, null);
+  const navLink = linkedList(contactNode);
+  navLink.append({ topic: "work", page: "intro" });
+  navLink.append({ topic: "work", page: "main" });
+  navLink.append({ topic: "work", page: "description" });
+  navLink.append({ topic: "work", page: "summary" });
+  navLink.append({ topic: "educate", page: "intro" });
+  navLink.append({ topic: "educate", page: "main" });
+  navLink.append({ topic: "educate", page: "summary" });
+  navLink.append({ topic: "skills", page: "intro" });
+  navLink.append({ topic: "skills", page: "description" });
+  navLink.append({ topic: "summary", page: "intro" });
+  navLink.append({ topic: "summary", page: "description" });
+  navLink.append({ topic: "final", page: "main" });
+  return { navLink };
+};
+
+// create all the necessary contexts
+export const topicContext = createContext(null);
+export const pageContext = createContext(null);
+export const dataContext = createContext(null);
+export const completedTopicsContext = createContext(null);
+export const currentPageNode = createContext(null);
+export const cvDesign = createContext(null);
+export const changeStateContext = createContext(null);
+export const navLinkContext = createContext(null);
+export const changeCvDesignContext = createContext(null);
+export const isPreviewVisible = createContext(null);
+export const changePreviewState = createContext(null);
+
+// initial cv design
+const initialCvDesign = {
+  templates: ["default"],
+  activeTemplate: "default",
+  templateColors: [
+    "#3a3a3a",
+    "#23a3e3",
+    "#892343",
+    "#e1a4d2",
+    "#929496",
+    "#b9481f",
+    "#166c60",
+    "#496267",
+    "#102a73",
+    "#4a4a4a",
+  ],
+  color: "#3a3a3a",
+  secondColor: "#ffffff",
+  fonts: [
+    "Verdana",
+    "Tahoma",
+    "Arial",
+    "Arial Black",
+    "Trebuchet MS",
+    "Impact",
+    "Helvetica",
+    "Courier",
+    "Gill Sans",
+    "Times New Roman",
+    "Georgia",
+    "Palatino",
+    "Baskerville",
+    "Andalé Mono",
+    "Lucida",
+    "Monaco",
+    "Bradley Hand",
+    "Brush Script MT",
+    "Luminari",
+    "Comic Sans MS",
+  ],
+  activeFont: "Verdana",
+  fontSize: "0.8",
+  headingSize: "1.4",
+  gap: "1",
+  lineSpace: "1",
+  upDownMargin: "1",
+  photoSize: "100",
+};
 
 export default App;
