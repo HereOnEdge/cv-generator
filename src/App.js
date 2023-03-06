@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 import { node, linkedList } from "@reza2022/linked-list";
 import ProgressBar from "./Components/ProgressBar/ProgressBar";
 import MainPage from "./Components/MainPage";
+import "./styles/App.css";
 
 const App = () => {
   // when App component is first initialized

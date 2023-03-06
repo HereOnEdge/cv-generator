@@ -4,6 +4,7 @@ import FinalPage from "./Pages/FinalPage";
 import OthersMainPage from "./Pages/OtherMainPages";
 import DescPage from "./Pages/DescriptionPage";
 import SummaryPage from "./Pages/SummaryPages";
+import "../styles/MainPage.css";
 import {
   TopicContext,
   PageContext,
@@ -37,7 +38,7 @@ export default function MainPage(props) {
                     <IsPreviewVisibleContext.Provider
                       value={props.isPreviewVisible}
                     >
-                      <ChangePreviewStateContext
+                      <ChangePreviewStateContext.Provider
                         value={props.changePreviewState}
                       >
                         {props.topic === "contact" ? (
@@ -59,7 +60,7 @@ export default function MainPage(props) {
                             )}
                           </NavLinkContext.Provider>
                         )}
-                      </ChangePreviewStateContext>
+                      </ChangePreviewStateContext.Provider>
                     </IsPreviewVisibleContext.Provider>
                   )}
                 </CvDesignContext.Provider>

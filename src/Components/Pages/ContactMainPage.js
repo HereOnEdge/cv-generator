@@ -1,334 +1,332 @@
-import React from "react";
+import { useContext, useState, useEffect } from "react";
+import ProfilePhoto from "../ProfilePhoto";
 import TextInput from "../Input/TextInput";
 import AddFieldButton from "../Input/AddFieldButton";
-import ProfilePhoto from "../ProfilePhoto";
 import PreviewContainer from "../Preview/PreviewContainer";
 import PreviewButton from "../Preview/PreviewButton";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import Preview from "../Preview/Preview";
+import {
+  TopicContext,
+  PageContext,
+  DataContext,
+  CompletedTopicsContext,
+  CurrentPageNodeContext,
+  CvDesignContext,
+  ChangeStateContext,
+  IsPreviewVisibleContext,
+  ChangePreviewStateContext,
+} from "../../App";
 
-class ContactMainPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contact: {
-        photoSrc: "",
-        firstName: "",
-        lastName: "",
-        country: "",
-        city: "",
-        address: "",
-        phone: "",
-        email: "",
-        website: "",
-        linkedin: "",
-        nationality: "",
-      },
-      extraFields: {
-        website: false,
-        linkedin: false,
-        nationality: false,
-        address: true,
-      },
-      filledVitalInputs: false,
-      showVitalInputs: false,
-      previewData: { ...this.props.data },
-    };
-    this.changeExtraFields = this.changeExtraFields.bind(this);
-  }
+const ContactMainPage = () => {
+  // use the contexts we need
+  const topic = useContext(TopicContext);
+  const page = useContext(PageContext);
+  const data = useContext(DataContext);
+  const completedTopics = useContext(CompletedTopicsContext);
+  const currentPageNode = useContext(CurrentPageNodeContext);
+  const cvDesign = useContext(CvDesignContext);
+  const changeState = useContext(ChangeStateContext);
+  const isPreviewVisible = useContext(IsPreviewVisibleContext);
+  const changePreviewState = useContext(ChangePreviewStateContext);
 
-  changeData = (field, value) => {
-    this.setState((prevState) => {
+  // declare all the states
+  const [contact, changeContact] = useState({
+    photoSrc: "",
+    firstName: "",
+    lastName: "",
+    country: "",
+    city: "",
+    address: "",
+    phone: "",
+    email: "",
+    website: "",
+    linkedin: "",
+    nationality: "",
+  });
+  const [extraFields, changeExtraFields] = useState({
+    website: false,
+    linkedin: false,
+    nationality: false,
+    address: true,
+  });
+  const [filledVitalInputs, changeFilledVitalInputs] = useState(false);
+  const [showVitalInputs, changeShowVitalInputs] = useState(false);
+
+  // declare a function to change the main data's state
+  const changeData = (field, value) => {
+    // update the data
+    changeContact((prevState) => {
       if (field === "firstName" || field === "lastName") {
         value = value.charAt(0).toUpperCase() + value.slice(1);
       }
-      prevState.contact[field] = value;
-      this.props.changeState(
-        prevState.contact,
-        this.props.topic,
-        this.props.page,
-        this.props.currentPageNode,
-        this.props.completedTopics,
-        this.props.currentPageNode
+      prevState[field] = value;
+      changeState(
+        prevState,
+        topic,
+        page,
+        currentPageNode,
+        completedTopics,
+        currentPageNode
       );
-      prevState.previewData.contact = prevState.contact;
-      return {
-        contact: prevState.contact,
-        previewData: prevState.previewData,
-      };
+      return prevState;
     });
-    this.checkVitalInputs();
+
+    // check vital inputs to see if they are filled
+    checkVitalInputs();
   };
 
-  changeExtraFields(fieldName, value) {
-    this.setState((prevState) => {
-      prevState.extraFields[fieldName] = value;
-      return {
-        extraFields: prevState.extraFields,
-      };
+  // declare a function to toggle Extra Fields visibility
+  const changeExtraFieldsFunc = (fieldName, value) => {
+    changeExtraFields((prevState) => {
+      prevState[fieldName] = value;
+      return prevState;
     });
-  }
+  };
 
-  findPhotoSrc() {
-    if (this.props.data[this.props.topic] !== undefined) {
-      this.setState((prevState) => {
-        prevState.contact.photoSrc = this.props.data.contact.photoSrc;
-        return { contact: prevState.contact };
+  //declare a function to update the photo source
+  const findPhotoSrc = () => {
+    if (data[topic] !== undefined) {
+      changeContact((prevState) => {
+        prevState.photoSrc = data.contact.photoSrc;
+        return prevState;
       });
     }
-  }
+  };
 
-  findVisibleFields() {
-    if (this.props.data[this.props.topic] !== undefined) {
-      for (let extraField in this.state.extraFields) {
-        if (this.props.data[this.props.topic][extraField] !== "") {
-          this.setState((prevState) => {
-            prevState.extraFields[extraField] = true;
+  // declare a function to find which Extra Field is visible and which is not
+  const findVisibleFields = () => {
+    if (data[topic] !== undefined) {
+      for (let extraField in extraFields) {
+        if (data[topic][extraField] !== "") {
+          changeExtraFields((prevState) => {
+            prevState[extraField] = true;
           });
         }
       }
     }
-  }
+  };
 
-  checkVitalInputs = () => {
-    this.setState((prevState) => {
-      prevState.filledVitalInputs =
-        this.state.contact.email === "" ||
-        this.state.contact.firstName === "" ||
-        this.state.contact.lastName === ""
-          ? false
-          : true;
-      return { filledVitalInputs: prevState.filledVitalInputs };
+  // declare a function to check if Vital Inputs are filled
+  const checkVitalInputs = () => {
+    changeFilledVitalInputs((prevState) => {
+      return contact.email === "" ||
+        contact.firstName === "" ||
+        contact.lastName === ""
+        ? false
+        : true;
     });
   };
-  showVitalInputs = () => {
-    this.setState((prevState) => {
-      prevState.showVitalInputs = this.state.filledVitalInputs ? false : true;
-      return {
-        showVitalInputs: prevState.showVitalInputs,
-      };
+
+  // declare a function to highlight unfilled Vital Inputs
+  const highlightVitalInputs = () => {
+    changeShowVitalInputs((prevState) => {
+      prevState = filledVitalInputs ? false : true;
+      return prevState;
     });
   };
-  componentDidMount() {
-    this.findPhotoSrc();
-    this.findVisibleFields();
-  }
-  render() {
-    return (
-      <div className="main-container">
-        <div className="contact-main main">
-          <div className="contact-header header">
-            <h1>What's the best way for employers to contact you? </h1>
-            <p>We suggest including an email and phone number</p>
+
+  // when component did mount
+  useEffect(() => {
+    // find the source of users's profile photo
+    findPhotoSrc();
+    // check which Extra Fields should be visible
+    findVisibleFields();
+  }, []);
+
+  return (
+    <div className="main-container">
+      <div className="contact-main main">
+        <div className="contact-header header">
+          <h1>What's the best way for employers to contact you? </h1>
+          <p>We suggest including an email and phone number</p>
+        </div>
+        <div className="contact-body body">
+          <div className="contact-photo">
+            <ProfilePhoto changeData={changeData} photoSrc={contact.photoSrc} />
           </div>
-          <div className="contact-body body">
-            <div className="contact-photo">
-              <ProfilePhoto
-                changeData={this.changeData}
-                photoSrc={this.state.contact.photoSrc}
-              />
-            </div>
-            <div className="contact-form form">
-              <TextInput
-                className="half"
-                label="FIRST NAME"
-                changeData={this.changeData}
-                field="firstName"
-                placeHolder="e.g. Donald"
-                validationType="text"
-                data={this.props.data}
-                topic={this.props.topic}
-                isRed={
-                  this.state[this.props.topic].firstName === "" &&
-                  this.state.showVitalInputs
-                    ? true
-                    : false
-                }
-              />
-              <TextInput
-                className="half"
-                label="LAST NAME"
-                changeData={this.changeData}
-                field="lastName"
-                placeHolder="e.g. Trump"
-                validationType="text"
-                data={this.props.data}
-                topic={this.props.topic}
-                isRed={
-                  this.state[this.props.topic].lastName === "" &&
-                  this.state.showVitalInputs
-                    ? true
-                    : false
-                }
-              />
-              <TextInput
-                className="half"
-                label="COUNTRY"
-                changeData={this.changeData}
-                field="country"
-                placeHolder="e.g. UNITED STATES OF AMERICA"
-                validationType="text"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <TextInput
-                className="half"
-                label="CITY/TOWN"
-                changeData={this.changeData}
-                field="city"
-                placeHolder="e.g. New York"
-                validationType="text"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <TextInput
-                className="half"
-                label="PHONE NUMBER"
-                changeData={this.changeData}
-                field="phone"
-                placeHolder="e.g. 09120121212"
-                validationType="phone"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <TextInput
-                className="half"
-                label="EMAIL"
-                changeData={this.changeData}
-                field="email"
-                placeHolder="e.g. myemail@example.com"
-                validationType="email"
-                data={this.props.data}
-                topic={this.props.topic}
-                isRed={
-                  this.state[this.props.topic].email === "" &&
-                  this.state.showVitalInputs
-                    ? true
-                    : false
-                }
-              />
-              <TextInput
-                className=""
-                label="ADDRESS"
-                changeData={this.changeData}
-                field="address"
-                placeHolder="e.g. number 12, example st"
-                changeField={this.changeExtraFields}
-                visible={this.state.extraFields.address}
-                removable={true}
-                validationType="text"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <TextInput
-                className="half"
-                label="WEBSITE"
-                changeData={this.changeData}
-                field="website"
-                placeHolder="e.g. www.myWebsite.com"
-                changeField={this.changeExtraFields}
-                visible={this.state.extraFields.website}
-                removable={true}
-                validationType="link"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <TextInput
-                className="half"
-                label="Linkedin"
-                changeData={this.changeData}
-                field="linkedin"
-                placeHolder="e.g. example.linkedin.com"
-                changeField={this.changeExtraFields}
-                visible={this.state.extraFields.linkedin}
-                removable={true}
-                validationType="link"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <TextInput
-                className="half"
-                label="NATIONALITY"
-                changeData={this.changeData}
-                field="nationality"
-                placeHolder="e.g. Iranian"
-                changeField={this.changeExtraFields}
-                visible={this.state.extraFields.nationality}
-                removable={true}
-                validationType="text"
-                data={this.props.data}
-                topic={this.props.topic}
-              />
-              <div className="moreInfoSection">
-                <span className="bold">
-                  Add additional information to your CV
-                  <span className="small">(optional)</span>
-                </span>
-                <div className="contact-buttons">
-                  <AddFieldButton
-                    name="website"
-                    changeField={this.changeExtraFields}
-                    hidden={this.state.extraFields.website}
-                  />
-                  <AddFieldButton
-                    name="linkedin"
-                    changeField={this.changeExtraFields}
-                    hidden={this.state.extraFields.linkedin}
-                  />
-                  <AddFieldButton
-                    name="nationality"
-                    changeField={this.changeExtraFields}
-                    hidden={this.state.extraFields.nationality}
-                  />
-                  <AddFieldButton
-                    name="address"
-                    changeField={this.changeExtraFields}
-                    hidden={this.state.extraFields.address}
-                  />
-                </div>
+          <div className="contact-form form">
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="FIRST NAME"
+              changeData={changeData}
+              field="firstName"
+              placeHolder="e.g. Donald"
+              validationType="text"
+              isRed={[topic].firstName === "" && showVitalInputs ? true : false}
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="LAST NAME"
+              changeData={changeData}
+              field="lastName"
+              placeHolder="e.g. Trump"
+              validationType="text"
+              isRed={[topic].lastName === "" && showVitalInputs ? true : false}
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="COUNTRY"
+              changeData={changeData}
+              field="country"
+              placeHolder="e.g. UNITED STATES OF AMERICA"
+              validationType="text"
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="CITY/TOWN"
+              changeData={changeData}
+              field="city"
+              placeHolder="e.g. New York"
+              validationType="text"
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="PHONE NUMBER"
+              changeData={changeData}
+              field="phone"
+              placeHolder="e.g. 09120121212"
+              validationType="phone"
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="EMAIL"
+              changeData={changeData}
+              field="email"
+              placeHolder="e.g. myemail@example.com"
+              validationType="email"
+              isRed={[topic].email === "" && showVitalInputs ? true : false}
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className=""
+              label="ADDRESS"
+              changeData={changeData}
+              field="address"
+              placeHolder="e.g. number 12, example st"
+              changeField={changeExtraFields}
+              visible={extraFields.address}
+              removable={true}
+              validationType="text"
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="WEBSITE"
+              changeData={changeData}
+              field="website"
+              placeHolder="e.g. www.myWebsite.com"
+              changeField={changeExtraFields}
+              visible={extraFields.website}
+              removable={true}
+              validationType="link"
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="Linkedin"
+              changeData={changeData}
+              field="linkedin"
+              placeHolder="e.g. example.linkedin.com"
+              changeField={changeExtraFields}
+              visible={extraFields.linkedin}
+              removable={true}
+              validationType="link"
+            />
+            <TextInput
+              data={data}
+              topic={topic}
+              className="half"
+              label="NATIONALITY"
+              changeData={changeData}
+              field="nationality"
+              placeHolder="e.g. Iranian"
+              changeField={changeExtraFields}
+              visible={extraFields.nationality}
+              removable={true}
+              validationType="text"
+            />
+            <div className="moreInfoSection">
+              <span className="bold">
+                Add additional information to your CV
+                <span className="small">(optional)</span>
+              </span>
+              <div className="contact-buttons">
+                <AddFieldButton
+                  name="website"
+                  changeField={changeExtraFieldsFunc}
+                  hidden={extraFields.website}
+                />
+                <AddFieldButton
+                  name="linkedin"
+                  changeField={changeExtraFieldsFunc}
+                  hidden={extraFields.linkedin}
+                />
+                <AddFieldButton
+                  name="nationality"
+                  changeField={changeExtraFieldsFunc}
+                  hidden={extraFields.nationality}
+                />
+                <AddFieldButton
+                  name="address"
+                  changeField={changeExtraFieldsFunc}
+                  hidden={extraFields.address}
+                />
               </div>
             </div>
-            <div className="contact-preview whole-preview">
-              <PreviewContainer
-                data={this.state.previewData}
-                changePreviewState={this.props.changePreviewState}
-                topic={this.props.topic}
-                page={this.props.page}
-                cvDesign={this.props.cvDesign}
-              />
-              <PreviewButton
-                changePreviewState={this.props.changePreviewState}
-              />
-            </div>
           </div>
-          <div className="contact-foot foot">
-            <NavigationButtons
-              topic={this.props.topic}
-              data={this.state.contact}
-              editData={this.props.changeState}
-              page={this.props.page}
-              currentPageNode={this.props.currentPageNode}
-              completedTopics={this.props.completedTopics}
-              hasNext={this.props.currentPageNode.next === null ? false : true}
-              hasBack={this.props.currentPageNode.back === null ? false : true}
-              filledVitalInputs={this.state.filledVitalInputs}
-              showVitalInputs={this.showVitalInputs}
+          <div className="contact-preview whole-preview">
+            <PreviewContainer
+              data={data}
+              changePreviewState={changePreviewState}
+              topic={topic}
+              page={page}
+              cvDesign={cvDesign}
             />
+            <PreviewButton changePreviewState={changePreviewState} />
           </div>
         </div>
-        {this.props.isPreviewVisible ? (
-          <div className="preview-background">
-            <Preview
-              data={this.state.previewData}
-              cvDesign={this.props.cvDesign}
-              hasCloseButton={true}
-              changePreviewState={this.props.changePreviewState}
-            />
-          </div>
-        ) : null}
+        <div className="contact-foot foot">
+          <NavigationButtons
+            topic={topic}
+            data={contact}
+            editData={changeState}
+            page={page}
+            currentPageNode={currentPageNode}
+            completedTopics={completedTopics}
+            hasNext={currentPageNode.next === null ? false : true}
+            hasBack={currentPageNode.back === null ? false : true}
+            filledVitalInputs={filledVitalInputs}
+            showVitalInputs={highlightVitalInputs}
+          />
+        </div>
       </div>
-    );
-  }
-}
-
+      {isPreviewVisible ? (
+        <div className="preview-background">
+          <Preview
+            data={data}
+            cvDesign={cvDesign}
+            hasCloseButton={true}
+            changePreviewState={changePreviewState}
+          />
+        </div>
+      ) : null}
+    </div>
+  );
+};
 export default ContactMainPage;
